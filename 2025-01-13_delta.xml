@@ -1,0 +1,2917 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<sanctionsData xmlns="https://www.treasury.gov/ofac/DeltaFile/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://www.treasury.gov/ofac/DeltaFile/1.0 https://www.treasury.gov/ofac/downloads/sanctions/1.0/DeltaFile.xsd">
+  <publicationInfo>
+    <datePublished>2025-01-13T00:00:00-05:00</datePublished>
+    <publicationType>Standard Action</publicationType>
+  </publicationInfo>
+  <referenceValues>
+    <referenceValue refId="92791" action="add">
+      <type>Organization Type:</type>
+      <value>Transnational Terrorist Group</value>
+    </referenceValue>
+  </referenceValues>
+  <featureTypes />
+  <entities>
+    <entity id="9567" action="remove">
+      <generalInfo>
+        <identityId>1441</identityId>
+        <entityType refId="600">Individual</entityType>
+      </generalInfo>
+      <sanctionsLists>
+        <sanctionsList id="1441" refId="1550" datePublished="2005-11-09">SDN List</sanctionsList>
+      </sanctionsLists>
+      <sanctionsPrograms>
+        <sanctionsProgram id="5879" refId="212">SDNT</sanctionsProgram>
+      </sanctionsPrograms>
+      <sanctionsTypes>
+        <sanctionsType id="7590" refId="1705">Block</sanctionsType>
+      </sanctionsTypes>
+      <names>
+        <name id="16640">
+          <isPrimary>true</isPrimary>
+          <isLowQuality>false</isLowQuality>
+          <translations>
+            <translation id="1441">
+              <isPrimary>true</isPrimary>
+              <script refId="20122">Latin</script>
+              <formattedFirstName>Jose Ignacio</formattedFirstName>
+              <formattedLastName>BEDOYA VELEZ</formattedLastName>
+              <formattedFullName>BEDOYA VELEZ, Jose Ignacio</formattedFullName>
+              <nameParts>
+                <namePart id="2127">
+                  <type refId="1521">First Name</type>
+                  <value>Jose Ignacio</value>
+                </namePart>
+                <namePart id="2126">
+                  <type refId="1520">Last Name</type>
+                  <value>BEDOYA VELEZ</value>
+                </namePart>
+              </nameParts>
+            </translation>
+          </translations>
+        </name>
+        <name id="9011">
+          <isPrimary>false</isPrimary>
+          <aliasType refId="1400">A.K.A.</aliasType>
+          <isLowQuality>true</isLowQuality>
+          <translations>
+            <translation id="9701">
+              <isPrimary>true</isPrimary>
+              <script refId="20122">Latin</script>
+              <formattedLastName>NACHO BEDOYA</formattedLastName>
+              <formattedFullName>NACHO BEDOYA</formattedFullName>
+              <nameParts>
+                <namePart id="14441">
+                  <type refId="1520">Last Name</type>
+                  <value>NACHO BEDOYA</value>
+                </namePart>
+              </nameParts>
+            </translation>
+          </translations>
+        </name>
+      </names>
+      <addresses>
+        <address id="11942">
+          <country refId="11066">Colombia</country>
+          <translations>
+            <translation id="10785">
+              <isPrimary>true</isPrimary>
+              <script refId="20122">Latin</script>
+              <addressParts>
+                <addressPart id="23178">
+                  <type refId="1451">ADDRESS1</type>
+                  <value>Calle 16 No. 71A-07/09</value>
+                </addressPart>
+                <addressPart id="23179">
+                  <type refId="1454">CITY</type>
+                  <value>Cali</value>
+                </addressPart>
+              </addressParts>
+            </translation>
+          </translations>
+        </address>
+        <address id="11943">
+          <country refId="11066">Colombia</country>
+          <translations>
+            <translation id="10786">
+              <isPrimary>true</isPrimary>
+              <script refId="20122">Latin</script>
+              <addressParts>
+                <addressPart id="23180">
+                  <type refId="1451">ADDRESS1</type>
+                  <value>Carrera 1G No. 71-07</value>
+                </addressPart>
+                <addressPart id="23181">
+                  <type refId="1454">CITY</type>
+                  <value>Cali</value>
+                </addressPart>
+              </addressParts>
+            </translation>
+          </translations>
+        </address>
+      </addresses>
+      <features>
+        <feature id="4563">
+          <type featureTypeId="8">Birthdate</type>
+          <versionId>1147</versionId>
+          <value>06 Jan 1959</value>
+          <valueDate id="474">
+            <fromDateBegin>1959-01-06</fromDateBegin>
+            <fromDateEnd>1959-01-06</fromDateEnd>
+            <toDateBegin>1959-01-06</toDateBegin>
+            <toDateEnd>1959-01-06</toDateEnd>
+            <isApproximate>false</isApproximate>
+            <isDateRange>false</isDateRange>
+          </valueDate>
+          <isPrimary>true</isPrimary>
+        </feature>
+        <feature id="4566">
+          <type featureTypeId="11">Citizenship Country</type>
+          <versionId>1150</versionId>
+          <value>Colombia</value>
+          <valueRefId>11066</valueRefId>
+          <isPrimary>true</isPrimary>
+        </feature>
+        <feature id="4564">
+          <type featureTypeId="9">Place of Birth</type>
+          <versionId>1148</versionId>
+          <value>Tulua, Valle, Colombia</value>
+          <isPrimary>true</isPrimary>
+        </feature>
+        <feature id="4565">
+          <type featureTypeId="9">Place of Birth</type>
+          <versionId>1149</versionId>
+          <value>Armenia, Quindio, Colombia</value>
+          <isPrimary>false</isPrimary>
+        </feature>
+      </features>
+      <identityDocuments>
+        <identityDocument id="4203">
+          <type refId="1570">Cedula No.</type>
+          <name nameId="16640" nameTranslationId="1441">BEDOYA VELEZ, Jose Ignacio</name>
+          <documentNumber>16351225</documentNumber>
+          <isValid>true</isValid>
+          <issuingCountry refId="11066">Colombia</issuingCountry>
+          <issueDate id="3327">
+            <fromDateBegin>1977-06-20</fromDateBegin>
+            <fromDateEnd>1977-06-20</fromDateEnd>
+            <toDateBegin>1977-06-20</toDateBegin>
+            <toDateEnd>1977-06-20</toDateEnd>
+            <isApproximate>false</isApproximate>
+            <isDateRange>false</isDateRange>
+          </issueDate>
+        </identityDocument>
+        <identityDocument id="4204">
+          <type refId="1571">Passport</type>
+          <name nameId="16640" nameTranslationId="1441">BEDOYA VELEZ, Jose Ignacio</name>
+          <documentNumber>AJ126708</documentNumber>
+          <isValid>true</isValid>
+          <issuingCountry refId="11066">Colombia</issuingCountry>
+          <issueDate id="3556">
+            <fromDateBegin>2004-03-26</fromDateBegin>
+            <fromDateEnd>2004-03-26</fromDateEnd>
+            <toDateBegin>2004-03-26</toDateBegin>
+            <toDateEnd>2004-03-26</toDateEnd>
+            <isApproximate>false</isApproximate>
+            <isDateRange>false</isDateRange>
+          </issueDate>
+        </identityDocument>
+        <identityDocument id="4205">
+          <type refId="1571">Passport</type>
+          <name nameId="16640" nameTranslationId="1441">BEDOYA VELEZ, Jose Ignacio</name>
+          <documentNumber>16351225</documentNumber>
+          <isValid>true</isValid>
+          <issuingCountry refId="11066">Colombia</issuingCountry>
+          <issueDate id="3554">
+            <fromDateBegin>2004-03-26</fromDateBegin>
+            <fromDateEnd>2004-03-26</fromDateEnd>
+            <toDateBegin>2004-03-26</toDateBegin>
+            <toDateEnd>2004-03-26</toDateEnd>
+            <isApproximate>false</isApproximate>
+            <isDateRange>false</isDateRange>
+          </issueDate>
+          <expirationDate id="3555">
+            <fromDateBegin>2014-03-26</fromDateBegin>
+            <fromDateEnd>2014-03-26</fromDateEnd>
+            <toDateBegin>2014-03-26</toDateBegin>
+            <toDateEnd>2014-03-26</toDateEnd>
+            <isApproximate>false</isApproximate>
+            <isDateRange>false</isDateRange>
+          </expirationDate>
+        </identityDocument>
+      </identityDocuments>
+    </entity>
+    <entity id="10617" action="remove">
+      <generalInfo>
+        <identityId>123</identityId>
+        <entityType refId="600">Individual</entityType>
+      </generalInfo>
+      <sanctionsLists>
+        <sanctionsList id="123" refId="1550" datePublished="2007-12-12">SDN List</sanctionsList>
+      </sanctionsLists>
+      <sanctionsPrograms>
+        <sanctionsProgram id="7176" refId="203">SDNTK</sanctionsProgram>
+      </sanctionsPrograms>
+      <sanctionsTypes>
+        <sanctionsType id="4894" refId="1705">Block</sanctionsType>
+      </sanctionsTypes>
+      <names>
+        <name id="15322">
+          <isPrimary>true</isPrimary>
+          <isLowQuality>false</isLowQuality>
+          <translations>
+            <translation id="123">
+              <isPrimary>true</isPrimary>
+              <script refId="20122">Latin</script>
+              <formattedFirstName>Gipsy</formattedFirstName>
+              <formattedLastName>MEZA CAZARES</formattedLastName>
+              <formattedFullName>MEZA CAZARES, Gipsy</formattedFullName>
+              <nameParts>
+                <namePart id="179">
+                  <type refId="1521">First Name</type>
+                  <value>Gipsy</value>
+                </namePart>
+                <namePart id="178">
+                  <type refId="1520">Last Name</type>
+                  <value>MEZA CAZARES</value>
+                </namePart>
+              </nameParts>
+            </translation>
+          </translations>
+        </name>
+        <name id="10586">
+          <isPrimary>false</isPrimary>
+          <aliasType refId="1400">A.K.A.</aliasType>
+          <isLowQuality>false</isLowQuality>
+          <translations>
+            <translation id="10709">
+              <isPrimary>true</isPrimary>
+              <script refId="20122">Latin</script>
+              <formattedFirstName>Gipsy</formattedFirstName>
+              <formattedLastName>MEZA GASTELLUM</formattedLastName>
+              <formattedFullName>MEZA GASTELLUM, Gipsy</formattedFullName>
+              <nameParts>
+                <namePart id="15962">
+                  <type refId="1521">First Name</type>
+                  <value>Gipsy</value>
+                </namePart>
+                <namePart id="15961">
+                  <type refId="1520">Last Name</type>
+                  <value>MEZA GASTELLUM</value>
+                </namePart>
+              </nameParts>
+            </translation>
+          </translations>
+        </name>
+        <name id="10587">
+          <isPrimary>false</isPrimary>
+          <aliasType refId="1400">A.K.A.</aliasType>
+          <isLowQuality>false</isLowQuality>
+          <translations>
+            <translation id="10710">
+              <isPrimary>true</isPrimary>
+              <script refId="20122">Latin</script>
+              <formattedFirstName>Gipzy</formattedFirstName>
+              <formattedLastName>MEZA CAZAREZ</formattedLastName>
+              <formattedFullName>MEZA CAZAREZ, Gipzy</formattedFullName>
+              <nameParts>
+                <namePart id="15964">
+                  <type refId="1521">First Name</type>
+                  <value>Gipzy</value>
+                </namePart>
+                <namePart id="15963">
+                  <type refId="1520">Last Name</type>
+                  <value>MEZA CAZAREZ</value>
+                </namePart>
+              </nameParts>
+            </translation>
+          </translations>
+        </name>
+        <name id="10650">
+          <isPrimary>false</isPrimary>
+          <aliasType refId="1400">A.K.A.</aliasType>
+          <isLowQuality>false</isLowQuality>
+          <translations>
+            <translation id="10708">
+              <isPrimary>true</isPrimary>
+              <script refId="20122">Latin</script>
+              <formattedFirstName>Gipsy</formattedFirstName>
+              <formattedLastName>MEZA CAZAREZ</formattedLastName>
+              <formattedFullName>MEZA CAZAREZ, Gipsy</formattedFullName>
+              <nameParts>
+                <namePart id="15960">
+                  <type refId="1521">First Name</type>
+                  <value>Gipsy</value>
+                </namePart>
+                <namePart id="15959">
+                  <type refId="1520">Last Name</type>
+                  <value>MEZA CAZAREZ</value>
+                </namePart>
+              </nameParts>
+            </translation>
+          </translations>
+        </name>
+      </names>
+      <addresses>
+        <address id="14780">
+          <country refId="11143">Mexico</country>
+          <translations>
+            <translation id="9335">
+              <isPrimary>true</isPrimary>
+              <script refId="20122">Latin</script>
+              <addressParts>
+                <addressPart id="27138">
+                  <type refId="1451">ADDRESS1</type>
+                  <value>Mariano Escobedo No. 366-102, Colonia Centro</value>
+                </addressPart>
+                <addressPart id="27139">
+                  <type refId="1454">CITY</type>
+                  <value>Culiacan</value>
+                </addressPart>
+                <addressPart id="27140">
+                  <type refId="1455">STATE/PROVINCE</type>
+                  <value>Sinaloa</value>
+                </addressPart>
+              </addressParts>
+            </translation>
+          </translations>
+        </address>
+        <address id="14781">
+          <country refId="11143">Mexico</country>
+          <translations>
+            <translation id="9336">
+              <isPrimary>true</isPrimary>
+              <script refId="20122">Latin</script>
+              <addressParts>
+                <addressPart id="27141">
+                  <type refId="1451">ADDRESS1</type>
+                  <value>Calle G. Robles No. 153, Colonia Almada Sur</value>
+                </addressPart>
+                <addressPart id="27142">
+                  <type refId="1454">CITY</type>
+                  <value>Culiacan</value>
+                </addressPart>
+                <addressPart id="27143">
+                  <type refId="1455">STATE/PROVINCE</type>
+                  <value>Sinaloa</value>
+                </addressPart>
+              </addressParts>
+            </translation>
+          </translations>
+        </address>
+        <address id="14782">
+          <country refId="11143">Mexico</country>
+          <translations>
+            <translation id="9334">
+              <isPrimary>true</isPrimary>
+              <script refId="20122">Latin</script>
+              <addressParts>
+                <addressPart id="27135">
+                  <type refId="1451">ADDRESS1</type>
+                  <value>No. 626 Calle Benito Juarez</value>
+                </addressPart>
+                <addressPart id="27136">
+                  <type refId="1454">CITY</type>
+                  <value>Culiacan</value>
+                </addressPart>
+                <addressPart id="27137">
+                  <type refId="1455">STATE/PROVINCE</type>
+                  <value>Sinaloa</value>
+                </addressPart>
+              </addressParts>
+            </translation>
+          </translations>
+        </address>
+        <address id="14783">
+          <country refId="11143">Mexico</country>
+          <translations>
+            <translation id="9337">
+              <isPrimary>true</isPrimary>
+              <script refId="20122">Latin</script>
+              <addressParts>
+                <addressPart id="27144">
+                  <type refId="1451">ADDRESS1</type>
+                  <value>c/o SISTEMA DE RADIO DE SINALOA, S.A. DE C.V.</value>
+                </addressPart>
+                <addressPart id="27145">
+                  <type refId="1454">CITY</type>
+                  <value>Culiacan</value>
+                </addressPart>
+                <addressPart id="27146">
+                  <type refId="1455">STATE/PROVINCE</type>
+                  <value>Sinaloa</value>
+                </addressPart>
+              </addressParts>
+            </translation>
+          </translations>
+        </address>
+        <address id="14784">
+          <country refId="11143">Mexico</country>
+          <translations>
+            <translation id="9338">
+              <isPrimary>true</isPrimary>
+              <script refId="20122">Latin</script>
+              <addressParts>
+                <addressPart id="27147">
+                  <type refId="1451">ADDRESS1</type>
+                  <value>c/o CONSORCIO INMOBILIARIO DEL VALLE DE CULIACAN, S.A. DE C.V.</value>
+                </addressPart>
+                <addressPart id="27148">
+                  <type refId="1454">CITY</type>
+                  <value>Culiacan</value>
+                </addressPart>
+                <addressPart id="27149">
+                  <type refId="1455">STATE/PROVINCE</type>
+                  <value>Sinaloa</value>
+                </addressPart>
+              </addressParts>
+            </translation>
+          </translations>
+        </address>
+        <address id="14785">
+          <country refId="11143">Mexico</country>
+          <translations>
+            <translation id="9339">
+              <isPrimary>true</isPrimary>
+              <script refId="20122">Latin</script>
+              <addressParts>
+                <addressPart id="27150">
+                  <type refId="1451">ADDRESS1</type>
+                  <value>c/o COMERCIAL JOANA, S.A. DE C.V.</value>
+                </addressPart>
+                <addressPart id="27151">
+                  <type refId="1454">CITY</type>
+                  <value>Guadalajara</value>
+                </addressPart>
+                <addressPart id="27152">
+                  <type refId="1455">STATE/PROVINCE</type>
+                  <value>Jalisco</value>
+                </addressPart>
+              </addressParts>
+            </translation>
+          </translations>
+        </address>
+      </addresses>
+      <features>
+        <feature id="5961">
+          <type featureTypeId="8">Birthdate</type>
+          <versionId>2176</versionId>
+          <value>24 Sep 1973</value>
+          <valueDate id="1102">
+            <fromDateBegin>1973-09-24</fromDateBegin>
+            <fromDateEnd>1973-09-24</fromDateEnd>
+            <toDateBegin>1973-09-24</toDateBegin>
+            <toDateEnd>1973-09-24</toDateEnd>
+            <isApproximate>false</isApproximate>
+            <isDateRange>false</isDateRange>
+          </valueDate>
+          <isPrimary>true</isPrimary>
+        </feature>
+        <feature id="5962">
+          <type featureTypeId="8">Birthdate</type>
+          <versionId>2177</versionId>
+          <value>24 Sep 1972</value>
+          <valueDate id="1103">
+            <fromDateBegin>1972-09-24</fromDateBegin>
+            <fromDateEnd>1972-09-24</fromDateEnd>
+            <toDateBegin>1972-09-24</toDateBegin>
+            <toDateEnd>1972-09-24</toDateEnd>
+            <isApproximate>false</isApproximate>
+            <isDateRange>false</isDateRange>
+          </valueDate>
+          <isPrimary>false</isPrimary>
+        </feature>
+        <feature id="5965">
+          <type featureTypeId="11">Citizenship Country</type>
+          <versionId>2180</versionId>
+          <value>Mexico</value>
+          <valueRefId>11143</valueRefId>
+          <isPrimary>true</isPrimary>
+        </feature>
+        <feature id="5964">
+          <type featureTypeId="10">Nationality Country</type>
+          <versionId>2179</versionId>
+          <value>Mexico</value>
+          <valueRefId>11143</valueRefId>
+          <isPrimary>true</isPrimary>
+        </feature>
+        <feature id="5963">
+          <type featureTypeId="9">Place of Birth</type>
+          <versionId>2178</versionId>
+          <value>Culiacan, Sinaloa, Mexico</value>
+          <isPrimary>true</isPrimary>
+        </feature>
+      </features>
+      <identityDocuments>
+        <identityDocument id="5154">
+          <type refId="1573">R.F.C.</type>
+          <name nameId="15322" nameTranslationId="123">MEZA CAZARES, Gipsy</name>
+          <documentNumber>MECG730924N73</documentNumber>
+          <isValid>true</isValid>
+          <issuingCountry refId="11143">Mexico</issuingCountry>
+        </identityDocument>
+        <identityDocument id="5155">
+          <type refId="1573">R.F.C.</type>
+          <name nameId="15322" nameTranslationId="123">MEZA CAZARES, Gipsy</name>
+          <documentNumber>MECG720924N75</documentNumber>
+          <isValid>true</isValid>
+          <issuingCountry refId="11143">Mexico</issuingCountry>
+        </identityDocument>
+      </identityDocuments>
+    </entity>
+    <entity id="10619" action="remove">
+      <generalInfo>
+        <identityId>616</identityId>
+        <entityType refId="600">Individual</entityType>
+      </generalInfo>
+      <sanctionsLists>
+        <sanctionsList id="616" refId="1550" datePublished="2007-12-12">SDN List</sanctionsList>
+      </sanctionsLists>
+      <sanctionsPrograms>
+        <sanctionsProgram id="7178" refId="203">SDNTK</sanctionsProgram>
+      </sanctionsPrograms>
+      <sanctionsTypes>
+        <sanctionsType id="9040" refId="1705">Block</sanctionsType>
+      </sanctionsTypes>
+      <names>
+        <name id="15815">
+          <isPrimary>true</isPrimary>
+          <isLowQuality>false</isLowQuality>
+          <translations>
+            <translation id="616">
+              <isPrimary>true</isPrimary>
+              <script refId="20122">Latin</script>
+              <formattedFirstName>Jorge Normando</formattedFirstName>
+              <formattedLastName>PATRACA PONCE</formattedLastName>
+              <formattedFullName>PATRACA PONCE, Jorge Normando</formattedFullName>
+              <nameParts>
+                <namePart id="851">
+                  <type refId="1521">First Name</type>
+                  <value>Jorge Normando</value>
+                </namePart>
+                <namePart id="850">
+                  <type refId="1520">Last Name</type>
+                  <value>PATRACA PONCE</value>
+                </namePart>
+              </nameParts>
+            </translation>
+          </translations>
+        </name>
+      </names>
+      <addresses>
+        <address id="14795">
+          <country refId="11143">Mexico</country>
+          <translations>
+            <translation id="12323">
+              <isPrimary>true</isPrimary>
+              <script refId="20122">Latin</script>
+              <addressParts>
+                <addressPart id="18381">
+                  <type refId="1451">ADDRESS1</type>
+                  <value>Escobedo No. 366 Oriente, Departamento No. 102</value>
+                </addressPart>
+                <addressPart id="18382">
+                  <type refId="1454">CITY</type>
+                  <value>Culiacan</value>
+                </addressPart>
+                <addressPart id="18383">
+                  <type refId="1455">STATE/PROVINCE</type>
+                  <value>Sinaloa</value>
+                </addressPart>
+              </addressParts>
+            </translation>
+          </translations>
+        </address>
+        <address id="14796">
+          <country refId="11143">Mexico</country>
+          <translations>
+            <translation id="12324">
+              <isPrimary>true</isPrimary>
+              <script refId="20122">Latin</script>
+              <addressParts>
+                <addressPart id="18384">
+                  <type refId="1451">ADDRESS1</type>
+                  <value>Calle Mariano Escobedo No. 366-102, Colonia Centro</value>
+                </addressPart>
+                <addressPart id="18385">
+                  <type refId="1454">CITY</type>
+                  <value>Tijuana</value>
+                </addressPart>
+                <addressPart id="18386">
+                  <type refId="1455">STATE/PROVINCE</type>
+                  <value>Baja California</value>
+                </addressPart>
+              </addressParts>
+            </translation>
+          </translations>
+        </address>
+        <address id="14797">
+          <country refId="11143">Mexico</country>
+          <translations>
+            <translation id="12325">
+              <isPrimary>true</isPrimary>
+              <script refId="20122">Latin</script>
+              <addressParts>
+                <addressPart id="18387">
+                  <type refId="1451">ADDRESS1</type>
+                  <value>Edo. de Tabasco # 1423</value>
+                </addressPart>
+                <addressPart id="18388">
+                  <type refId="1454">CITY</type>
+                  <value>Culiacan</value>
+                </addressPart>
+                <addressPart id="18389">
+                  <type refId="1455">STATE/PROVINCE</type>
+                  <value>Sinaloa</value>
+                </addressPart>
+              </addressParts>
+            </translation>
+          </translations>
+        </address>
+        <address id="14798">
+          <country refId="11143">Mexico</country>
+          <translations>
+            <translation id="12322">
+              <isPrimary>true</isPrimary>
+              <script refId="20122">Latin</script>
+              <addressParts>
+                <addressPart id="18378">
+                  <type refId="1451">ADDRESS1</type>
+                  <value>c/o SISTEMA DE RADIO DE SINALOA, S.A. DE C.V.</value>
+                </addressPart>
+                <addressPart id="18379">
+                  <type refId="1454">CITY</type>
+                  <value>Culiacan</value>
+                </addressPart>
+                <addressPart id="18380">
+                  <type refId="1455">STATE/PROVINCE</type>
+                  <value>Sinaloa</value>
+                </addressPart>
+              </addressParts>
+            </translation>
+          </translations>
+        </address>
+        <address id="14799">
+          <country refId="11143">Mexico</country>
+          <translations>
+            <translation id="12326">
+              <isPrimary>true</isPrimary>
+              <script refId="20122">Latin</script>
+              <addressParts>
+                <addressPart id="18390">
+                  <type refId="1451">ADDRESS1</type>
+                  <value>c/o OPERADORA INTEGRAL DE COMERCIO, S.A. DE C.V.</value>
+                </addressPart>
+                <addressPart id="18391">
+                  <type refId="1454">CITY</type>
+                  <value>Tijuana</value>
+                </addressPart>
+                <addressPart id="18392">
+                  <type refId="1455">STATE/PROVINCE</type>
+                  <value>Baja California</value>
+                </addressPart>
+              </addressParts>
+            </translation>
+          </translations>
+        </address>
+        <address id="15009">
+          <country refId="11143">Mexico</country>
+          <translations>
+            <translation id="12321">
+              <isPrimary>true</isPrimary>
+              <script refId="20122">Latin</script>
+              <addressParts>
+                <addressPart id="18376">
+                  <type refId="1451">ADDRESS1</type>
+                  <value>Cll Cerro de San Cayetano 728, Colinas de San Miguel, Culiacan Circuito Ceroo de la Silla, Culiacan Rosales</value>
+                </addressPart>
+                <addressPart id="18377">
+                  <type refId="1454">CITY</type>
+                  <value>Culiacan</value>
+                </addressPart>
+              </addressParts>
+            </translation>
+          </translations>
+        </address>
+        <address id="15027">
+          <country refId="11143">Mexico</country>
+          <translations>
+            <translation id="12320">
+              <isPrimary>true</isPrimary>
+              <script refId="20122">Latin</script>
+              <addressParts>
+                <addressPart id="18372">
+                  <type refId="1451">ADDRESS1</type>
+                  <value>Avenida Jose Maria Morelos 302 Pte, Local 3, Col. Sector Culiacan Centro</value>
+                </addressPart>
+                <addressPart id="18373">
+                  <type refId="1454">CITY</type>
+                  <value>Culiacan</value>
+                </addressPart>
+                <addressPart id="18375">
+                  <type refId="1456">POSTAL CODE</type>
+                  <value>80000</value>
+                </addressPart>
+                <addressPart id="18374">
+                  <type refId="1455">STATE/PROVINCE</type>
+                  <value>Sinaloa</value>
+                </addressPart>
+              </addressParts>
+            </translation>
+          </translations>
+        </address>
+      </addresses>
+      <features>
+        <feature id="5971">
+          <type featureTypeId="8">Birthdate</type>
+          <versionId>72</versionId>
+          <value>23 Apr 1974</value>
+          <valueDate id="21">
+            <fromDateBegin>1974-04-23</fromDateBegin>
+            <fromDateEnd>1974-04-23</fromDateEnd>
+            <toDateBegin>1974-04-23</toDateBegin>
+            <toDateEnd>1974-04-23</toDateEnd>
+            <isApproximate>false</isApproximate>
+            <isDateRange>false</isDateRange>
+          </valueDate>
+          <isPrimary>true</isPrimary>
+        </feature>
+        <feature id="5975">
+          <type featureTypeId="11">Citizenship Country</type>
+          <versionId>76</versionId>
+          <value>Mexico</value>
+          <valueRefId>11143</valueRefId>
+          <isPrimary>true</isPrimary>
+        </feature>
+        <feature id="5974">
+          <type featureTypeId="10">Nationality Country</type>
+          <versionId>75</versionId>
+          <value>Mexico</value>
+          <valueRefId>11143</valueRefId>
+          <isPrimary>true</isPrimary>
+        </feature>
+        <feature id="5972">
+          <type featureTypeId="9">Place of Birth</type>
+          <versionId>73</versionId>
+          <value>Culiacan, Sinaloa, Mexico</value>
+          <isPrimary>true</isPrimary>
+        </feature>
+        <feature id="5973">
+          <type featureTypeId="9">Place of Birth</type>
+          <versionId>74</versionId>
+          <value>Tijuana, Baja California, Mexico</value>
+          <isPrimary>false</isPrimary>
+        </feature>
+      </features>
+      <identityDocuments>
+        <identityDocument id="5159">
+          <type refId="1607">Electoral Registry No.</type>
+          <name nameId="15815" nameTranslationId="616">PATRACA PONCE, Jorge Normando</name>
+          <documentNumber>PTPNJR74042325H500</documentNumber>
+          <isValid>true</isValid>
+          <issuingCountry refId="11143">Mexico</issuingCountry>
+        </identityDocument>
+        <identityDocument id="5158">
+          <type refId="1571">Passport</type>
+          <name nameId="15815" nameTranslationId="616">PATRACA PONCE, Jorge Normando</name>
+          <documentNumber>040015561</documentNumber>
+          <isValid>true</isValid>
+          <issuingCountry refId="11143">Mexico</issuingCountry>
+        </identityDocument>
+        <identityDocument id="5157">
+          <type refId="1573">R.F.C.</type>
+          <name nameId="15815" nameTranslationId="616">PATRACA PONCE, Jorge Normando</name>
+          <documentNumber>PAPJ740423DB8</documentNumber>
+          <isValid>true</isValid>
+          <issuingCountry refId="11143">Mexico</issuingCountry>
+        </identityDocument>
+      </identityDocuments>
+    </entity>
+    <entity id="16182" action="remove">
+      <generalInfo>
+        <identityId>7926</identityId>
+        <entityType refId="601">Entity</entityType>
+      </generalInfo>
+      <sanctionsLists>
+        <sanctionsList id="13213" refId="1550" datePublished="2013-09-19">SDN List</sanctionsList>
+      </sanctionsLists>
+      <sanctionsPrograms>
+        <sanctionsProgram id="16855" refId="203">SDNTK</sanctionsProgram>
+      </sanctionsPrograms>
+      <sanctionsTypes>
+        <sanctionsType id="2023" refId="1705">Block</sanctionsType>
+      </sanctionsTypes>
+      <legalAuthorities>
+        <legalAuthority id="2253" refId="1849">Foreign Narcotics Kingpin Designation Act</legalAuthority>
+      </legalAuthorities>
+      <names>
+        <name id="24330">
+          <isPrimary>true</isPrimary>
+          <isLowQuality>false</isLowQuality>
+          <translations>
+            <translation id="17617">
+              <isPrimary>true</isPrimary>
+              <script refId="20122">Latin</script>
+              <formattedLastName>INVERSIONES TURISTICAS JOYA GRANDE, S.A. DE C.V.</formattedLastName>
+              <formattedFullName>INVERSIONES TURISTICAS JOYA GRANDE, S.A. DE C.V.</formattedFullName>
+              <nameParts>
+                <namePart id="29318">
+                  <type refId="1525">Entity Name</type>
+                  <value>INVERSIONES TURISTICAS JOYA GRANDE, S.A. DE C.V.</value>
+                </namePart>
+              </nameParts>
+            </translation>
+          </translations>
+        </name>
+        <name id="24358">
+          <isPrimary>false</isPrimary>
+          <aliasType refId="1400">A.K.A.</aliasType>
+          <isLowQuality>false</isLowQuality>
+          <translations>
+            <translation id="17645">
+              <isPrimary>true</isPrimary>
+              <script refId="20122">Latin</script>
+              <formattedLastName>ZOOLOGICO JOYA GRANDE</formattedLastName>
+              <formattedFullName>ZOOLOGICO JOYA GRANDE</formattedFullName>
+              <nameParts>
+                <namePart id="29868">
+                  <type refId="1525">Entity Name</type>
+                  <value>ZOOLOGICO JOYA GRANDE</value>
+                </namePart>
+              </nameParts>
+            </translation>
+          </translations>
+        </name>
+        <name id="24359">
+          <isPrimary>false</isPrimary>
+          <aliasType refId="1400">A.K.A.</aliasType>
+          <isLowQuality>false</isLowQuality>
+          <translations>
+            <translation id="17646">
+              <isPrimary>true</isPrimary>
+              <script refId="20122">Latin</script>
+              <formattedLastName>ZOOLOGICO Y ECO-PARQUE JOYA GRANDE</formattedLastName>
+              <formattedFullName>ZOOLOGICO Y ECO-PARQUE JOYA GRANDE</formattedFullName>
+              <nameParts>
+                <namePart id="29870">
+                  <type refId="1525">Entity Name</type>
+                  <value>ZOOLOGICO Y ECO-PARQUE JOYA GRANDE</value>
+                </namePart>
+              </nameParts>
+            </translation>
+          </translations>
+        </name>
+        <name id="24360">
+          <isPrimary>false</isPrimary>
+          <aliasType refId="1400">A.K.A.</aliasType>
+          <isLowQuality>false</isLowQuality>
+          <translations>
+            <translation id="17647">
+              <isPrimary>true</isPrimary>
+              <script refId="20122">Latin</script>
+              <formattedLastName>JOYA GRANDE</formattedLastName>
+              <formattedFullName>JOYA GRANDE</formattedFullName>
+              <nameParts>
+                <namePart id="29869">
+                  <type refId="1525">Entity Name</type>
+                  <value>JOYA GRANDE</value>
+                </namePart>
+              </nameParts>
+            </translation>
+          </translations>
+        </name>
+        <name id="24367">
+          <isPrimary>false</isPrimary>
+          <aliasType refId="1400">A.K.A.</aliasType>
+          <isLowQuality>false</isLowQuality>
+          <translations>
+            <translation id="17654">
+              <isPrimary>true</isPrimary>
+              <script refId="20122">Latin</script>
+              <formattedLastName>JOYA GRANDE ZOOLOGICO Y ECOPARQUE</formattedLastName>
+              <formattedFullName>JOYA GRANDE ZOOLOGICO Y ECOPARQUE</formattedFullName>
+              <nameParts>
+                <namePart id="29447">
+                  <type refId="1525">Entity Name</type>
+                  <value>JOYA GRANDE ZOOLOGICO Y ECOPARQUE</value>
+                </namePart>
+              </nameParts>
+            </translation>
+          </translations>
+        </name>
+        <name id="24368">
+          <isPrimary>false</isPrimary>
+          <aliasType refId="1400">A.K.A.</aliasType>
+          <isLowQuality>false</isLowQuality>
+          <translations>
+            <translation id="17655">
+              <isPrimary>true</isPrimary>
+              <script refId="20122">Latin</script>
+              <formattedLastName>ZOO JOYA GRANDE</formattedLastName>
+              <formattedFullName>ZOO JOYA GRANDE</formattedFullName>
+              <nameParts>
+                <namePart id="29871">
+                  <type refId="1525">Entity Name</type>
+                  <value>ZOO JOYA GRANDE</value>
+                </namePart>
+              </nameParts>
+            </translation>
+          </translations>
+        </name>
+      </names>
+      <addresses>
+        <address id="24386">
+          <country refId="11104">Honduras</country>
+          <translations>
+            <translation id="12731">
+              <isPrimary>true</isPrimary>
+              <script refId="20122">Latin</script>
+              <addressParts>
+                <addressPart id="32077">
+                  <type refId="1451">ADDRESS1</type>
+                  <value>Colonia Moderna</value>
+                </addressPart>
+                <addressPart id="32078">
+                  <type refId="1454">CITY</type>
+                  <value>San Pedro Sula</value>
+                </addressPart>
+                <addressPart id="32079">
+                  <type refId="1455">STATE/PROVINCE</type>
+                  <value>Cortes</value>
+                </addressPart>
+              </addressParts>
+            </translation>
+          </translations>
+        </address>
+        <address id="24393">
+          <country refId="11104">Honduras</country>
+          <translations>
+            <translation id="14611">
+              <isPrimary>true</isPrimary>
+              <script refId="20122">Latin</script>
+              <addressParts>
+                <addressPart id="31845">
+                  <type refId="1451">ADDRESS1</type>
+                  <value>Km. 9 despues de Santa Cruz de Yojoa</value>
+                </addressPart>
+                <addressPart id="31846">
+                  <type refId="1454">CITY</type>
+                  <value>San Pedro Sula</value>
+                </addressPart>
+                <addressPart id="31847">
+                  <type refId="1455">STATE/PROVINCE</type>
+                  <value>Cortes</value>
+                </addressPart>
+              </addressParts>
+            </translation>
+          </translations>
+        </address>
+      </addresses>
+      <identityDocuments>
+        <identityDocument id="8822">
+          <type refId="91481">RTN</type>
+          <name nameId="24330" nameTranslationId="17617">INVERSIONES TURISTICAS JOYA GRANDE, S.A. DE C.V.</name>
+          <documentNumber>08019011356332</documentNumber>
+          <isValid>false</isValid>
+          <issuingCountry refId="11104">Honduras</issuingCountry>
+        </identityDocument>
+      </identityDocuments>
+    </entity>
+    <entity id="17669" action="remove">
+      <generalInfo>
+        <identityId>9413</identityId>
+        <entityType refId="600">Individual</entityType>
+      </generalInfo>
+      <sanctionsLists>
+        <sanctionsList id="15121" refId="1550" datePublished="2015-02-17">SDN List</sanctionsList>
+      </sanctionsLists>
+      <sanctionsPrograms>
+        <sanctionsProgram id="18503" refId="203">SDNTK</sanctionsProgram>
+      </sanctionsPrograms>
+      <sanctionsTypes>
+        <sanctionsType id="9607" refId="1705">Block</sanctionsType>
+      </sanctionsTypes>
+      <legalAuthorities>
+        <legalAuthority id="4535" refId="1849">Foreign Narcotics Kingpin Designation Act</legalAuthority>
+      </legalAuthorities>
+      <names>
+        <name id="27276">
+          <isPrimary>true</isPrimary>
+          <isLowQuality>false</isLowQuality>
+          <translations>
+            <translation id="20583">
+              <isPrimary>true</isPrimary>
+              <script refId="20122">Latin</script>
+              <formattedFirstName>Francisco Javier</formattedFirstName>
+              <formattedLastName>GASTELUM SERRANO</formattedLastName>
+              <formattedFullName>GASTELUM SERRANO, Francisco Javier</formattedFullName>
+              <nameParts>
+                <namePart id="37863">
+                  <type refId="1521">First Name</type>
+                  <value>Francisco</value>
+                </namePart>
+                <namePart id="37862">
+                  <type refId="1520">Last Name</type>
+                  <value>GASTELUM SERRANO</value>
+                </namePart>
+                <namePart id="37864">
+                  <type refId="1522">Middle Name</type>
+                  <value>Javier</value>
+                </namePart>
+              </nameParts>
+            </translation>
+          </translations>
+        </name>
+      </names>
+      <addresses>
+        <address id="26847" />
+      </addresses>
+      <features>
+        <feature id="16727">
+          <type featureTypeId="8">Birthdate</type>
+          <versionId>14466</versionId>
+          <value>02 Dec 1964</value>
+          <valueDate id="14413">
+            <fromDateBegin>1964-12-02</fromDateBegin>
+            <fromDateEnd>1964-12-02</fromDateEnd>
+            <toDateBegin>1964-12-02</toDateBegin>
+            <toDateEnd>1964-12-02</toDateEnd>
+            <isApproximate>false</isApproximate>
+            <isDateRange>false</isDateRange>
+          </valueDate>
+          <isPrimary>true</isPrimary>
+        </feature>
+        <feature id="16728">
+          <type featureTypeId="11">Citizenship Country</type>
+          <versionId>14467</versionId>
+          <value>Mexico</value>
+          <valueRefId>11143</valueRefId>
+          <isPrimary>true</isPrimary>
+        </feature>
+        <feature id="16729">
+          <type featureTypeId="9">Place of Birth</type>
+          <versionId>14468</versionId>
+          <value>Culiacan, Sinaloa, Mexico</value>
+          <isPrimary>true</isPrimary>
+        </feature>
+      </features>
+      <identityDocuments>
+        <identityDocument id="9971">
+          <type refId="1600">C.U.R.P.</type>
+          <name nameId="27276" nameTranslationId="20583">GASTELUM SERRANO, Francisco Javier</name>
+          <documentNumber>GASF641202HSLSRR09</documentNumber>
+          <isValid>true</isValid>
+          <issuingCountry refId="11143">Mexico</issuingCountry>
+        </identityDocument>
+      </identityDocuments>
+    </entity>
+    <entity id="17670" action="remove">
+      <generalInfo>
+        <identityId>9414</identityId>
+        <entityType refId="601">Entity</entityType>
+      </generalInfo>
+      <sanctionsLists>
+        <sanctionsList id="15122" refId="1550" datePublished="2015-02-17">SDN List</sanctionsList>
+      </sanctionsLists>
+      <sanctionsPrograms>
+        <sanctionsProgram id="18504" refId="203">SDNTK</sanctionsProgram>
+      </sanctionsPrograms>
+      <sanctionsTypes>
+        <sanctionsType id="9608" refId="1705">Block</sanctionsType>
+      </sanctionsTypes>
+      <legalAuthorities>
+        <legalAuthority id="4536" refId="1849">Foreign Narcotics Kingpin Designation Act</legalAuthority>
+      </legalAuthorities>
+      <names>
+        <name id="27277">
+          <isPrimary>true</isPrimary>
+          <isLowQuality>false</isLowQuality>
+          <translations>
+            <translation id="20584">
+              <isPrimary>true</isPrimary>
+              <script refId="20122">Latin</script>
+              <formattedLastName>ANDAMIOS DALMINE DE MEXICO, S.A.</formattedLastName>
+              <formattedFullName>ANDAMIOS DALMINE DE MEXICO, S.A.</formattedFullName>
+              <nameParts>
+                <namePart id="37865">
+                  <type refId="1525">Entity Name</type>
+                  <value>ANDAMIOS DALMINE DE MEXICO, S.A.</value>
+                </namePart>
+              </nameParts>
+            </translation>
+          </translations>
+        </name>
+      </names>
+      <addresses>
+        <address id="26849">
+          <country refId="11143">Mexico</country>
+          <translations>
+            <translation id="26703">
+              <isPrimary>true</isPrimary>
+              <script refId="20122">Latin</script>
+              <addressParts>
+                <addressPart id="36087">
+                  <type refId="1451">ADDRESS1</type>
+                  <value>J.J. Rousseau #14</value>
+                </addressPart>
+                <addressPart id="36088">
+                  <type refId="1452">ADDRESS2</type>
+                  <value>Colonia Anzures</value>
+                </addressPart>
+                <addressPart id="36090">
+                  <type refId="1456">POSTAL CODE</type>
+                  <value>C.P. 11590</value>
+                </addressPart>
+                <addressPart id="36089">
+                  <type refId="1455">STATE/PROVINCE</type>
+                  <value>Distrito Federal</value>
+                </addressPart>
+              </addressParts>
+            </translation>
+          </translations>
+        </address>
+        <address id="26850">
+          <country refId="11143">Mexico</country>
+          <translations>
+            <translation id="26704">
+              <isPrimary>true</isPrimary>
+              <script refId="20122">Latin</script>
+              <addressParts>
+                <addressPart id="36095">
+                  <type refId="1451">ADDRESS1</type>
+                  <value>Calzada Aeropuerto #7258</value>
+                </addressPart>
+                <addressPart id="36096">
+                  <type refId="1452">ADDRESS2</type>
+                  <value>Colonia Bachigualato</value>
+                </addressPart>
+                <addressPart id="36097">
+                  <type refId="1454">CITY</type>
+                  <value>Culiacan</value>
+                </addressPart>
+                <addressPart id="36098">
+                  <type refId="1455">STATE/PROVINCE</type>
+                  <value>Sinaloa</value>
+                </addressPart>
+              </addressParts>
+            </translation>
+          </translations>
+        </address>
+        <address id="26851">
+          <country refId="11143">Mexico</country>
+          <translations>
+            <translation id="26705">
+              <isPrimary>true</isPrimary>
+              <script refId="20122">Latin</script>
+              <addressParts>
+                <addressPart id="36079">
+                  <type refId="1451">ADDRESS1</type>
+                  <value>Tuberosa #215</value>
+                </addressPart>
+                <addressPart id="36080">
+                  <type refId="1452">ADDRESS2</type>
+                  <value>Colonia San Carlos</value>
+                </addressPart>
+                <addressPart id="36081">
+                  <type refId="1454">CITY</type>
+                  <value>Guadalajara</value>
+                </addressPart>
+                <addressPart id="36082">
+                  <type refId="1455">STATE/PROVINCE</type>
+                  <value>Jalisco</value>
+                </addressPart>
+              </addressParts>
+            </translation>
+          </translations>
+        </address>
+        <address id="26852">
+          <country refId="11143">Mexico</country>
+          <translations>
+            <translation id="26706">
+              <isPrimary>true</isPrimary>
+              <script refId="20122">Latin</script>
+              <addressParts>
+                <addressPart id="36099">
+                  <type refId="1451">ADDRESS1</type>
+                  <value>Avenida Guerrero #3298 Norte</value>
+                </addressPart>
+                <addressPart id="36100">
+                  <type refId="1452">ADDRESS2</type>
+                  <value>Colonia Del Norte</value>
+                </addressPart>
+                <addressPart id="36101">
+                  <type refId="1454">CITY</type>
+                  <value>Monterrey</value>
+                </addressPart>
+                <addressPart id="36102">
+                  <type refId="1455">STATE/PROVINCE</type>
+                  <value>Nuevo Leon</value>
+                </addressPart>
+              </addressParts>
+            </translation>
+          </translations>
+        </address>
+        <address id="26853">
+          <country refId="11143">Mexico</country>
+          <translations>
+            <translation id="26707">
+              <isPrimary>true</isPrimary>
+              <script refId="20122">Latin</script>
+              <addressParts>
+                <addressPart id="36126">
+                  <type refId="1451">ADDRESS1</type>
+                  <value>Avenida 20 de Noviembre #12621</value>
+                </addressPart>
+                <addressPart id="36127">
+                  <type refId="1452">ADDRESS2</type>
+                  <value>Colonia 20 de Noviembre</value>
+                </addressPart>
+                <addressPart id="36128">
+                  <type refId="1454">CITY</type>
+                  <value>Tijuana</value>
+                </addressPart>
+                <addressPart id="36129">
+                  <type refId="1455">STATE/PROVINCE</type>
+                  <value>Baja California Norte</value>
+                </addressPart>
+              </addressParts>
+            </translation>
+          </translations>
+        </address>
+        <address id="26854">
+          <country refId="11143">Mexico</country>
+          <translations>
+            <translation id="26708">
+              <isPrimary>true</isPrimary>
+              <script refId="20122">Latin</script>
+              <addressParts>
+                <addressPart id="36091">
+                  <type refId="1451">ADDRESS1</type>
+                  <value>Bugambilia #6313</value>
+                </addressPart>
+                <addressPart id="36092">
+                  <type refId="1452">ADDRESS2</type>
+                  <value>Colonia Bugambilias</value>
+                </addressPart>
+                <addressPart id="36093">
+                  <type refId="1454">CITY</type>
+                  <value>Puebla</value>
+                </addressPart>
+                <addressPart id="36094">
+                  <type refId="1455">STATE/PROVINCE</type>
+                  <value>Puebla</value>
+                </addressPart>
+              </addressParts>
+            </translation>
+          </translations>
+        </address>
+        <address id="26855">
+          <country refId="11143">Mexico</country>
+          <translations>
+            <translation id="26709">
+              <isPrimary>true</isPrimary>
+              <script refId="20122">Latin</script>
+              <addressParts>
+                <addressPart id="36028">
+                  <type refId="1451">ADDRESS1</type>
+                  <value>Boulevard Luis Donaldo, Colosio Kilometer 10 Lote 44</value>
+                </addressPart>
+                <addressPart id="36029">
+                  <type refId="1452">ADDRESS2</type>
+                  <value>Colonia Alfredo V. Bonfil</value>
+                </addressPart>
+                <addressPart id="36030">
+                  <type refId="1454">CITY</type>
+                  <value>Cancun</value>
+                </addressPart>
+                <addressPart id="36031">
+                  <type refId="1455">STATE/PROVINCE</type>
+                  <value>Quintana Roo</value>
+                </addressPart>
+              </addressParts>
+            </translation>
+          </translations>
+        </address>
+        <address id="26856">
+          <country refId="11143">Mexico</country>
+          <translations>
+            <translation id="26710">
+              <isPrimary>true</isPrimary>
+              <script refId="20122">Latin</script>
+              <addressParts>
+                <addressPart id="36083">
+                  <type refId="1451">ADDRESS1</type>
+                  <value>Calle 20 de Noviembre #8</value>
+                </addressPart>
+                <addressPart id="36084">
+                  <type refId="1452">ADDRESS2</type>
+                  <value>Colonia Tezontepec</value>
+                </addressPart>
+                <addressPart id="36085">
+                  <type refId="1454">CITY</type>
+                  <value>Cuernavaca</value>
+                </addressPart>
+                <addressPart id="36086">
+                  <type refId="1455">STATE/PROVINCE</type>
+                  <value>Morelos</value>
+                </addressPart>
+              </addressParts>
+            </translation>
+          </translations>
+        </address>
+        <address id="26857">
+          <country refId="11143">Mexico</country>
+          <translations>
+            <translation id="26711">
+              <isPrimary>true</isPrimary>
+              <script refId="20122">Latin</script>
+              <addressParts>
+                <addressPart id="36103">
+                  <type refId="1451">ADDRESS1</type>
+                  <value>Avenida La Paz #3308</value>
+                </addressPart>
+                <addressPart id="36104">
+                  <type refId="1452">ADDRESS2</type>
+                  <value>Colonia Santa Rosa</value>
+                </addressPart>
+                <addressPart id="36105">
+                  <type refId="1454">CITY</type>
+                  <value>Los Cabos</value>
+                </addressPart>
+                <addressPart id="36106">
+                  <type refId="1455">STATE/PROVINCE</type>
+                  <value>Baja California Sur</value>
+                </addressPart>
+              </addressParts>
+            </translation>
+          </translations>
+        </address>
+        <address id="26858">
+          <country refId="11143">Mexico</country>
+          <translations>
+            <translation id="26712">
+              <isPrimary>true</isPrimary>
+              <script refId="20122">Latin</script>
+              <addressParts>
+                <addressPart id="36071">
+                  <type refId="1451">ADDRESS1</type>
+                  <value>Carretera Internacional al Norte Kilometer 15, Bodega 309</value>
+                </addressPart>
+                <addressPart id="36072">
+                  <type refId="1452">ADDRESS2</type>
+                  <value>El Venadillo</value>
+                </addressPart>
+                <addressPart id="36073">
+                  <type refId="1454">CITY</type>
+                  <value>Mazatlan</value>
+                </addressPart>
+                <addressPart id="36074">
+                  <type refId="1455">STATE/PROVINCE</type>
+                  <value>Sinaloa</value>
+                </addressPart>
+              </addressParts>
+            </translation>
+          </translations>
+        </address>
+        <address id="26859">
+          <country refId="11143">Mexico</country>
+          <translations>
+            <translation id="26713">
+              <isPrimary>true</isPrimary>
+              <script refId="20122">Latin</script>
+              <addressParts>
+                <addressPart id="36107">
+                  <type refId="1451">ADDRESS1</type>
+                  <value>Poniente 134 #769</value>
+                </addressPart>
+                <addressPart id="36108">
+                  <type refId="1452">ADDRESS2</type>
+                  <value>Colonia Industrial Vallejo</value>
+                </addressPart>
+                <addressPart id="36109">
+                  <type refId="1455">STATE/PROVINCE</type>
+                  <value>Distrito Federal</value>
+                </addressPart>
+              </addressParts>
+            </translation>
+          </translations>
+        </address>
+        <address id="26860">
+          <country refId="11143">Mexico</country>
+          <translations>
+            <translation id="26714">
+              <isPrimary>true</isPrimary>
+              <script refId="20122">Latin</script>
+              <addressParts>
+                <addressPart id="36118">
+                  <type refId="1451">ADDRESS1</type>
+                  <value>Constituyentes de 1975,  #4770</value>
+                </addressPart>
+                <addressPart id="36119">
+                  <type refId="1452">ADDRESS2</type>
+                  <value>Colonia Puesta del Sol</value>
+                </addressPart>
+                <addressPart id="36120">
+                  <type refId="1454">CITY</type>
+                  <value>La Paz</value>
+                </addressPart>
+                <addressPart id="36121">
+                  <type refId="1455">STATE/PROVINCE</type>
+                  <value>Baja California Sur</value>
+                </addressPart>
+              </addressParts>
+            </translation>
+          </translations>
+        </address>
+        <address id="26861">
+          <country refId="11143">Mexico</country>
+          <translations>
+            <translation id="26715">
+              <isPrimary>true</isPrimary>
+              <script refId="20122">Latin</script>
+              <addressParts>
+                <addressPart id="36110">
+                  <type refId="1451">ADDRESS1</type>
+                  <value>Roberto Barrios #2</value>
+                </addressPart>
+                <addressPart id="36111">
+                  <type refId="1452">ADDRESS2</type>
+                  <value>Colonia Casa Blanca</value>
+                </addressPart>
+                <addressPart id="36112">
+                  <type refId="1454">CITY</type>
+                  <value>Queretaro</value>
+                </addressPart>
+                <addressPart id="36113">
+                  <type refId="1455">STATE/PROVINCE</type>
+                  <value>Queretaro</value>
+                </addressPart>
+              </addressParts>
+            </translation>
+          </translations>
+        </address>
+        <address id="26862">
+          <country refId="11143">Mexico</country>
+          <translations>
+            <translation id="26716">
+              <isPrimary>true</isPrimary>
+              <script refId="20122">Latin</script>
+              <addressParts>
+                <addressPart id="36114">
+                  <type refId="1451">ADDRESS1</type>
+                  <value>Cardenal #106</value>
+                </addressPart>
+                <addressPart id="36115">
+                  <type refId="1452">ADDRESS2</type>
+                  <value>Colonia Los Sauces</value>
+                </addressPart>
+                <addressPart id="36116">
+                  <type refId="1454">CITY</type>
+                  <value>Puerto Vallarta</value>
+                </addressPart>
+                <addressPart id="36117">
+                  <type refId="1455">STATE/PROVINCE</type>
+                  <value>Jalisco</value>
+                </addressPart>
+              </addressParts>
+            </translation>
+          </translations>
+        </address>
+      </addresses>
+      <identityDocuments>
+        <identityDocument id="9972">
+          <type refId="1612">RFC</type>
+          <name nameId="27277" nameTranslationId="20584">ANDAMIOS DALMINE DE MEXICO, S.A.</name>
+          <documentNumber>ADM821230NBO</documentNumber>
+          <isValid>true</isValid>
+          <issuingCountry refId="11143">Mexico</issuingCountry>
+        </identityDocument>
+      </identityDocuments>
+    </entity>
+    <entity id="29163" action="remove">
+      <generalInfo>
+        <identityId>20847</identityId>
+        <entityType refId="600">Individual</entityType>
+      </generalInfo>
+      <sanctionsLists>
+        <sanctionsList id="29781" refId="1550" datePublished="2021-01-19">SDN List</sanctionsList>
+      </sanctionsLists>
+      <sanctionsPrograms>
+        <sanctionsProgram id="31596" refId="91810">VENEZUELA-EO13850</sanctionsProgram>
+      </sanctionsPrograms>
+      <sanctionsTypes>
+        <sanctionsType id="21321" refId="1705">Block</sanctionsType>
+      </sanctionsTypes>
+      <legalAuthorities>
+        <legalAuthority id="18089" refId="91811">Executive Order 13850 (Venezuela)</legalAuthority>
+      </legalAuthorities>
+      <names>
+        <name id="45866">
+          <isPrimary>true</isPrimary>
+          <isLowQuality>false</isLowQuality>
+          <translations>
+            <translation id="39860">
+              <isPrimary>true</isPrimary>
+              <script refId="20122">Latin</script>
+              <formattedFirstName>Alessandro</formattedFirstName>
+              <formattedLastName>BAZZONI</formattedLastName>
+              <formattedFullName>BAZZONI, Alessandro</formattedFullName>
+              <nameParts>
+                <namePart id="77841">
+                  <type refId="1521">First Name</type>
+                  <value>Alessandro</value>
+                </namePart>
+                <namePart id="77840">
+                  <type refId="1520">Last Name</type>
+                  <value>BAZZONI</value>
+                </namePart>
+              </nameParts>
+            </translation>
+          </translations>
+        </name>
+      </names>
+      <addresses>
+        <address id="46836">
+          <country refId="11196">Switzerland</country>
+          <translations>
+            <translation id="40944">
+              <isPrimary>true</isPrimary>
+              <script refId="20122">Latin</script>
+              <addressParts>
+                <addressPart id="62338">
+                  <type refId="1451">ADDRESS1</type>
+                  <value>Via Cantonale 8</value>
+                </addressPart>
+                <addressPart id="62339">
+                  <type refId="1454">CITY</type>
+                  <value>Lugano</value>
+                </addressPart>
+                <addressPart id="62340">
+                  <type refId="1456">POSTAL CODE</type>
+                  <value>6900</value>
+                </addressPart>
+              </addressParts>
+            </translation>
+          </translations>
+        </address>
+      </addresses>
+      <features>
+        <feature id="35895">
+          <type featureTypeId="8">Birthdate</type>
+          <versionId>33614</versionId>
+          <value>09 Jul 1971</value>
+          <valueDate id="48936">
+            <fromDateBegin>1971-07-09</fromDateBegin>
+            <fromDateEnd>1971-07-09</fromDateEnd>
+            <toDateBegin>1971-07-09</toDateBegin>
+            <toDateEnd>1971-07-09</toDateEnd>
+            <isApproximate>false</isApproximate>
+            <isDateRange>false</isDateRange>
+          </valueDate>
+          <isPrimary>true</isPrimary>
+        </feature>
+        <feature id="36275">
+          <type featureTypeId="11">Citizenship Country</type>
+          <versionId>33994</versionId>
+          <value>Italy</value>
+          <valueRefId>11113</valueRefId>
+          <isPrimary>true</isPrimary>
+        </feature>
+        <feature id="36276">
+          <type featureTypeId="224">Gender</type>
+          <versionId>33995</versionId>
+          <value>Male</value>
+          <valueRefId>91526</valueRefId>
+          <isPrimary>true</isPrimary>
+        </feature>
+        <feature id="35891">
+          <type featureTypeId="9">Place of Birth</type>
+          <versionId>33610</versionId>
+          <value>Milan, Italy</value>
+          <isPrimary>true</isPrimary>
+        </feature>
+      </features>
+      <identityDocuments>
+        <identityDocument id="19404">
+          <type refId="1571">Passport</type>
+          <name nameId="45866" nameTranslationId="39860">BAZZONI, Alessandro</name>
+          <documentNumber>YA9636063</documentNumber>
+          <isValid>true</isValid>
+          <issuingCountry refId="11113">Italy</issuingCountry>
+          <issueDate id="48931">
+            <fromDateBegin>2016-07-12</fromDateBegin>
+            <fromDateEnd>2016-07-12</fromDateEnd>
+            <toDateBegin>2016-07-12</toDateBegin>
+            <toDateEnd>2016-07-12</toDateEnd>
+            <isApproximate>false</isApproximate>
+            <isDateRange>false</isDateRange>
+          </issueDate>
+          <expirationDate id="48930">
+            <fromDateBegin>2026-07-11</fromDateBegin>
+            <fromDateEnd>2026-07-11</fromDateEnd>
+            <toDateBegin>2026-07-11</toDateBegin>
+            <toDateEnd>2026-07-11</toDateEnd>
+            <isApproximate>false</isApproximate>
+            <isDateRange>false</isDateRange>
+          </expirationDate>
+        </identityDocument>
+      </identityDocuments>
+    </entity>
+    <entity id="29164" action="remove">
+      <generalInfo>
+        <identityId>20848</identityId>
+        <entityType refId="600">Individual</entityType>
+      </generalInfo>
+      <sanctionsLists>
+        <sanctionsList id="29782" refId="1550" datePublished="2021-01-19">SDN List</sanctionsList>
+      </sanctionsLists>
+      <sanctionsPrograms>
+        <sanctionsProgram id="31597" refId="91810">VENEZUELA-EO13850</sanctionsProgram>
+      </sanctionsPrograms>
+      <sanctionsTypes>
+        <sanctionsType id="21322" refId="1705">Block</sanctionsType>
+      </sanctionsTypes>
+      <legalAuthorities>
+        <legalAuthority id="18090" refId="91811">Executive Order 13850 (Venezuela)</legalAuthority>
+      </legalAuthorities>
+      <names>
+        <name id="45867">
+          <isPrimary>true</isPrimary>
+          <isLowQuality>false</isLowQuality>
+          <translations>
+            <translation id="39861">
+              <isPrimary>true</isPrimary>
+              <script refId="20122">Latin</script>
+              <formattedFirstName>Francisco Javier</formattedFirstName>
+              <formattedLastName>D'AGOSTINO CASADO</formattedLastName>
+              <formattedFullName>D'AGOSTINO CASADO, Francisco Javier</formattedFullName>
+              <nameParts>
+                <namePart id="77844">
+                  <type refId="1521">First Name</type>
+                  <value>Francisco</value>
+                </namePart>
+                <namePart id="77843">
+                  <type refId="91709">Matronymic</type>
+                  <value>CASADO</value>
+                </namePart>
+                <namePart id="78463">
+                  <type refId="1522">Middle Name</type>
+                  <value>Javier</value>
+                </namePart>
+                <namePart id="77842">
+                  <type refId="91708">Patronymic</type>
+                  <value>D'AGOSTINO</value>
+                </namePart>
+              </nameParts>
+            </translation>
+          </translations>
+        </name>
+      </names>
+      <addresses>
+        <address id="46837">
+          <country refId="11216">Venezuela</country>
+          <translations>
+            <translation id="40945">
+              <isPrimary>true</isPrimary>
+              <script refId="20122">Latin</script>
+              <addressParts>
+                <addressPart id="62341">
+                  <type refId="1451">ADDRESS1</type>
+                  <value>Calle El Parque. Res. Campo Alegre Plaza</value>
+                </addressPart>
+                <addressPart id="62342">
+                  <type refId="1452">ADDRESS2</type>
+                  <value>Piso 5. Urb. Campo Alegre</value>
+                </addressPart>
+                <addressPart id="62343">
+                  <type refId="1454">CITY</type>
+                  <value>Caracas</value>
+                </addressPart>
+                <addressPart id="62345">
+                  <type refId="1456">POSTAL CODE</type>
+                  <value>1060</value>
+                </addressPart>
+                <addressPart id="62344">
+                  <type refId="1455">STATE/PROVINCE</type>
+                  <value>Miranda</value>
+                </addressPart>
+              </addressParts>
+            </translation>
+          </translations>
+        </address>
+      </addresses>
+      <features>
+        <feature id="35894">
+          <type featureTypeId="8">Birthdate</type>
+          <versionId>33613</versionId>
+          <value>02 Jun 1974</value>
+          <valueDate id="48935">
+            <fromDateBegin>1974-06-02</fromDateBegin>
+            <fromDateEnd>1974-06-02</fromDateEnd>
+            <toDateBegin>1974-06-02</toDateBegin>
+            <toDateEnd>1974-06-02</toDateEnd>
+            <isApproximate>false</isApproximate>
+            <isDateRange>false</isDateRange>
+          </valueDate>
+          <isPrimary>true</isPrimary>
+        </feature>
+        <feature id="39077">
+          <type featureTypeId="11">Citizenship Country</type>
+          <versionId>36796</versionId>
+          <value>Spain</value>
+          <valueRefId>11190</valueRefId>
+          <isPrimary>true</isPrimary>
+        </feature>
+        <feature id="39078">
+          <type featureTypeId="11">Citizenship Country</type>
+          <versionId>36797</versionId>
+          <value>Venezuela</value>
+          <valueRefId>11216</valueRefId>
+          <isPrimary>false</isPrimary>
+        </feature>
+        <feature id="36277">
+          <type featureTypeId="224">Gender</type>
+          <versionId>33996</versionId>
+          <value>Male</value>
+          <valueRefId>91526</valueRefId>
+          <isPrimary>true</isPrimary>
+        </feature>
+        <feature id="35893">
+          <type featureTypeId="10">Nationality Country</type>
+          <versionId>33612</versionId>
+          <value>Spain</value>
+          <valueRefId>11190</valueRefId>
+          <isPrimary>true</isPrimary>
+        </feature>
+        <feature id="35892">
+          <type featureTypeId="9">Place of Birth</type>
+          <versionId>33611</versionId>
+          <value>Caracas, Venezuela</value>
+          <isPrimary>true</isPrimary>
+        </feature>
+      </features>
+      <identityDocuments>
+        <identityDocument id="21010">
+          <type refId="1570">Cedula No.</type>
+          <name nameId="45867" nameTranslationId="39861">D'AGOSTINO CASADO, Francisco Javier</name>
+          <documentNumber>V-11307398</documentNumber>
+          <isValid>true</isValid>
+          <issuingCountry refId="11216">Venezuela</issuingCountry>
+        </identityDocument>
+        <identityDocument id="19631">
+          <type refId="1584">National ID No.</type>
+          <name nameId="45867" nameTranslationId="39861">D'AGOSTINO CASADO, Francisco Javier</name>
+          <documentNumber>R.E. 201000798316</documentNumber>
+          <isValid>true</isValid>
+          <issuingCountry refId="11190">Spain</issuingCountry>
+        </identityDocument>
+        <identityDocument id="19405">
+          <type refId="1571">Passport</type>
+          <name nameId="45867" nameTranslationId="39861">D'AGOSTINO CASADO, Francisco Javier</name>
+          <documentNumber>XDC221294</documentNumber>
+          <isValid>true</isValid>
+          <issuingCountry refId="11190">Spain</issuingCountry>
+          <issueDate id="48934">
+            <fromDateBegin>2015-09-18</fromDateBegin>
+            <fromDateEnd>2015-09-18</fromDateEnd>
+            <toDateBegin>2015-09-18</toDateBegin>
+            <toDateEnd>2015-09-18</toDateEnd>
+            <isApproximate>false</isApproximate>
+            <isDateRange>false</isDateRange>
+          </issueDate>
+          <expirationDate id="48933">
+            <fromDateBegin>2018-07-11</fromDateBegin>
+            <fromDateEnd>2018-07-11</fromDateEnd>
+            <toDateBegin>2018-07-11</toDateBegin>
+            <toDateEnd>2018-07-11</toDateEnd>
+            <isApproximate>false</isApproximate>
+            <isDateRange>false</isDateRange>
+          </expirationDate>
+        </identityDocument>
+      </identityDocuments>
+    </entity>
+    <entity id="29445" action="remove">
+      <generalInfo>
+        <identityId>21129</identityId>
+        <entityType refId="601">Entity</entityType>
+      </generalInfo>
+      <sanctionsLists>
+        <sanctionsList id="30083" refId="1550" datePublished="2021-01-19">SDN List</sanctionsList>
+      </sanctionsLists>
+      <sanctionsPrograms>
+        <sanctionsProgram id="33500" refId="91810">VENEZUELA-EO13850</sanctionsProgram>
+      </sanctionsPrograms>
+      <sanctionsTypes>
+        <sanctionsType id="21603" refId="1705">Block</sanctionsType>
+      </sanctionsTypes>
+      <legalAuthorities>
+        <legalAuthority id="18371" refId="91811">Executive Order 13850 (Venezuela)</legalAuthority>
+      </legalAuthorities>
+      <names>
+        <name id="46266">
+          <isPrimary>true</isPrimary>
+          <isLowQuality>false</isLowQuality>
+          <translations>
+            <translation id="40280">
+              <isPrimary>true</isPrimary>
+              <script refId="20122">Latin</script>
+              <formattedLastName>ELEMENTO OIL &amp; GAS LTD</formattedLastName>
+              <formattedFullName>ELEMENTO OIL &amp; GAS LTD</formattedFullName>
+              <nameParts>
+                <namePart id="78466">
+                  <type refId="1525">Entity Name</type>
+                  <value>ELEMENTO OIL &amp; GAS LTD</value>
+                </namePart>
+              </nameParts>
+            </translation>
+          </translations>
+        </name>
+        <name id="48727">
+          <isPrimary>false</isPrimary>
+          <aliasType refId="1400">A.K.A.</aliasType>
+          <isLowQuality>false</isLowQuality>
+          <translations>
+            <translation id="43116">
+              <isPrimary>true</isPrimary>
+              <script refId="20122">Latin</script>
+              <formattedLastName>ELEMENTO OIL AND GAS LTD</formattedLastName>
+              <formattedFullName>ELEMENTO OIL AND GAS LTD</formattedFullName>
+              <nameParts>
+                <namePart id="82623">
+                  <type refId="1525">Entity Name</type>
+                  <value>ELEMENTO OIL AND GAS LTD</value>
+                </namePart>
+              </nameParts>
+            </translation>
+          </translations>
+        </name>
+      </names>
+      <addresses>
+        <address id="44513">
+          <country refId="11139">Malta</country>
+          <translations>
+            <translation id="39238">
+              <isPrimary>true</isPrimary>
+              <script refId="20122">Latin</script>
+              <addressParts>
+                <addressPart id="62370">
+                  <type refId="1451">ADDRESS1</type>
+                  <value>35 Strait Street</value>
+                </addressPart>
+                <addressPart id="62371">
+                  <type refId="1454">CITY</type>
+                  <value>Valletta</value>
+                </addressPart>
+                <addressPart id="62372">
+                  <type refId="1456">POSTAL CODE</type>
+                  <value>VLT 1434</value>
+                </addressPart>
+              </addressParts>
+            </translation>
+          </translations>
+        </address>
+      </addresses>
+      <identityDocuments>
+        <identityDocument id="21011">
+          <type refId="91412">Company Number</type>
+          <name nameId="46266" nameTranslationId="40280">ELEMENTO OIL &amp; GAS LTD</name>
+          <documentNumber>C 73377</documentNumber>
+          <isValid>true</isValid>
+          <issuingCountry refId="11139">Malta</issuingCountry>
+        </identityDocument>
+      </identityDocuments>
+    </entity>
+    <entity id="29446" action="remove">
+      <generalInfo>
+        <identityId>21130</identityId>
+        <entityType refId="601">Entity</entityType>
+      </generalInfo>
+      <sanctionsLists>
+        <sanctionsList id="30084" refId="1550" datePublished="2021-01-19">SDN List</sanctionsList>
+      </sanctionsLists>
+      <sanctionsPrograms>
+        <sanctionsProgram id="33501" refId="91810">VENEZUELA-EO13850</sanctionsProgram>
+      </sanctionsPrograms>
+      <sanctionsTypes>
+        <sanctionsType id="21604" refId="1705">Block</sanctionsType>
+      </sanctionsTypes>
+      <legalAuthorities>
+        <legalAuthority id="18372" refId="91811">Executive Order 13850 (Venezuela)</legalAuthority>
+      </legalAuthorities>
+      <names>
+        <name id="46267">
+          <isPrimary>true</isPrimary>
+          <isLowQuality>false</isLowQuality>
+          <translations>
+            <translation id="40281">
+              <isPrimary>true</isPrimary>
+              <script refId="20122">Latin</script>
+              <formattedLastName>ELEMENT CAPITAL ADVISORS LIMITED</formattedLastName>
+              <formattedFullName>ELEMENT CAPITAL ADVISORS LIMITED</formattedFullName>
+              <nameParts>
+                <namePart id="78467">
+                  <type refId="1525">Entity Name</type>
+                  <value>ELEMENT CAPITAL ADVISORS LIMITED</value>
+                </namePart>
+              </nameParts>
+            </translation>
+          </translations>
+        </name>
+      </names>
+      <addresses>
+        <address id="44515">
+          <country refId="11162">Panama</country>
+          <translations>
+            <translation id="39239">
+              <isPrimary>true</isPrimary>
+              <script refId="20122">Latin</script>
+              <addressParts>
+                <addressPart id="62363">
+                  <type refId="1451">ADDRESS1</type>
+                  <value>Avenida Federico Boyd con Calle 49</value>
+                </addressPart>
+                <addressPart id="62364">
+                  <type refId="1452">ADDRESS2</type>
+                  <value>Edificio Alfaro Piso 4 Oficina 4-A</value>
+                </addressPart>
+                <addressPart id="62365">
+                  <type refId="1453">ADDRESS3</type>
+                  <value>Apartado 0832-00998</value>
+                </addressPart>
+                <addressPart id="62366">
+                  <type refId="1454">CITY</type>
+                  <value>Panama City</value>
+                </addressPart>
+              </addressParts>
+            </translation>
+          </translations>
+        </address>
+        <address id="46843">
+          <country refId="11278">Virgin Islands, British</country>
+          <translations>
+            <translation id="40950">
+              <isPrimary>true</isPrimary>
+              <script refId="20122">Latin</script>
+            </translation>
+          </translations>
+        </address>
+      </addresses>
+      <features>
+        <feature id="36279">
+          <type featureTypeId="365">Nationality of Registration</type>
+          <versionId>33998</versionId>
+          <value>Virgin Islands, British</value>
+          <valueRefId>11278</valueRefId>
+          <isPrimary>true</isPrimary>
+        </feature>
+        <feature id="37452">
+          <type featureTypeId="647">Organization Type:</type>
+          <versionId>35171</versionId>
+          <value>Other financial service activities, except insurance and pension funding activities, n.e.c.</value>
+          <valueRefId>92009</valueRefId>
+          <isPrimary>true</isPrimary>
+        </feature>
+        <feature id="37454">
+          <type featureTypeId="14">Website</type>
+          <versionId>35173</versionId>
+          <value>www.element-capital.com</value>
+          <isPrimary>true</isPrimary>
+        </feature>
+      </features>
+      <identityDocuments>
+        <identityDocument id="21029">
+          <type refId="91412">Company Number</type>
+          <name nameId="46267" nameTranslationId="40281">ELEMENT CAPITAL ADVISORS LIMITED</name>
+          <documentNumber>1476279</documentNumber>
+          <isValid>true</isValid>
+          <issuingCountry refId="11278">Virgin Islands, British</issuingCountry>
+        </identityDocument>
+      </identityDocuments>
+    </entity>
+    <entity id="30125" action="remove">
+      <generalInfo>
+        <identityId>21809</identityId>
+        <entityType refId="601">Entity</entityType>
+      </generalInfo>
+      <sanctionsLists>
+        <sanctionsList id="30783" refId="1550" datePublished="2021-01-19">SDN List</sanctionsList>
+      </sanctionsLists>
+      <sanctionsPrograms>
+        <sanctionsProgram id="32678" refId="91810">VENEZUELA-EO13850</sanctionsProgram>
+      </sanctionsPrograms>
+      <sanctionsTypes>
+        <sanctionsType id="22283" refId="1705">Block</sanctionsType>
+      </sanctionsTypes>
+      <legalAuthorities>
+        <legalAuthority id="19111" refId="91811">Executive Order 13850 (Venezuela)</legalAuthority>
+      </legalAuthorities>
+      <names>
+        <name id="47207">
+          <isPrimary>true</isPrimary>
+          <isLowQuality>false</isLowQuality>
+          <translations>
+            <translation id="41301">
+              <isPrimary>true</isPrimary>
+              <script refId="20122">Latin</script>
+              <formattedLastName>JAMBANYANI SAFARIS</formattedLastName>
+              <formattedFullName>JAMBANYANI SAFARIS</formattedFullName>
+              <nameParts>
+                <namePart id="80007">
+                  <type refId="1525">Entity Name</type>
+                  <value>Jambanyani Safaris</value>
+                </namePart>
+              </nameParts>
+            </translation>
+          </translations>
+        </name>
+      </names>
+      <addresses>
+        <address id="45476">
+          <country refId="11220">Zimbabwe</country>
+          <translations>
+            <translation id="39981">
+              <isPrimary>true</isPrimary>
+              <script refId="20122">Latin</script>
+              <addressParts>
+                <addressPart id="60389">
+                  <type refId="1451">ADDRESS1</type>
+                  <value>364 Gibson Road</value>
+                </addressPart>
+                <addressPart id="60390">
+                  <type refId="1454">CITY</type>
+                  <value>Victoria Falls</value>
+                </addressPart>
+              </addressParts>
+            </translation>
+          </translations>
+        </address>
+        <address id="45477">
+          <country refId="11220">Zimbabwe</country>
+          <translations>
+            <translation id="39982">
+              <isPrimary>true</isPrimary>
+              <script refId="20122">Latin</script>
+              <addressParts>
+                <addressPart id="60391">
+                  <type refId="1451">ADDRESS1</type>
+                  <value>P.O. Box 155</value>
+                </addressPart>
+                <addressPart id="60392">
+                  <type refId="1454">CITY</type>
+                  <value>Victoria Falls</value>
+                </addressPart>
+              </addressParts>
+            </translation>
+          </translations>
+        </address>
+      </addresses>
+      <features>
+        <feature id="37772">
+          <type featureTypeId="646">Organization Established Date</type>
+          <versionId>35491</versionId>
+          <value>28 Sep 2019</value>
+          <valueDate id="51435">
+            <fromDateBegin>2019-09-28</fromDateBegin>
+            <fromDateEnd>2019-09-28</fromDateEnd>
+            <toDateBegin>2019-09-28</toDateBegin>
+            <toDateEnd>2019-09-28</toDateEnd>
+            <isApproximate>false</isApproximate>
+            <isDateRange>false</isDateRange>
+          </valueDate>
+          <isPrimary>true</isPrimary>
+        </feature>
+        <feature id="37453">
+          <type featureTypeId="647">Organization Type:</type>
+          <versionId>35172</versionId>
+          <value>Tour operator activities</value>
+          <valueRefId>91983</valueRefId>
+          <isPrimary>true</isPrimary>
+        </feature>
+        <feature id="37436">
+          <type featureTypeId="14">Website</type>
+          <versionId>35155</versionId>
+          <value>www.jambanyani.com</value>
+          <isPrimary>true</isPrimary>
+        </feature>
+      </features>
+    </entity>
+    <entity id="30126" action="remove">
+      <generalInfo>
+        <identityId>21810</identityId>
+        <entityType refId="601">Entity</entityType>
+      </generalInfo>
+      <sanctionsLists>
+        <sanctionsList id="30784" refId="1550" datePublished="2021-01-19">SDN List</sanctionsList>
+      </sanctionsLists>
+      <sanctionsPrograms>
+        <sanctionsProgram id="32679" refId="91810">VENEZUELA-EO13850</sanctionsProgram>
+      </sanctionsPrograms>
+      <sanctionsTypes>
+        <sanctionsType id="22284" refId="1705">Block</sanctionsType>
+      </sanctionsTypes>
+      <legalAuthorities>
+        <legalAuthority id="19112" refId="91811">Executive Order 13850 (Venezuela)</legalAuthority>
+      </legalAuthorities>
+      <names>
+        <name id="47208">
+          <isPrimary>true</isPrimary>
+          <isLowQuality>false</isLowQuality>
+          <translations>
+            <translation id="41302">
+              <isPrimary>true</isPrimary>
+              <script refId="20122">Latin</script>
+              <formattedLastName>CATALINA HOLDINGS CORP.</formattedLastName>
+              <formattedFullName>CATALINA HOLDINGS CORP.</formattedFullName>
+              <nameParts>
+                <namePart id="80008">
+                  <type refId="1525">Entity Name</type>
+                  <value>Catalina Holdings Corp.</value>
+                </namePart>
+              </nameParts>
+            </translation>
+          </translations>
+        </name>
+      </names>
+      <addresses>
+        <address id="45479">
+          <country refId="11212">United States</country>
+          <translations>
+            <translation id="39983">
+              <isPrimary>true</isPrimary>
+              <script refId="20122">Latin</script>
+              <addressParts>
+                <addressPart id="62304">
+                  <type refId="1454">CITY</type>
+                  <value>New York</value>
+                </addressPart>
+                <addressPart id="62306">
+                  <type refId="1456">POSTAL CODE</type>
+                  <value>10107-1706</value>
+                </addressPart>
+                <addressPart id="62305">
+                  <type refId="1455">STATE/PROVINCE</type>
+                  <value>NY</value>
+                </addressPart>
+              </addressParts>
+            </translation>
+          </translations>
+        </address>
+      </addresses>
+      <identityDocuments>
+        <identityDocument id="20233">
+          <type refId="91412">Company Number</type>
+          <name nameId="47208" nameTranslationId="41302">CATALINA HOLDINGS CORP.</name>
+          <documentNumber>3934472 (New York)</documentNumber>
+          <isValid>true</isValid>
+          <issuingCountry refId="11212">United States</issuingCountry>
+        </identityDocument>
+      </identityDocuments>
+    </entity>
+    <entity id="30127" action="remove">
+      <generalInfo>
+        <identityId>21811</identityId>
+        <entityType refId="601">Entity</entityType>
+      </generalInfo>
+      <sanctionsLists>
+        <sanctionsList id="30785" refId="1550" datePublished="2021-01-19">SDN List</sanctionsList>
+      </sanctionsLists>
+      <sanctionsPrograms>
+        <sanctionsProgram id="32680" refId="91810">VENEZUELA-EO13850</sanctionsProgram>
+      </sanctionsPrograms>
+      <sanctionsTypes>
+        <sanctionsType id="22285" refId="1705">Block</sanctionsType>
+      </sanctionsTypes>
+      <legalAuthorities>
+        <legalAuthority id="19113" refId="91811">Executive Order 13850 (Venezuela)</legalAuthority>
+      </legalAuthorities>
+      <names>
+        <name id="47209">
+          <isPrimary>true</isPrimary>
+          <isLowQuality>false</isLowQuality>
+          <translations>
+            <translation id="41303">
+              <isPrimary>true</isPrimary>
+              <script refId="20122">Latin</script>
+              <formattedLastName>D'AGOSTINO &amp; COMPANY, LTD</formattedLastName>
+              <formattedFullName>D'AGOSTINO &amp; COMPANY, LTD</formattedFullName>
+              <nameParts>
+                <namePart id="80009">
+                  <type refId="1525">Entity Name</type>
+                  <value>D'Agostino &amp; Company, Ltd</value>
+                </namePart>
+              </nameParts>
+            </translation>
+          </translations>
+        </name>
+        <name id="48726">
+          <isPrimary>false</isPrimary>
+          <aliasType refId="1400">A.K.A.</aliasType>
+          <isLowQuality>false</isLowQuality>
+          <translations>
+            <translation id="43115">
+              <isPrimary>true</isPrimary>
+              <script refId="20122">Latin</script>
+              <formattedLastName>D'AGOSTINO AND COMPANY, LTD</formattedLastName>
+              <formattedFullName>D'AGOSTINO AND COMPANY, LTD</formattedFullName>
+              <nameParts>
+                <namePart id="82622">
+                  <type refId="1525">Entity Name</type>
+                  <value>D'AGOSTINO AND COMPANY, LTD</value>
+                </namePart>
+              </nameParts>
+            </translation>
+          </translations>
+        </name>
+      </names>
+      <addresses>
+        <address id="45481">
+          <country refId="11216">Venezuela</country>
+          <translations>
+            <translation id="39984">
+              <isPrimary>true</isPrimary>
+              <script refId="20122">Latin</script>
+              <addressParts>
+                <addressPart id="62301">
+                  <type refId="1451">ADDRESS1</type>
+                  <value>Torre Dayco</value>
+                </addressPart>
+                <addressPart id="62302">
+                  <type refId="1452">ADDRESS2</type>
+                  <value>Piso PH</value>
+                </addressPart>
+                <addressPart id="62303">
+                  <type refId="1454">CITY</type>
+                  <value>Caracas</value>
+                </addressPart>
+              </addressParts>
+            </translation>
+          </translations>
+        </address>
+      </addresses>
+      <features>
+        <feature id="37455">
+          <type featureTypeId="647">Organization Type:</type>
+          <versionId>35174</versionId>
+          <value>Other financial service activities, except insurance and pension funding activities, n.e.c.</value>
+          <valueRefId>92009</valueRefId>
+          <isPrimary>true</isPrimary>
+        </feature>
+      </features>
+    </entity>
+    <entity id="30128" action="remove">
+      <generalInfo>
+        <identityId>21812</identityId>
+        <entityType refId="601">Entity</entityType>
+      </generalInfo>
+      <sanctionsLists>
+        <sanctionsList id="30786" refId="1550" datePublished="2021-01-19">SDN List</sanctionsList>
+      </sanctionsLists>
+      <sanctionsPrograms>
+        <sanctionsProgram id="32681" refId="91810">VENEZUELA-EO13850</sanctionsProgram>
+      </sanctionsPrograms>
+      <sanctionsTypes>
+        <sanctionsType id="22286" refId="1705">Block</sanctionsType>
+      </sanctionsTypes>
+      <legalAuthorities>
+        <legalAuthority id="19114" refId="91811">Executive Order 13850 (Venezuela)</legalAuthority>
+      </legalAuthorities>
+      <names>
+        <name id="47210">
+          <isPrimary>true</isPrimary>
+          <isLowQuality>false</isLowQuality>
+          <translations>
+            <translation id="41304">
+              <isPrimary>true</isPrimary>
+              <script refId="20122">Latin</script>
+              <formattedLastName>82 ELM REALTY LLC</formattedLastName>
+              <formattedFullName>82 ELM REALTY LLC</formattedFullName>
+              <nameParts>
+                <namePart id="80010">
+                  <type refId="1525">Entity Name</type>
+                  <value>82 Elm Realty LLC</value>
+                </namePart>
+              </nameParts>
+            </translation>
+          </translations>
+        </name>
+      </names>
+      <addresses>
+        <address id="45483">
+          <country refId="11212">United States</country>
+          <translations>
+            <translation id="39985">
+              <isPrimary>true</isPrimary>
+              <script refId="20122">Latin</script>
+              <addressParts>
+                <addressPart id="60402">
+                  <type refId="1451">ADDRESS1</type>
+                  <value>450 Park Avenue</value>
+                </addressPart>
+                <addressPart id="60403">
+                  <type refId="1452">ADDRESS2</type>
+                  <value>Ste 1403</value>
+                </addressPart>
+                <addressPart id="60404">
+                  <type refId="1454">CITY</type>
+                  <value>New York</value>
+                </addressPart>
+                <addressPart id="60406">
+                  <type refId="1456">POSTAL CODE</type>
+                  <value>10022</value>
+                </addressPart>
+                <addressPart id="60405">
+                  <type refId="1455">STATE/PROVINCE</type>
+                  <value>NY</value>
+                </addressPart>
+              </addressParts>
+            </translation>
+          </translations>
+        </address>
+      </addresses>
+      <identityDocuments>
+        <identityDocument id="20234">
+          <type refId="91412">Company Number</type>
+          <name nameId="47210" nameTranslationId="41304">82 ELM REALTY LLC</name>
+          <documentNumber>3848561 (New York)</documentNumber>
+          <isValid>true</isValid>
+          <issuingLocation>New York</issuingLocation>
+          <issuingCountry refId="11212">United States</issuingCountry>
+        </identityDocument>
+      </identityDocuments>
+    </entity>
+    <entity id="52485" action="add">
+      <generalInfo>
+        <identityId>44052</identityId>
+        <entityType refId="601">Entity</entityType>
+      </generalInfo>
+      <sanctionsLists>
+        <sanctionsList id="55028" refId="1550" datePublished="2025-01-13">SDN List</sanctionsList>
+      </sanctionsLists>
+      <sanctionsPrograms>
+        <sanctionsProgram id="56556" refId="211">SDGT</sanctionsProgram>
+      </sanctionsPrograms>
+      <sanctionsTypes>
+        <sanctionsType id="45078" refId="1705">Block</sanctionsType>
+      </sanctionsTypes>
+      <legalAuthorities>
+        <legalAuthority id="42905" refId="1828">Executive Order 13224 (Terrorism)</legalAuthority>
+      </legalAuthorities>
+      <names>
+        <name id="82152">
+          <isPrimary>true</isPrimary>
+          <isLowQuality>false</isLowQuality>
+          <translations>
+            <translation id="81771">
+              <isPrimary>true</isPrimary>
+              <script refId="20122">Latin</script>
+              <formattedLastName>THE TERRORGRAM COLLECTIVE</formattedLastName>
+              <formattedFullName>THE TERRORGRAM COLLECTIVE</formattedFullName>
+              <nameParts>
+                <namePart id="138378">
+                  <type refId="1525">Entity Name</type>
+                  <value>THE TERRORGRAM COLLECTIVE</value>
+                </namePart>
+              </nameParts>
+            </translation>
+          </translations>
+        </name>
+        <name id="82153">
+          <isPrimary>false</isPrimary>
+          <aliasType refId="1400">A.K.A.</aliasType>
+          <isLowQuality>true</isLowQuality>
+          <translations>
+            <translation id="81772">
+              <isPrimary>true</isPrimary>
+              <script refId="20122">Latin</script>
+              <formattedLastName>TERRORGRAM</formattedLastName>
+              <formattedFullName>TERRORGRAM</formattedFullName>
+              <nameParts>
+                <namePart id="138379">
+                  <type refId="1525">Entity Name</type>
+                  <value>Terrorgram</value>
+                </namePart>
+              </nameParts>
+            </translation>
+          </translations>
+        </name>
+      </names>
+      <addresses>
+        <address id="80156" />
+      </addresses>
+      <features>
+        <feature id="84606">
+          <type featureTypeId="646">Organization Established Date</type>
+          <versionId>82245</versionId>
+          <value>2019</value>
+          <valueDate id="131200">
+            <fromDateBegin>2019-01-01</fromDateBegin>
+            <fromDateEnd>2019-01-01</fromDateEnd>
+            <toDateBegin>2019-12-31</toDateBegin>
+            <toDateEnd>2019-12-31</toDateEnd>
+            <isApproximate>false</isApproximate>
+            <isDateRange>false</isDateRange>
+          </valueDate>
+          <isPrimary>true</isPrimary>
+        </feature>
+        <feature id="84151">
+          <type featureTypeId="647">Organization Type:</type>
+          <versionId>81790</versionId>
+          <value>Transnational Terrorist Group</value>
+          <valueRefId>92791</valueRefId>
+          <isPrimary>true</isPrimary>
+        </feature>
+        <feature id="84128">
+          <type featureTypeId="504">Secondary sanctions risk:</type>
+          <versionId>81767</versionId>
+          <value>section 1(b) of Executive Order 13224, as amended by Executive Order 13886</value>
+          <valueRefId>92084</valueRefId>
+          <isPrimary>true</isPrimary>
+        </feature>
+      </features>
+    </entity>
+    <entity id="52486" action="add">
+      <generalInfo>
+        <identityId>44053</identityId>
+        <entityType refId="600">Individual</entityType>
+      </generalInfo>
+      <sanctionsLists>
+        <sanctionsList id="55029" refId="1550" datePublished="2025-01-13">SDN List</sanctionsList>
+      </sanctionsLists>
+      <sanctionsPrograms>
+        <sanctionsProgram id="56557" refId="211">SDGT</sanctionsProgram>
+      </sanctionsPrograms>
+      <sanctionsTypes>
+        <sanctionsType id="45079" refId="1705">Block</sanctionsType>
+      </sanctionsTypes>
+      <legalAuthorities>
+        <legalAuthority id="42906" refId="1828">Executive Order 13224 (Terrorism)</legalAuthority>
+      </legalAuthorities>
+      <names>
+        <name id="82154">
+          <isPrimary>true</isPrimary>
+          <isLowQuality>false</isLowQuality>
+          <translations>
+            <translation id="81773">
+              <isPrimary>true</isPrimary>
+              <script refId="20122">Latin</script>
+              <formattedFirstName>Ciro Daniel</formattedFirstName>
+              <formattedLastName>AMORIM FERREIRA</formattedLastName>
+              <formattedFullName>AMORIM FERREIRA, Ciro Daniel</formattedFullName>
+              <nameParts>
+                <namePart id="138381">
+                  <type refId="1521">First Name</type>
+                  <value>Ciro</value>
+                </namePart>
+                <namePart id="138380">
+                  <type refId="1520">Last Name</type>
+                  <value>Amorim FERREIRA</value>
+                </namePart>
+                <namePart id="138382">
+                  <type refId="1522">Middle Name</type>
+                  <value>Daniel</value>
+                </namePart>
+              </nameParts>
+            </translation>
+          </translations>
+        </name>
+        <name id="82155">
+          <isPrimary>false</isPrimary>
+          <aliasType refId="1400">A.K.A.</aliasType>
+          <isLowQuality>false</isLowQuality>
+          <translations>
+            <translation id="81774">
+              <isPrimary>true</isPrimary>
+              <script refId="20122">Latin</script>
+              <formattedFirstName>Ciro Daniel</formattedFirstName>
+              <formattedLastName>FERREIRA</formattedLastName>
+              <formattedFullName>FERREIRA, Ciro Daniel</formattedFullName>
+              <nameParts>
+                <namePart id="138384">
+                  <type refId="1521">First Name</type>
+                  <value>Ciro</value>
+                </namePart>
+                <namePart id="138383">
+                  <type refId="1520">Last Name</type>
+                  <value>FERREIRA</value>
+                </namePart>
+                <namePart id="138385">
+                  <type refId="1522">Middle Name</type>
+                  <value>Daniel</value>
+                </namePart>
+              </nameParts>
+            </translation>
+          </translations>
+        </name>
+      </names>
+      <addresses>
+        <address id="80158">
+          <country refId="11052">Brazil</country>
+          <translations>
+            <translation id="63199">
+              <isPrimary>true</isPrimary>
+              <script refId="20122">Latin</script>
+              <addressParts>
+                <addressPart id="110177">
+                  <type refId="1451">ADDRESS1</type>
+                  <value>Rua Maranhao, 1566 Apto 502</value>
+                </addressPart>
+                <addressPart id="110178">
+                  <type refId="1452">ADDRESS2</type>
+                  <value>Funcionarios</value>
+                </addressPart>
+                <addressPart id="110179">
+                  <type refId="1454">CITY</type>
+                  <value>Belo Horizonte</value>
+                </addressPart>
+                <addressPart id="110181">
+                  <type refId="1456">POSTAL CODE</type>
+                  <value>30150331</value>
+                </addressPart>
+                <addressPart id="110180">
+                  <type refId="1455">STATE/PROVINCE</type>
+                  <value>Minas Gerais</value>
+                </addressPart>
+              </addressParts>
+            </translation>
+            <translation id="63441">
+              <isPrimary>false</isPrimary>
+              <script refId="20122">Latin</script>
+              <addressParts>
+                <addressPart id="110182">
+                  <type refId="1451">ADDRESS1</type>
+                  <value>Rua Maranhão, 1566 Apto 502</value>
+                </addressPart>
+                <addressPart id="110183">
+                  <type refId="1452">ADDRESS2</type>
+                  <value>Funcionários</value>
+                </addressPart>
+                <addressPart id="110184">
+                  <type refId="1454">CITY</type>
+                  <value>Belo Horizonte</value>
+                </addressPart>
+                <addressPart id="110186">
+                  <type refId="1456">POSTAL CODE</type>
+                  <value>30150331</value>
+                </addressPart>
+                <addressPart id="110185">
+                  <type refId="1455">STATE/PROVINCE</type>
+                  <value>Minas Gerais</value>
+                </addressPart>
+              </addressParts>
+            </translation>
+          </translations>
+        </address>
+      </addresses>
+      <features>
+        <feature id="84129">
+          <type featureTypeId="8">Birthdate</type>
+          <versionId>81768</versionId>
+          <value>27 Aug 1987</value>
+          <valueDate id="129812">
+            <fromDateBegin>1987-08-27</fromDateBegin>
+            <fromDateEnd>1987-08-27</fromDateEnd>
+            <toDateBegin>1987-08-27</toDateBegin>
+            <toDateEnd>1987-08-27</toDateEnd>
+            <isApproximate>false</isApproximate>
+            <isDateRange>false</isDateRange>
+          </valueDate>
+          <isPrimary>true</isPrimary>
+        </feature>
+        <feature id="84132">
+          <type featureTypeId="11">Citizenship Country</type>
+          <versionId>81771</versionId>
+          <value>Brazil</value>
+          <valueRefId>11052</valueRefId>
+          <isPrimary>true</isPrimary>
+        </feature>
+        <feature id="84133">
+          <type featureTypeId="224">Gender</type>
+          <versionId>81772</versionId>
+          <value>Male</value>
+          <valueRefId>91526</valueRefId>
+          <isPrimary>true</isPrimary>
+        </feature>
+        <feature id="84131">
+          <type featureTypeId="10">Nationality Country</type>
+          <versionId>81770</versionId>
+          <value>Brazil</value>
+          <valueRefId>11052</valueRefId>
+          <isPrimary>true</isPrimary>
+        </feature>
+        <feature id="84130">
+          <type featureTypeId="9">Place of Birth</type>
+          <versionId>81769</versionId>
+          <value>Belo Horizonte, Brazil</value>
+          <isPrimary>true</isPrimary>
+        </feature>
+        <feature id="84134">
+          <type featureTypeId="504">Secondary sanctions risk:</type>
+          <versionId>81773</versionId>
+          <value>section 1(b) of Executive Order 13224, as amended by Executive Order 13886</value>
+          <valueRefId>92084</valueRefId>
+          <isPrimary>true</isPrimary>
+        </feature>
+      </features>
+      <identityDocuments>
+        <identityDocument id="45468">
+          <type refId="1584">National ID No.</type>
+          <name nameId="82154" nameTranslationId="81773">AMORIM FERREIRA, Ciro Daniel</name>
+          <documentNumber>08388816616</documentNumber>
+          <isValid>true</isValid>
+          <issuingCountry refId="11052">Brazil</issuingCountry>
+        </identityDocument>
+        <identityDocument id="45469">
+          <type refId="1571">Passport</type>
+          <name nameId="82154" nameTranslationId="81773">AMORIM FERREIRA, Ciro Daniel</name>
+          <documentNumber>FD621325</documentNumber>
+          <isValid>true</isValid>
+          <issuingCountry refId="11052">Brazil</issuingCountry>
+          <issueDate id="129816">
+            <fromDateBegin>2011-05-28</fromDateBegin>
+            <fromDateEnd>2011-05-28</fromDateEnd>
+            <toDateBegin>2011-05-28</toDateBegin>
+            <toDateEnd>2011-05-28</toDateEnd>
+            <isApproximate>false</isApproximate>
+            <isDateRange>false</isDateRange>
+          </issueDate>
+          <expirationDate id="129815">
+            <fromDateBegin>2016-05-27</fromDateBegin>
+            <fromDateEnd>2016-05-27</fromDateEnd>
+            <toDateBegin>2016-05-27</toDateBegin>
+            <toDateEnd>2016-05-27</toDateEnd>
+            <isApproximate>false</isApproximate>
+            <isDateRange>false</isDateRange>
+          </expirationDate>
+        </identityDocument>
+      </identityDocuments>
+      <relationships>
+        <relationship id="21508">
+          <type refId="91725">Leader or official of</type>
+          <relatedEntity entityId="52485">THE TERRORGRAM COLLECTIVE</relatedEntity>
+        </relationship>
+      </relationships>
+    </entity>
+    <entity id="52487" action="add">
+      <generalInfo>
+        <identityId>44054</identityId>
+        <entityType refId="600">Individual</entityType>
+      </generalInfo>
+      <sanctionsLists>
+        <sanctionsList id="55030" refId="1550" datePublished="2025-01-13">SDN List</sanctionsList>
+      </sanctionsLists>
+      <sanctionsPrograms>
+        <sanctionsProgram id="56558" refId="211">SDGT</sanctionsProgram>
+      </sanctionsPrograms>
+      <sanctionsTypes>
+        <sanctionsType id="45080" refId="1705">Block</sanctionsType>
+      </sanctionsTypes>
+      <legalAuthorities>
+        <legalAuthority id="42907" refId="1828">Executive Order 13224 (Terrorism)</legalAuthority>
+      </legalAuthorities>
+      <names>
+        <name id="82156">
+          <isPrimary>true</isPrimary>
+          <isLowQuality>false</isLowQuality>
+          <translations>
+            <translation id="81775">
+              <isPrimary>true</isPrimary>
+              <script refId="20122">Latin</script>
+              <formattedFirstName>Noah</formattedFirstName>
+              <formattedLastName>LICUL</formattedLastName>
+              <formattedFullName>LICUL, Noah</formattedFullName>
+              <nameParts>
+                <namePart id="138387">
+                  <type refId="1521">First Name</type>
+                  <value>Noah</value>
+                </namePart>
+                <namePart id="138386">
+                  <type refId="1520">Last Name</type>
+                  <value>LICUL</value>
+                </namePart>
+              </nameParts>
+            </translation>
+          </translations>
+        </name>
+        <name id="82157">
+          <isPrimary>false</isPrimary>
+          <aliasType refId="1400">A.K.A.</aliasType>
+          <isLowQuality>false</isLowQuality>
+          <translations>
+            <translation id="81776">
+              <isPrimary>true</isPrimary>
+              <script refId="20122">Latin</script>
+              <formattedFirstName>Noah</formattedFirstName>
+              <formattedLastName>LYCUL</formattedLastName>
+              <formattedFullName>LYCUL, Noah</formattedFullName>
+              <nameParts>
+                <namePart id="138389">
+                  <type refId="1521">First Name</type>
+                  <value>Noah</value>
+                </namePart>
+                <namePart id="138388">
+                  <type refId="1520">Last Name</type>
+                  <value>LYCUL</value>
+                </namePart>
+              </nameParts>
+            </translation>
+          </translations>
+        </name>
+      </names>
+      <addresses>
+        <address id="80161">
+          <country refId="11072">Croatia</country>
+          <translations>
+            <translation id="63200">
+              <isPrimary>true</isPrimary>
+              <script refId="20122">Latin</script>
+            </translation>
+          </translations>
+        </address>
+      </addresses>
+      <features>
+        <feature id="84135">
+          <type featureTypeId="8">Birthdate</type>
+          <versionId>81774</versionId>
+          <value>2002</value>
+          <valueDate id="129819">
+            <fromDateBegin>2002-01-01</fromDateBegin>
+            <fromDateEnd>2002-01-01</fromDateEnd>
+            <toDateBegin>2002-12-31</toDateBegin>
+            <toDateEnd>2002-12-31</toDateEnd>
+            <isApproximate>false</isApproximate>
+            <isDateRange>false</isDateRange>
+          </valueDate>
+          <isPrimary>true</isPrimary>
+        </feature>
+        <feature id="84136">
+          <type featureTypeId="8">Birthdate</type>
+          <versionId>81775</versionId>
+          <value>2003</value>
+          <valueDate id="129820">
+            <fromDateBegin>2003-01-01</fromDateBegin>
+            <fromDateEnd>2003-01-01</fromDateEnd>
+            <toDateBegin>2003-12-31</toDateBegin>
+            <toDateEnd>2003-12-31</toDateEnd>
+            <isApproximate>false</isApproximate>
+            <isDateRange>false</isDateRange>
+          </valueDate>
+          <isPrimary>false</isPrimary>
+        </feature>
+        <feature id="84138">
+          <type featureTypeId="224">Gender</type>
+          <versionId>81777</versionId>
+          <value>Male</value>
+          <valueRefId>91526</valueRefId>
+          <isPrimary>true</isPrimary>
+        </feature>
+        <feature id="84137">
+          <type featureTypeId="10">Nationality Country</type>
+          <versionId>81776</versionId>
+          <value>Croatia</value>
+          <valueRefId>11072</valueRefId>
+          <isPrimary>true</isPrimary>
+        </feature>
+        <feature id="84139">
+          <type featureTypeId="504">Secondary sanctions risk:</type>
+          <versionId>81778</versionId>
+          <value>section 1(b) of Executive Order 13224, as amended by Executive Order 13886</value>
+          <valueRefId>92084</valueRefId>
+          <isPrimary>true</isPrimary>
+        </feature>
+      </features>
+      <relationships>
+        <relationship id="21509">
+          <type refId="91725">Leader or official of</type>
+          <relatedEntity entityId="52485">THE TERRORGRAM COLLECTIVE</relatedEntity>
+        </relationship>
+      </relationships>
+    </entity>
+    <entity id="52489" action="add">
+      <generalInfo>
+        <identityId>44056</identityId>
+        <entityType refId="600">Individual</entityType>
+      </generalInfo>
+      <sanctionsLists>
+        <sanctionsList id="55032" refId="1550" datePublished="2025-01-13">SDN List</sanctionsList>
+      </sanctionsLists>
+      <sanctionsPrograms>
+        <sanctionsProgram id="56560" refId="211">SDGT</sanctionsProgram>
+      </sanctionsPrograms>
+      <sanctionsTypes>
+        <sanctionsType id="45082" refId="1705">Block</sanctionsType>
+      </sanctionsTypes>
+      <legalAuthorities>
+        <legalAuthority id="42909" refId="1828">Executive Order 13224 (Terrorism)</legalAuthority>
+      </legalAuthorities>
+      <names>
+        <name id="82161">
+          <isPrimary>true</isPrimary>
+          <isLowQuality>false</isLowQuality>
+          <translations>
+            <translation id="81781">
+              <isPrimary>true</isPrimary>
+              <script refId="20122">Latin</script>
+              <formattedFirstName>Hendrik Wahl</formattedFirstName>
+              <formattedLastName>MULLER</formattedLastName>
+              <formattedFullName>MULLER, Hendrik Wahl</formattedFullName>
+              <nameParts>
+                <namePart id="138395">
+                  <type refId="1521">First Name</type>
+                  <value>Hendrik Wahl</value>
+                </namePart>
+                <namePart id="138394">
+                  <type refId="1520">Last Name</type>
+                  <value>MULLER</value>
+                </namePart>
+              </nameParts>
+            </translation>
+          </translations>
+        </name>
+        <name id="82598">
+          <isPrimary>false</isPrimary>
+          <aliasType refId="1400">A.K.A.</aliasType>
+          <isLowQuality>false</isLowQuality>
+          <translations>
+            <translation id="82315">
+              <isPrimary>true</isPrimary>
+              <script refId="20122">Latin</script>
+              <formattedFirstName>Hendrik-Wahl</formattedFirstName>
+              <formattedLastName>MULLER</formattedLastName>
+              <formattedFullName>MULLER, Hendrik-Wahl</formattedFullName>
+              <nameParts>
+                <namePart id="139015">
+                  <type refId="1521">First Name</type>
+                  <value>Hendrik-Wahl</value>
+                </namePart>
+                <namePart id="139014">
+                  <type refId="1520">Last Name</type>
+                  <value>MULLER</value>
+                </namePart>
+              </nameParts>
+            </translation>
+          </translations>
+        </name>
+      </names>
+      <addresses>
+        <address id="80164">
+          <country refId="11189">South Africa</country>
+          <translations>
+            <translation id="63202">
+              <isPrimary>true</isPrimary>
+              <script refId="20122">Latin</script>
+              <addressParts>
+                <addressPart id="109510">
+                  <type refId="1454">CITY</type>
+                  <value>Herbertsdale</value>
+                </addressPart>
+              </addressParts>
+            </translation>
+          </translations>
+        </address>
+      </addresses>
+      <features>
+        <feature id="84140">
+          <type featureTypeId="8">Birthdate</type>
+          <versionId>81779</versionId>
+          <value>15 Jul 1998</value>
+          <valueDate id="129825">
+            <fromDateBegin>1998-07-15</fromDateBegin>
+            <fromDateEnd>1998-07-15</fromDateEnd>
+            <toDateBegin>1998-07-15</toDateBegin>
+            <toDateEnd>1998-07-15</toDateEnd>
+            <isApproximate>false</isApproximate>
+            <isDateRange>false</isDateRange>
+          </valueDate>
+          <isPrimary>true</isPrimary>
+        </feature>
+        <feature id="84143">
+          <type featureTypeId="224">Gender</type>
+          <versionId>81782</versionId>
+          <value>Male</value>
+          <valueRefId>91526</valueRefId>
+          <isPrimary>true</isPrimary>
+        </feature>
+        <feature id="84142">
+          <type featureTypeId="10">Nationality Country</type>
+          <versionId>81781</versionId>
+          <value>South Africa</value>
+          <valueRefId>11189</valueRefId>
+          <isPrimary>true</isPrimary>
+        </feature>
+        <feature id="84144">
+          <type featureTypeId="504">Secondary sanctions risk:</type>
+          <versionId>81783</versionId>
+          <value>section 1(b) of Executive Order 13224, as amended by Executive Order 13886</value>
+          <valueRefId>92084</valueRefId>
+          <isPrimary>true</isPrimary>
+        </feature>
+      </features>
+      <relationships>
+        <relationship id="21510">
+          <type refId="91725">Leader or official of</type>
+          <relatedEntity entityId="52485">THE TERRORGRAM COLLECTIVE</relatedEntity>
+        </relationship>
+      </relationships>
+    </entity>
+  </entities>
+</sanctionsData>
