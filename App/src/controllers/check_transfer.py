@@ -69,7 +69,7 @@ def expand_dataframe(df):
 def load_and_transform_transfer_excel(file_path):
     '''Carga el archivo en un DataFrame y realiza las transformaciones necesarias'''
     df = read_excel(file_path)
-    df = df[['NOMBRE']]
+    df = df[['NOMBRE', 'ID OFAC']]
     return df
 
 
@@ -77,6 +77,7 @@ def compare_lists(df, transfer):
     '''Compara listas y encuentra los mejores matches, agregando columnas de comparacion'''
     df_names_array = df['Nombre'].fillna("N/A").values
     transfer_names_array = transfer['NOMBRE'].values
+    transfer_id_array = transfer['ID OFAC'].values
 
     score_matrix = compare_names_vectorized_transfer(
         df_names_array, transfer_names_array)
@@ -84,6 +85,7 @@ def compare_lists(df, transfer):
     best_match_indices = argmax(score_matrix, axis=1)
     best_scores = max(score_matrix, axis=1)
 
+    df["ID OFAC Comparado"] = transfer_id_array[best_match_indices]
     df["Comparado"] = transfer_names_array[best_match_indices]
     df["Score"] = best_scores * 100
 

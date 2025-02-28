@@ -209,7 +209,10 @@ class Window(QWidget):
                 self.actualizar_estado("Archivo leído correctamente", 60)
             if next(data_update):
                 self.actualizar_estado(
-                    "Nombres, alias y documentos procesados correctamente", 75)
+                    "Nombres, alias y documentos procesados correctamente", 70)
+            if next(data_update):
+                self.actualizar_estado(
+                    "Archivo de pre-transfer guardado correctamente", 75)
             if next(data_update):
                 self.actualizar_estado(
                     "Comparación con transfer completada", 90)

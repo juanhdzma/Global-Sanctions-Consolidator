@@ -2,10 +2,10 @@ from src.models.api_consumer import fetch_data
 from src.util.error import CustomError
 from src.util.excel_helper import save_to_excel
 from src.util.data_helpers import parse_xml, is_only_number
-from pandas import DataFrame
+from pandas import DataFrame, read_excel
 
 
-URL_DATA = 'https://sanctionslistservice.ofac.treas.gov/changes/latest'
+URL_DATA = 'https://sanctionslistservice.ofac.treas.gov/changes/387'
 NAMESPACE = {'ns': 'https://www.treasury.gov/ofac/DeltaFile/1.0'}
 
 
@@ -23,13 +23,22 @@ def extract_publication_date(root):
     return date_element.text.split("T")[0] if date_element is not None else "Fecha_no_disponible"
 
 
+def get_ofac_name(entity_id):
+    '''Obtiene el nombre de la entidad en la lista OFAC'''
+    df = read_excel("./Transfer.xlsx", dtype=str)
+    df = df[df['ID OFAC'] == str(entity_id)]
+    if not df.empty:
+        return df.iloc[0]['NOMBRE']
+    return ""
+
+
 def extract_entity_data(entity):
     '''Extrae la informacion de una entiendad XML'''
-    action = entity.get("action", "N/A")
+    action = entity.get("action", "modify")
     entity_id = entity.get("id", "N/A")
 
     alias_text = []
-    full_name_text = "N/A"
+    full_name_text = ""
 
     for name in entity.findall(".//ns:name", NAMESPACE):
         alias_type = name.find("ns:aliasType", NAMESPACE)
@@ -40,8 +49,11 @@ def extract_entity_data(entity):
         if alias_type != None:
             alias_text.append(full_name)
         else:
-            if full_name_text == "N/A":
+            if full_name_text == "":
                 full_name_text = full_name
+
+    if full_name_text == "" and entity_id != "N/A":
+        full_name_text = get_ofac_name(entity_id)
 
     doc_text = []
     for doc in entity.findall("ns:identityDocuments/ns:identityDocument", NAMESPACE):
