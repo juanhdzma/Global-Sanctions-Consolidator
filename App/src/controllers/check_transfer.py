@@ -68,7 +68,7 @@ def expand_dataframe(df):
 
 def load_and_transform_transfer_excel(file_path):
     '''Carga el archivo en un DataFrame y realiza las transformaciones necesarias'''
-    df = read_excel(file_path)
+    df = read_excel(file_path, dtype=str)
     df = df[['NOMBRE', 'ID OFAC']]
     return df
 
@@ -96,7 +96,7 @@ def generate_comparison_file(file_name, pub_date):
     '''Genera la comparación de nombres y documentos con el archivo Transfer'''
 
     try:
-        df = read_excel(f"./{file_name}", dtype=str)
+        df = read_excel(f"./output_files/{file_name}", dtype=str)
     except Exception:
         raise CustomError(f"❌ No se pudo leer el archivo: {file_name}")
 

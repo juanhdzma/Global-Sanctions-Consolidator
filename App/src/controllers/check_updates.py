@@ -5,7 +5,7 @@ from src.util.data_helpers import parse_xml, is_only_number
 from pandas import DataFrame, read_excel
 
 
-URL_DATA = 'https://sanctionslistservice.ofac.treas.gov/changes/latest'
+URL_DATA = 'https://sanctionslistservice.ofac.treas.gov/changes/618'
 NAMESPACE = {'ns': 'https://www.treasury.gov/ofac/DeltaFile/1.0'}
 
 

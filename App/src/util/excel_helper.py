@@ -7,7 +7,7 @@ from src.util.error import CustomError
 def save_to_excel(df, filename):
     '''Guarda el DataFrame en un archivo Excel y ajusta el ancho de las columnas'''
     try:
-        full_path = join("./", filename)
+        full_path = join("./output_files/", filename)
 
         df.to_excel(full_path, index=False)
 
