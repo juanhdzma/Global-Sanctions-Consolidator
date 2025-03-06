@@ -1,5 +1,13 @@
 from threading import Thread
-from PyQt6.QtWidgets import QApplication, QHBoxLayout, QWidget, QVBoxLayout, QPushButton, QTextEdit, QProgressBar
+from PyQt6.QtWidgets import (
+    QApplication,
+    QHBoxLayout,
+    QWidget,
+    QVBoxLayout,
+    QPushButton,
+    QTextEdit,
+    QProgressBar,
+)
 from PyQt6.QtGui import QFont, QIcon
 from PyQt6.QtCore import QTimer, pyqtSignal
 from src.controllers.check_entity import generate_entity_file
@@ -22,8 +30,7 @@ class Window(QWidget):
     def initUI(self):
         self.setWindowTitle("API SANCIONES OFAC")
         self.setFixedSize(600, 400)
-        self.setStyleSheet(
-            "background-color: #222; color: white; font-size: 14px;")
+        self.setStyleSheet("background-color: #222; color: white; font-size: 14px;")
         self.setWindowIcon(QIcon(".../assets/OFAC.ico"))
         self.centrar_ventana()
 
@@ -31,11 +38,13 @@ class Window(QWidget):
         button_layout = QHBoxLayout()
 
         self.boton_actualizacion = self.crear_boton(
-            "Ejecutar Actualización", self.ejecutar_actualizacion)
+            "Ejecutar Actualización", self.ejecutar_actualizacion
+        )
         button_layout.addWidget(self.boton_actualizacion)
 
         self.boton_entidades = self.crear_boton(
-            "Ejecutar Entidades", self.ejecutar_entidades)
+            "Ejecutar Entidades", self.ejecutar_entidades
+        )
         button_layout.addWidget(self.boton_entidades)
 
         layout.addLayout(button_layout)
@@ -54,20 +63,23 @@ class Window(QWidget):
     def crear_boton(self, texto, funcion):
         boton = QPushButton(texto)
         boton.setFont(QFont("Arial", 12))
-        boton.setStyleSheet("""
+        boton.setStyleSheet(
+            """
             QPushButton {
                 background-color: #007BFF; color: white; padding: 10px; border-radius: 5px;
             }
             QPushButton:disabled {
                 background-color: #555; color: #AAA;
             }
-        """)
+        """
+        )
         boton.clicked.connect(funcion)
         return boton
 
     def crear_progress_bar(self):
         progress_bar = QProgressBar()
-        progress_bar.setStyleSheet("""
+        progress_bar.setStyleSheet(
+            """
             QProgressBar {
                 border: 2px solid #444;
                 border-radius: 5px;
@@ -78,7 +90,8 @@ class Window(QWidget):
                 background-color: #007BFF;
                 width: 10px;
             }
-        """)
+        """
+        )
         progress_bar.setValue(0)
         return progress_bar
 
@@ -87,7 +100,8 @@ class Window(QWidget):
         consola.setFont(QFont("Arial", 11))
         consola.setReadOnly(True)
         consola.setStyleSheet(
-            "background-color: #333; color: #007BFF; padding: 5px; border-radius: 5px;")
+            "background-color: #333; color: #007BFF; padding: 5px; border-radius: 5px;"
+        )
         return consola
 
     def ejecutar_actualizacion(self):
@@ -115,7 +129,8 @@ class Window(QWidget):
     def limpiar_estado(self):
         self.progress_bar.setValue(0)
         self.progreso_actual = 0
-        self.progress_bar.setStyleSheet("""
+        self.progress_bar.setStyleSheet(
+            """
             QProgressBar {
                 border: 2px solid #444;
                 border-radius: 5px;
@@ -126,7 +141,8 @@ class Window(QWidget):
                 background-color: #007BFF;
                 width: 10px;
             }
-        """)
+        """
+        )
         self.consola.clear()
 
     def actualizar_estado(self, mensaje, progreso_final):
@@ -139,8 +155,7 @@ class Window(QWidget):
             self.timer.timeout.disconnect()
         except TypeError:
             pass
-        self.timer.timeout.connect(
-            lambda: self.incrementar_progreso(progreso_final))
+        self.timer.timeout.connect(lambda: self.incrementar_progreso(progreso_final))
         self.timer.start(5)
 
     def incrementar_progreso(self, progreso_final):
@@ -154,7 +169,8 @@ class Window(QWidget):
         self.consola.append(mensaje)
         self.progress_bar.setValue(100)
         if exito:
-            self.progress_bar.setStyleSheet("""
+            self.progress_bar.setStyleSheet(
+                """
                 QProgressBar {
                     border: 2px solid #444;
                     border-radius: 5px;
@@ -165,9 +181,11 @@ class Window(QWidget):
                     background-color: #28a745;
                     width: 10px;
                 }
-            """)
+            """
+            )
         else:
-            self.progress_bar.setStyleSheet("""
+            self.progress_bar.setStyleSheet(
+                """
                 QProgressBar {
                     border: 2px solid #444;
                     border-radius: 5px;
@@ -178,73 +196,70 @@ class Window(QWidget):
                     background-color: #DC3545;
                     width: 10px;
                 }
-            """)
+            """
+            )
 
         self.activar_botones()
 
     def proceso_actualizacion(self):
         try:
-            self.actualizar_estado(
-                "", 10)
+            self.actualizar_estado("", 10)
 
             self.actualizar_estado(
-                "Empezando proceso de verificar actualizaciones...", 10)
+                "Empezando proceso de verificar actualizaciones...", 10
+            )
             data_update = generate_update_file()
             file_size = next(data_update)
-            self.actualizar_estado(
-                f"Tamaño del archivo: {file_size:.2f} MB", 5)
+            self.actualizar_estado(f"Tamaño del archivo: {file_size:.2f} MB", 5)
             if next(data_update):
                 self.actualizar_estado("Archivo descargado correctamente", 20)
             file_name, pub_date = next(data_update)
             if file_name:
                 self.actualizar_estado("Archivo guardado correctamente", 45)
 
-            self.actualizar_estado(
-                "", 45)
+            self.actualizar_estado("", 45)
 
             self.actualizar_estado(
-                "Empezando proceso de procesar documento y generar coincidencias...", 50)
+                "Empezando proceso de procesar documento y generar coincidencias...", 50
+            )
             data_update = generate_comparison_file(file_name, pub_date)
             if next(data_update):
                 self.actualizar_estado("Archivo leído correctamente", 60)
             if next(data_update):
                 self.actualizar_estado(
-                    "Nombres, alias y documentos procesados correctamente", 70)
+                    "Nombres, alias y documentos procesados correctamente", 70
+                )
             if next(data_update):
                 self.actualizar_estado(
-                    "Archivo de pre-transfer guardado correctamente", 75)
+                    "Archivo de pre-transfer guardado correctamente", 75
+                )
+            if next(data_update):
+                self.actualizar_estado("Comparación con transfer completada", 90)
             if next(data_update):
                 self.actualizar_estado(
-                    "Comparación con transfer completada", 90)
-            if next(data_update):
-                self.actualizar_estado(
-                    "Archivo de comparación guardado correctamente", 100)
+                    "Archivo de comparación guardado correctamente", 100
+                )
 
-            self.finalizar_signal.emit(
-                "✅ Proceso finalizado correctamente.", True)
+            self.finalizar_signal.emit("✅ Proceso finalizado correctamente.", True)
 
         except Exception as e:
             self.finalizar_signal.emit(str(e), False)
 
     def proceso_entidades(self):
         try:
-            self.actualizar_estado(
-                "", 10)
+            self.actualizar_estado("", 10)
 
-            self.actualizar_estado(
-                "Empezando proceso de descargar entidades...", 10)
+            self.actualizar_estado("Empezando proceso de descargar entidades...", 10)
             data_update = generate_entity_file()
             file_size = next(data_update)
-            self.actualizar_estado(
-                f"Tamaño del archivo: {file_size:.2f} MB", 20)
+            self.actualizar_estado(f"Tamaño del archivo: {file_size:.2f} MB", 20)
             if next(data_update):
                 self.actualizar_estado("Archivo descargado correctamente", 90)
             file_name = next(data_update)
             if file_name:
                 self.actualizar_estado("Archivo guardado correctamente", 100)
 
-            self.finalizar_signal.emit(
-                "✅ Proceso finalizado correctamente.", True)
+            self.finalizar_signal.emit("✅ Proceso finalizado correctamente.", True)
 
         except Exception as e:
             self.finalizar_signal.emit(str(e), False)

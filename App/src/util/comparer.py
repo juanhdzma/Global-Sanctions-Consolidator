@@ -6,7 +6,7 @@ from numpy import exp, concatenate
 
 
 def compare_words(word1, word2):
-    '''Compara dos palabras y devuelve el porcentaje de similitud entre 1 y 0'''
+    """Compara dos palabras y devuelve el porcentaje de similitud entre 1 y 0"""
     counter1 = Counter(word1)
     counter2 = Counter(word2)
 
@@ -16,13 +16,12 @@ def compare_words(word1, word2):
     if smallest_length == 0:
         return 0.0
 
-    simililarity_score = (
-        exp(intersection / smallest_length) - 1) / (exp(1) - 1)
+    simililarity_score = (exp(intersection / smallest_length) - 1) / (exp(1) - 1)
     return simililarity_score
 
 
 def compare_names(name1, name2):
-    '''Compara dos nombres y devuelve el porcentaje de similitud entre 1 y 0'''
+    """Compara dos nombres y devuelve el porcentaje de similitud entre 1 y 0"""
     name1 = clean_strings(name1).lower()
     name2 = clean_strings(name2).lower()
 
@@ -44,9 +43,10 @@ def compare_names(name1, name2):
 
 
 def compare_names_vectorized_transfer(df_names_array, transfer_names_array):
-    '''Compara una matriz de nombres y devuelve una matriz de simulitud'''
+    """Compara una matriz de nombres y devuelve una matriz de simulitud"""
     vectorizer = TfidfVectorizer().fit(
-        concatenate([df_names_array, transfer_names_array]))
+        concatenate([df_names_array, transfer_names_array])
+    )
     df_vectors = vectorizer.transform(df_names_array)
     transfer_vectors = vectorizer.transform(transfer_names_array)
 
