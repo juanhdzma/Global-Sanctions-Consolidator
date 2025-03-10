@@ -122,14 +122,6 @@ def generate_comparison_file_ofac(file_name, pub_date):
         raise CustomError("❌ Error al expandir el DataFrame.")
 
     try:
-        filename = f"PreTransfer_{pub_date}.xlsx"
-        save_to_excel(df, filename)
-    except Exception:
-        raise CustomError(f"❌ No se pudo guardar el archivo: {filename}")
-
-    yield True  # Guardar Archivo
-
-    try:
         transfer = load_and_transform_transfer_excel(TRANSFER_PATH)
     except Exception:
         raise CustomError(
@@ -144,7 +136,7 @@ def generate_comparison_file_ofac(file_name, pub_date):
     yield True  # Comparar nombres
 
     try:
-        filename = f"Transfer_{pub_date}.xlsx"
+        filename = f"OFAC_Transfer_{pub_date}.xlsx"
         save_to_excel(final, filename)
     except Exception:
         raise CustomError(f"❌ No se pudo guardar el archivo final: {filename}")

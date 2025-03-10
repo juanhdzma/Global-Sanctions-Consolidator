@@ -16,6 +16,7 @@ from PyQt6.QtCore import QTimer, pyqtSignal, Qt, QDate, QLocale
 from src.controllers.check_entity_ofac import generate_entity_file_ofac
 from src.controllers.check_updates_ofac import generate_update_file_ofac
 from src.controllers.check_transfer_ofac import generate_comparison_file_ofac
+from src.controllers.check_updates_ue import generate_update_file_ue
 
 
 class Window(QWidget):
@@ -306,10 +307,6 @@ class Window(QWidget):
                     "Nombres, alias y documentos procesados correctamente", 70
                 )
             if next(data_update):
-                self.actualizar_estado(
-                    "Archivo de pre-transfer guardado correctamente", 75
-                )
-            if next(data_update):
                 self.actualizar_estado("Comparación con transfer completada", 90)
             if next(data_update):
                 self.actualizar_estado(
@@ -352,29 +349,24 @@ class Window(QWidget):
         hilo.start()
 
     def proceso_actualizacion_ue(self):
-        selector = self.findChild(QDateEdit, "selector_Union Europea")
-        fecha = selector.date().toString("dd/MM/yyyy")
+        try:
+            selector = self.findChild(QDateEdit, "selector_Union Europea")
+            fecha = selector.date().toString("dd/MM/yyyy")
+            self.actualizar_estado("", 10)
 
-        self.consola.append(fecha)
-        # self.finalizar_signal.emit("✅ Proceso finalizado correctamente.", True)
-        # try:
-        #     self.actualizar_estado("", 10)
+            self.actualizar_estado(
+                "Empezando proceso de verificar actualizaciones...", 10
+            )
+            data_update = generate_update_file_ue(fecha)
+            self.actualizar_estado(
+                f"Empezando descarga del archivo, alto volumen de datos esperados, por favor espere",
+                20,
+            )
+            if next(data_update):
+                self.actualizar_estado("Archivo descargado correctamente", 90)
+            if next(data_update):
+                self.actualizar_estado("Archivo guardado correctamente", 100)
+            self.finalizar_signal.emit("✅ Proceso finalizado correctamente.", True)
 
-        #     self.actualizar_estado(
-        #         "Empezando proceso de verificar actualizaciones...", 10
-        #     )
-        #     data_update = generate_update_file_ue()
-        #     self.actualizar_estado(
-        #         f"Empezando descarga del archivo, alto volumen de datos esperados, por favor espere",
-        #         20,
-        #     )
-        #     if next(data_update):
-        #         self.actualizar_estado("Archivo descargado correctamente", 90)
-        #     file_name = next(data_update)
-        #     if file_name:
-        #         self.actualizar_estado("Archivo guardado correctamente", 100)
-
-        #     self.finalizar_signal.emit("✅ Proceso finalizado correctamente.", True)
-
-        # except Exception as e:
-        #     self.finalizar_signal.emit(str(e), False)
+        except Exception as e:
+            self.finalizar_signal.emit(str(e), False)

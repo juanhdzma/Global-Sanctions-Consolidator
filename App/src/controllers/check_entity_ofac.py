@@ -101,7 +101,7 @@ def generate_entity_file_ofac():
             raise CustomError("❌ Error al transformar los datos.")
 
         try:
-            filename = f"Entity_{pub_date}.xlsx"
+            filename = f"OFAC_Entity_{pub_date}.xlsx"
             save_to_excel(df, filename)
         except Exception:
             raise CustomError(f"❌ No se pudo guardar el archivo: {filename}")
