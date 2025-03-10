@@ -4,6 +4,8 @@ from re import fullmatch, search, sub
 
 def parse_xml(content):
     """Parsea el contenido XML y devuelve el elemento raiz"""
+    if isinstance(content, str):
+        content = content.encode("utf-8")
     return etree.fromstring(content)
 
 

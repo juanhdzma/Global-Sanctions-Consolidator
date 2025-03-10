@@ -1,18 +1,21 @@
 from threading import Thread
 from PyQt6.QtWidgets import (
     QApplication,
-    QHBoxLayout,
     QWidget,
     QVBoxLayout,
     QPushButton,
     QTextEdit,
     QProgressBar,
+    QLabel,
+    QGridLayout,
+    QDateEdit,
+    QCalendarWidget,
 )
-from PyQt6.QtGui import QFont, QIcon
-from PyQt6.QtCore import QTimer, pyqtSignal
-from src.controllers.check_entity import generate_entity_file
-from src.controllers.check_updates import generate_update_file
-from src.controllers.check_transfer import generate_comparison_file
+from PyQt6.QtGui import QFont
+from PyQt6.QtCore import QTimer, pyqtSignal, Qt, QDate, QLocale
+from src.controllers.check_entity_ofac import generate_entity_file_ofac
+from src.controllers.check_updates_ofac import generate_update_file_ofac
+from src.controllers.check_transfer_ofac import generate_comparison_file_ofac
 
 
 class Window(QWidget):
@@ -27,32 +30,100 @@ class Window(QWidget):
         self.progreso_actual = 0
         self.timer = QTimer(self)
 
+    ############ INICIALIZACIÓN DE LA INTERFAZ ############
+
     def initUI(self):
-        self.setWindowTitle("API SANCIONES OFAC")
-        self.setFixedSize(600, 400)
+        self.setWindowTitle("Global Sanctions Consolidator")
+        self.setFixedSize(800, 500)
         self.setStyleSheet("background-color: #222; color: white; font-size: 14px;")
-        self.setWindowIcon(QIcon(".../assets/OFAC.ico"))
         self.centrar_ventana()
 
         layout = QVBoxLayout()
-        button_layout = QHBoxLayout()
+        grid_layout = QGridLayout()
 
-        self.boton_actualizacion = self.crear_boton(
-            "Ejecutar Actualización", self.ejecutar_actualizacion
-        )
-        button_layout.addWidget(self.boton_actualizacion)
+        secciones = {
+            "OFAC": {
+                "Ejecutar Actualización OFAC": "ejecutar_actualizacion_ofac",
+                "Ejecutar Entidades OFAC": "ejecutar_entidades_ofac",
+            },
+            "Union Europea": {
+                "Ejecutar Actualización UE": "ejecutar_actualizacion_ue",
+                "Fecha": "NA",
+            },
+            "Naciones Unidas": {"Ejecutar ONU": "ejecutar_actualizacion_onu"},
+            "OSFI": {"Ejecutar OSFI": "ejecutar_actualizacion_osfi"},
+        }
 
-        self.boton_entidades = self.crear_boton(
-            "Ejecutar Entidades", self.ejecutar_entidades
-        )
-        button_layout.addWidget(self.boton_entidades)
+        self.botones = {}
+        row, col = 0, 0
 
-        layout.addLayout(button_layout)
+        for seccion, botones in secciones.items():
+            label = QLabel(seccion)
+            label.setFont(QFont("Arial", 12, QFont.Weight.Bold))
+            label.setStyleSheet(
+                """
+                color: #FFF;
+                text-align: center;
+                border: 1px solid white;
+                padding: 5px;
+                """
+            )
+            label.setAlignment(Qt.AlignmentFlag.AlignCenter)
+            span = max(len(botones), 2)
+            grid_layout.addWidget(label, row, col, 1, span)
+
+            for i, (boton_texto, funcion_nombre) in enumerate(botones.items()):
+                funcion = getattr(self, funcion_nombre, None)
+                if boton_texto == "Fecha":
+                    boton = self.crear_selector_fecha(seccion)
+                else:
+                    boton = self.crear_boton(boton_texto, funcion)
+                grid_layout.addWidget(
+                    boton,
+                    row + 1,
+                    col + i * (2 if len(botones) == 1 else 1),
+                    1,
+                    2 if len(botones) == 1 else 1,
+                )
+                self.botones[boton_texto] = boton
+
+            col += 2
+            if col >= 4:
+                col = 0
+                row += 2
+
+        layout.addLayout(grid_layout)
         self.progress_bar = self.crear_progress_bar()
         layout.addWidget(self.progress_bar)
         self.consola = self.crear_consola()
         layout.addWidget(self.consola)
         self.setLayout(layout)
+
+    def crear_selector_fecha(self, area):
+        selector = QDateEdit()
+        selector.setObjectName(f"selector_{area}")
+        selector.setCalendarPopup(True)
+
+        estilo = """
+            QDateEdit {
+                background-color: #333;
+                color: white;
+                padding: 6px;
+                border-radius: 4px;
+                border: 1px solid #555;
+            }
+        """
+
+        selector.setStyleSheet(estilo)
+
+        calendario = selector.calendarWidget()
+        calendario.setLocale(QLocale(QLocale.Language.Spanish))
+
+        hoy = QDate.currentDate()
+        selector.setDate(hoy)
+        selector.setMaximumDate(hoy)
+
+        return selector
 
     def centrar_ventana(self):
         screen = QApplication.primaryScreen().geometry()
@@ -71,9 +142,10 @@ class Window(QWidget):
             QPushButton:disabled {
                 background-color: #555; color: #AAA;
             }
-        """
+            """
         )
-        boton.clicked.connect(funcion)
+        if funcion:
+            boton.clicked.connect(funcion)
         return boton
 
     def crear_progress_bar(self):
@@ -104,27 +176,15 @@ class Window(QWidget):
         )
         return consola
 
-    def ejecutar_actualizacion(self):
-        self.desactivar_botones()
-        self.limpiar_estado()
-        self.consola.append("Ejecutando actualización...")
-        hilo = Thread(target=self.proceso_actualizacion, daemon=True)
-        hilo.start()
-
-    def ejecutar_entidades(self):
-        self.desactivar_botones()
-        self.limpiar_estado()
-        self.consola.append("Ejecutando entidades...")
-        hilo = Thread(target=self.proceso_entidades, daemon=True)
-        hilo.start()
+    ############ CONTROL DE PROGRESO Y ANIMACIONES ############
 
     def desactivar_botones(self):
-        self.boton_actualizacion.setEnabled(False)
-        self.boton_entidades.setEnabled(False)
+        for boton in self.botones.values():
+            boton.setEnabled(False)
 
     def activar_botones(self):
-        self.boton_actualizacion.setEnabled(True)
-        self.boton_entidades.setEnabled(True)
+        for boton in self.botones.values():
+            boton.setEnabled(True)
 
     def limpiar_estado(self):
         self.progress_bar.setValue(0)
@@ -166,6 +226,7 @@ class Window(QWidget):
             self.timer.stop()
 
     def finalizar_proceso(self, mensaje, exito):
+        self.consola.append("")
         self.consola.append(mensaje)
         self.progress_bar.setValue(100)
         if exito:
@@ -201,16 +262,31 @@ class Window(QWidget):
 
         self.activar_botones()
 
-    def proceso_actualizacion(self):
+    ############ PROCESOS DE OFAC ############
+
+    def ejecutar_actualizacion_ofac(self):
+        self.desactivar_botones()
+        self.limpiar_estado()
+        self.consola.append("Ejecutando actualización...")
+        hilo = Thread(target=self.proceso_actualizacion_ofac, daemon=True)
+        hilo.start()
+
+    def ejecutar_entidades_ofac(self):
+        self.desactivar_botones()
+        self.limpiar_estado()
+        self.consola.append("Ejecutando entidades...")
+        hilo = Thread(target=self.proceso_entidades_ofac, daemon=True)
+        hilo.start()
+
+    def proceso_actualizacion_ofac(self):
         try:
             self.actualizar_estado("", 10)
 
             self.actualizar_estado(
                 "Empezando proceso de verificar actualizaciones...", 10
             )
-            data_update = generate_update_file()
-            file_size = next(data_update)
-            self.actualizar_estado(f"Tamaño del archivo: {file_size:.2f} MB", 5)
+            data_update = generate_update_file_ofac()
+            self.actualizar_estado(f"Empezando descarga del archivo", 5)
             if next(data_update):
                 self.actualizar_estado("Archivo descargado correctamente", 20)
             file_name, pub_date = next(data_update)
@@ -222,7 +298,7 @@ class Window(QWidget):
             self.actualizar_estado(
                 "Empezando proceso de procesar documento y generar coincidencias...", 50
             )
-            data_update = generate_comparison_file(file_name, pub_date)
+            data_update = generate_comparison_file_ofac(file_name, pub_date)
             if next(data_update):
                 self.actualizar_estado("Archivo leído correctamente", 60)
             if next(data_update):
@@ -245,14 +321,16 @@ class Window(QWidget):
         except Exception as e:
             self.finalizar_signal.emit(str(e), False)
 
-    def proceso_entidades(self):
+    def proceso_entidades_ofac(self):
         try:
             self.actualizar_estado("", 10)
 
-            self.actualizar_estado("Empezando proceso de descargar entidades...", 10)
-            data_update = generate_entity_file()
-            file_size = next(data_update)
-            self.actualizar_estado(f"Tamaño del archivo: {file_size:.2f} MB", 20)
+            self.actualizar_estado("Empezando proceso de verificar entidades...", 10)
+            data_update = generate_entity_file_ofac()
+            self.actualizar_estado(
+                f"Empezando descarga del archivo, alto volumen de datos esperados, por favor espere",
+                20,
+            )
             if next(data_update):
                 self.actualizar_estado("Archivo descargado correctamente", 90)
             file_name = next(data_update)
@@ -263,3 +341,40 @@ class Window(QWidget):
 
         except Exception as e:
             self.finalizar_signal.emit(str(e), False)
+
+    ############ PROCESOS DE UE ############
+
+    def ejecutar_actualizacion_ue(self):
+        self.desactivar_botones()
+        self.limpiar_estado()
+        self.consola.append("Ejecutando actualización...")
+        hilo = Thread(target=self.proceso_actualizacion_ue, daemon=True)
+        hilo.start()
+
+    def proceso_actualizacion_ue(self):
+        selector = self.findChild(QDateEdit, "selector_Union Europea")
+        fecha = selector.date().toString("dd/MM/yyyy")
+
+        self.consola.append(fecha)
+        # self.finalizar_signal.emit("✅ Proceso finalizado correctamente.", True)
+        # try:
+        #     self.actualizar_estado("", 10)
+
+        #     self.actualizar_estado(
+        #         "Empezando proceso de verificar actualizaciones...", 10
+        #     )
+        #     data_update = generate_update_file_ue()
+        #     self.actualizar_estado(
+        #         f"Empezando descarga del archivo, alto volumen de datos esperados, por favor espere",
+        #         20,
+        #     )
+        #     if next(data_update):
+        #         self.actualizar_estado("Archivo descargado correctamente", 90)
+        #     file_name = next(data_update)
+        #     if file_name:
+        #         self.actualizar_estado("Archivo guardado correctamente", 100)
+
+        #     self.finalizar_signal.emit("✅ Proceso finalizado correctamente.", True)
+
+        # except Exception as e:
+        #     self.finalizar_signal.emit(str(e), False)

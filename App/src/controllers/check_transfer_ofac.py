@@ -95,7 +95,7 @@ def compare_lists(df, transfer):
     return df
 
 
-def generate_comparison_file(file_name, pub_date):
+def generate_comparison_file_ofac(file_name, pub_date):
     """Genera la comparación de nombres y documentos con el archivo Transfer"""
 
     try:

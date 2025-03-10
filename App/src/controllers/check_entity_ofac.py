@@ -85,13 +85,11 @@ def extract_entity_data(entity):
     }
 
 
-def generate_entity_file():
+def generate_entity_file_ofac():
     try:
-        data_yield = fetch_data(URL_DATA)
-
+        data = None
         try:
-            yield next(data_yield)  # Tamaño del archivo
-            data = next(data_yield)  # Contenido del archivo
+            data = fetch_data(URL_DATA)
         except Exception:
             raise CustomError("❌ Error al descargar los datos.")
 
