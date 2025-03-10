@@ -45,9 +45,7 @@ def generate_update_file_ue(fecha):
     try:
         data = None
         try:
-            with open("./Example.csv", "r", encoding="utf-8") as f:
-                data = f.read()
-            # data = fetch_data(URL_DATA)
+            data = fetch_data(URL_DATA)
         except Exception:
             raise CustomError("❌ Error al descargar los datos.")
 
