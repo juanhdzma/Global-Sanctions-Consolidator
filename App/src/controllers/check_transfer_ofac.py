@@ -1,7 +1,7 @@
 from ast import literal_eval
 from pandas import notna, DataFrame, read_excel
 from src.util.data_helpers import verify_if_contain_number
-from src.util.comparer import compare_names, compare_names_vectorized_transfer
+from src.util.comparer import compare_names, compare_names_matrix
 from numpy import max, argmax
 from src.util.excel_helper import save_to_excel
 from src.util.error import CustomError
@@ -81,9 +81,7 @@ def compare_lists(df, transfer):
     transfer_names_array = transfer["NOMBRE"].values
     transfer_id_array = transfer["ID OFAC"].values
 
-    score_matrix = compare_names_vectorized_transfer(
-        df_names_array, transfer_names_array
-    )
+    score_matrix = compare_names_matrix(df_names_array, transfer_names_array)
 
     best_match_indices = argmax(score_matrix, axis=1)
     best_scores = max(score_matrix, axis=1)

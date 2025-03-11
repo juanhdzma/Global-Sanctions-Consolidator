@@ -2,8 +2,7 @@ from src.models.api_consumer import fetch_data
 from src.util.error import CustomError
 from datetime import datetime
 from src.util.excel_helper import save_to_excel
-from src.util.data_helpers import parse_xml, is_only_number
-from pandas import DataFrame, read_csv, to_datetime
+from pandas import read_csv, to_datetime
 from io import StringIO
 
 

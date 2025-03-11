@@ -1,8 +1,6 @@
-from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.metrics.pairwise import cosine_similarity
 from collections import Counter
 from src.util.data_helpers import clean_strings
-from numpy import exp, concatenate
+from numpy import exp, array
 
 
 def compare_words(word1, word2):
@@ -42,13 +40,33 @@ def compare_names(name1, name2):
     return final_score
 
 
-def compare_names_vectorized_transfer(df_names_array, transfer_names_array):
-    """Compara una matriz de nombres y devuelve una matriz de simulitud"""
-    vectorizer = TfidfVectorizer().fit(
-        concatenate([df_names_array, transfer_names_array])
-    )
-    df_vectors = vectorizer.transform(df_names_array)
-    transfer_vectors = vectorizer.transform(transfer_names_array)
+def compare_names_matrix(df_names_array, transfer_names_array, n=3):
+    """Devuelve una matriz de similitud basada en Jaccard con n-gramas"""
 
-    score_matrix = cosine_similarity(df_vectors, transfer_vectors)
-    return score_matrix
+    def jaccard_similarity(s1, s2, n):
+        """Calcula la similitud de Jaccard basada en n-gramas"""
+        set1 = (
+            set([s1[i : i + n] for i in range(len(s1) - n + 1)])
+            if len(s1) >= n
+            else {s1}
+        )
+        set2 = (
+            set([s2[i : i + n] for i in range(len(s2) - n + 1)])
+            if len(s2) >= n
+            else {s2}
+        )
+
+        intersection = len(set1 & set2)
+        union = len(set1 | set2)
+
+        return intersection / union if union > 0 else 0
+
+    df_names_array = array(df_names_array)
+    transfer_names_array = array(transfer_names_array)
+
+    return array(
+        [
+            [jaccard_similarity(name1, name2, n) for name2 in transfer_names_array]
+            for name1 in df_names_array
+        ]
+    )
