@@ -1,6 +1,7 @@
 from collections import Counter
 from src.util.data_helpers import clean_strings
 from numpy import exp, array
+from re import sub
 
 
 def compare_words(word1, word2):
@@ -40,33 +41,37 @@ def compare_names(name1, name2):
     return final_score
 
 
+def normalize_name(name):
+    """Normaliza el nombre eliminando caracteres especiales y ordenando palabras."""
+    name = sub(r"[^a-zA-Z0-9\s]", "", name)
+    words = name.lower().split()
+    return " ".join(sorted(words))
+
+
+def jaccard_similarity(s1, s2, n=3):
+    """Calcula la similitud de Jaccard basada en n-gramas."""
+    set1 = (
+        set([s1[i : i + n] for i in range(len(s1) - n + 1)]) if len(s1) >= n else {s1}
+    )
+    set2 = (
+        set([s2[i : i + n] for i in range(len(s2) - n + 1)]) if len(s2) >= n else {s2}
+    )
+    intersection = len(set1 & set2)
+    union = len(set1 | set2)
+    return intersection / union if union > 0 else 0
+
+
 def compare_names_matrix(df_names_array, transfer_names_array, n=3):
-    """Devuelve una matriz de similitud basada en Jaccard con n-gramas"""
+    """Devuelve una matriz de similitud basada en Jaccard con n-gramas y orden de palabras."""
+    df_names_array = array([normalize_name(name) for name in df_names_array])
+    transfer_names_array = array(
+        [normalize_name(name) for name in transfer_names_array]
+    )
 
-    def jaccard_similarity(s1, s2, n):
-        """Calcula la similitud de Jaccard basada en n-gramas"""
-        set1 = (
-            set([s1[i : i + n] for i in range(len(s1) - n + 1)])
-            if len(s1) >= n
-            else {s1}
-        )
-        set2 = (
-            set([s2[i : i + n] for i in range(len(s2) - n + 1)])
-            if len(s2) >= n
-            else {s2}
-        )
-
-        intersection = len(set1 & set2)
-        union = len(set1 | set2)
-
-        return intersection / union if union > 0 else 0
-
-    df_names_array = array(df_names_array)
-    transfer_names_array = array(transfer_names_array)
-
-    return array(
+    similarity_matrix = array(
         [
             [jaccard_similarity(name1, name2, n) for name2 in transfer_names_array]
             for name1 in df_names_array
         ]
     )
+    return similarity_matrix

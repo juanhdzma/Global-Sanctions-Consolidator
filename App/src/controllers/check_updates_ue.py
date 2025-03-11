@@ -62,7 +62,7 @@ def generate_update_file_ue(fecha):
         except Exception:
             raise CustomError(f"❌ No se pudo guardar el archivo: {filename}")
 
-        yield True  # Confirmar archivo
+        yield filename, today_date  # Confirmar archivo
 
     except CustomError as e:
         raise e  # Relanza la excepción sin imprimir

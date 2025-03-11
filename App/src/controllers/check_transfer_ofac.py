@@ -61,7 +61,7 @@ def expand_dataframe(df):
         for name in names:
             for document in documents:
                 new_rows.append(
-                    {"ID OFAC": entity_id, "Nombre": name, "Documento": document}
+                    {"ID OFAC": entity_id, "NOMBRE": name, "DOCUMENTO": document}
                 )
 
     expanded_df = DataFrame(new_rows)
@@ -77,7 +77,7 @@ def load_and_transform_transfer_excel(file_path):
 
 def compare_lists(df, transfer):
     """Compara listas y encuentra los mejores matches, agregando columnas de comparacion"""
-    df_names_array = df["Nombre"].fillna("N/A").values
+    df_names_array = df["NOMBRE"].fillna("N/A").values
     transfer_names_array = transfer["NOMBRE"].values
     transfer_id_array = transfer["ID OFAC"].values
 

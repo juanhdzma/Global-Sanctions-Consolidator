@@ -17,6 +17,7 @@ from src.controllers.check_entity_ofac import generate_entity_file_ofac
 from src.controllers.check_updates_ofac import generate_update_file_ofac
 from src.controllers.check_transfer_ofac import generate_comparison_file_ofac
 from src.controllers.check_updates_ue import generate_update_file_ue
+from src.controllers.check_transfer_ue import generate_comparison_file_ue
 
 
 class Window(QWidget):
@@ -363,9 +364,28 @@ class Window(QWidget):
                 20,
             )
             if next(data_update):
-                self.actualizar_estado("Archivo descargado correctamente", 90)
+                self.actualizar_estado("Archivo descargado correctamente", 25)
+
+            file_name, pub_date = next(data_update)
+            self.actualizar_estado("Archivo guardado correctamente", 40)
+
+            self.actualizar_estado("", 45)
+            self.actualizar_estado(
+                "Empezando proceso de procesar documento y generar coincidencias...", 50
+            )
+
+            data_update = generate_comparison_file_ue(file_name, pub_date)
             if next(data_update):
-                self.actualizar_estado("Archivo guardado correctamente", 100)
+                self.actualizar_estado("Archivo leído correctamente", 60)
+            if next(data_update):
+                self.actualizar_estado("Transfer cargado correctamente", 70)
+            if next(data_update):
+                self.actualizar_estado("Comparación con transfer completada", 90)
+            if next(data_update):
+                self.actualizar_estado(
+                    "Archivo de comparación guardado correctamente", 100
+                )
+
             self.finalizar_signal.emit("✅ Proceso finalizado correctamente.", True)
 
         except Exception as e:
