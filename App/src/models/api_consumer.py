@@ -4,7 +4,7 @@ import shlex
 
 
 USE_PROXY = False
-PROXY = "http://127.0.0.1:8000"
+PROXY = "http://172.19.152.108:8000"
 
 
 def fetch_data(url_data):
