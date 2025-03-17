@@ -1,11 +1,12 @@
 from src.models.api_consumer import fetch_data
 from src.util.error import CustomError
 from src.util.excel_helper import save_to_excel
-from src.util.data_helpers import parse_xml, is_only_number
-from pandas import DataFrame, read_excel
+from src.util.data_helpers import parse_xml, is_only_number, extract_pub_ids
+from pandas import DataFrame, read_excel, concat
 
 
-URL_DATA = "https://sanctionslistservice.ofac.treas.gov/changes/latest"
+URL_DATA = "https://sanctionslistservice.ofac.treas.gov/changes/"
+URL_HISTORY = "https://sanctionslistservice.ofac.treas.gov/changes/history/"
 NAMESPACE = {"ns": "https://www.treasury.gov/ofac/DeltaFile/1.0"}
 
 
@@ -15,6 +16,14 @@ def transform_data(content):
     entities = root.findall("ns:entities/ns:entity", NAMESPACE)
     data = [extract_entity_data(entity) for entity in entities]
     return DataFrame(data), extract_publication_date(root)
+
+
+def transform_just_data(content):
+    """Transforma el XML en un DataFrame, retorna el DataFrame"""
+    root = parse_xml(content)
+    entities = root.findall("ns:entities/ns:entity", NAMESPACE)
+    data = [extract_entity_data(entity) for entity in entities]
+    return DataFrame(data)
 
 
 def extract_publication_date(root):
@@ -97,26 +106,46 @@ def extract_entity_data(entity):
     }
 
 
-def generate_update_file_ofac():
+def generate_update_file_ofac(fecha_especifica):
     try:
+        pub_list = None
+        try:
+            if fecha_especifica:
+                year = fecha_especifica.split("-")[0]
+                pub_list = extract_pub_ids(
+                    fetch_data(URL_HISTORY + year), fecha_especifica
+                )
+        except Exception as e:
+            raise CustomError("Descarga de historial de publicaciones")
+
         data = None
         try:
-            data = fetch_data(URL_DATA)
-        except Exception:
-            raise CustomError("❌ Error al descargar los datos.")
+            print(pub_list)
+            if fecha_especifica:
+                data = [fetch_data(URL_DATA + str(pub)) for pub in pub_list]
+            else:
+                data = fetch_data(URL_DATA + "latest")
+        except Exception as e:
+            print(e)
+            raise CustomError("Descarga de los datos.")
 
         yield True  # Confirmar descarga
 
         try:
-            df, pub_date = transform_data(data)
+            if fecha_especifica:
+                pub_date = fecha_especifica
+                df = [transform_just_data(i) for i in data]
+                df = concat(df, ignore_index=True)
+            else:
+                df, pub_date = transform_data(data)
         except Exception:
-            raise CustomError("❌ Error al transformar los datos.")
+            raise CustomError("Transformación de los datos.")
 
         try:
             filename = f"OFAC_{pub_date}.xlsx"
             save_to_excel(df, filename)
         except Exception:
-            raise CustomError(f"❌ No se pudo guardar el archivo: {filename}")
+            raise CustomError(f"Proceso de guardado del archivo: {filename}")
 
         yield filename, pub_date  # Confirmar guardado
 

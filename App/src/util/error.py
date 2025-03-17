@@ -6,4 +6,4 @@ class CustomError(Exception):
         self.message = message
 
     def __str__(self):
-        return self.message
+        return "❌  Error durante: " + self.message

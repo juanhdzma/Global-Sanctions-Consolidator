@@ -25,4 +25,4 @@ def fetch_data(url_data):
         return result.stdout
 
     except subprocess.SubprocessError:
-        raise CustomError(f"❌ Error al solicitar el contenido de la API: {url_data}")
+        raise CustomError(f"Petición curl al contenido de la API: {url_data}")

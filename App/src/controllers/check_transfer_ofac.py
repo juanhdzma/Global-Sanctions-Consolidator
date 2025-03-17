@@ -99,7 +99,7 @@ def generate_comparison_file_ofac(file_name, pub_date):
     try:
         df = read_excel(f"./output_files/{file_name}", dtype=str)
     except Exception:
-        raise CustomError(f"❌ No se pudo leer el archivo: {file_name}")
+        raise CustomError(f"Lectura del archivo: {file_name}")
 
     yield True  # Leer archivo
 
@@ -110,14 +110,14 @@ def generate_comparison_file_ofac(file_name, pub_date):
         filter_names(df)
         filter_documents(df)
     except Exception:
-        raise CustomError("❌ Error al procesar nombres, alias y documentos.")
+        raise CustomError("Procesamiento de nombres, alias y documentos.")
 
     yield True  # Procesar Nombres, Alias y Documentos
 
     try:
         df = expand_dataframe(df)
     except Exception:
-        raise CustomError("❌ Error al expandir el DataFrame.")
+        raise CustomError("Intentando expandir el DataFrame.")
 
     try:
         transfer = load_and_transform_transfer_excel(TRANSFER_PATH)
@@ -129,7 +129,7 @@ def generate_comparison_file_ofac(file_name, pub_date):
     try:
         final = compare_lists(df, transfer)
     except Exception:
-        raise CustomError("❌ Error al comparar los nombres.")
+        raise CustomError("Comparación de los nombres.")
 
     yield True  # Comparar nombres
 
@@ -137,6 +137,6 @@ def generate_comparison_file_ofac(file_name, pub_date):
         filename = f"OFAC_Transfer_{pub_date}.xlsx"
         save_to_excel(final, filename)
     except Exception:
-        raise CustomError(f"❌ No se pudo guardar el archivo final: {filename}")
+        raise CustomError(f"Proceso de guardado el archivo final: {filename}")
 
     yield True  # Guardar Archivo Final

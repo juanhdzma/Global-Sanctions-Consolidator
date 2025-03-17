@@ -46,21 +46,21 @@ def generate_update_file_ue(fecha):
         try:
             data = fetch_data(URL_DATA)
         except Exception:
-            raise CustomError("❌ Error al descargar los datos.")
+            raise CustomError("Descarga de los datos.")
 
         yield True  # Confirmar descarga
 
         try:
             df = transform_data(data, fecha)
         except Exception:
-            raise CustomError("❌ Error al transformar los datos.")
+            raise CustomError("Transformación los datos.")
 
         try:
             today_date = datetime.today().strftime("%Y-%m-%d")
             filename = f"UE_{today_date}.xlsx"
             save_to_excel(df, filename)
         except Exception:
-            raise CustomError(f"❌ No se pudo guardar el archivo: {filename}")
+            raise CustomError(f"Proceso de guardado del archivo: {filename}")
 
         yield filename, today_date  # Confirmar archivo
 

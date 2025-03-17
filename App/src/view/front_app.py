@@ -9,7 +9,9 @@ from PyQt6.QtWidgets import (
     QLabel,
     QGridLayout,
     QDateEdit,
-    QCalendarWidget,
+    QDialog,
+    QCheckBox,
+    QHBoxLayout,
 )
 from PyQt6.QtGui import QFont
 from PyQt6.QtCore import QTimer, pyqtSignal, Qt, QDate, QLocale
@@ -18,6 +20,7 @@ from src.controllers.check_updates_ofac import generate_update_file_ofac
 from src.controllers.check_transfer_ofac import generate_comparison_file_ofac
 from src.controllers.check_updates_ue import generate_update_file_ue
 from src.controllers.check_transfer_ue import generate_comparison_file_ue
+from src.util.error import CustomError
 
 
 class Window(QWidget):
@@ -178,6 +181,87 @@ class Window(QWidget):
         )
         return consola
 
+    def popup_fecha(self):
+        """Muestra un popup modal con opción de 'Latest' y un selector de fecha."""
+        popup = QDialog(self)
+        popup.setWindowTitle("Seleccionar Fecha de Actualización")
+        popup.setFixedSize(350, 150)
+        popup.setStyleSheet("background-color: #222; color: white; border-radius: 8px;")
+        popup.setWindowModality(
+            Qt.WindowModality.ApplicationModal
+        )  # 🔹 Hace que el popup sea modal
+
+        main_layout = QVBoxLayout()
+        main_layout.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        row_layout = QHBoxLayout()
+        row_layout.setAlignment(Qt.AlignmentFlag.AlignCenter)
+
+        # Checkbox "Latest"
+        checkbox_latest = QCheckBox("Latest")
+        checkbox_latest.setChecked(True)
+        checkbox_latest.setStyleSheet(
+            "color: white; font-size: 14px; margin-right: 10px;"
+        )
+
+        # Selector de fecha
+        selector_fecha = QDateEdit()
+        selector_fecha.setCalendarPopup(True)
+        selector_fecha.setDate(QDate.currentDate())
+        selector_fecha.setMaximumDate(QDate.currentDate())
+        selector_fecha.setEnabled(False)  # 🔹 Inicialmente deshabilitado
+        selector_fecha.setStyleSheet(
+            """
+            QDateEdit {
+                background-color: #333;
+                color: white;
+                padding: 6px;
+                border-radius: 4px;
+                border: 1px solid #555;
+            }
+            QDateEdit:disabled {
+                background-color: #222;
+                color: #777;
+                border: 1px solid #444;
+            }
+        """
+        )
+
+        def toggle_fecha(state):
+            selector_fecha.setEnabled(not state)
+
+        checkbox_latest.stateChanged.connect(lambda state: toggle_fecha(state == 2))
+
+        row_layout.addWidget(checkbox_latest)
+        row_layout.addWidget(selector_fecha)
+        main_layout.addLayout(row_layout)
+
+        # Botón de ejecutar
+        btn_ejecutar = QPushButton("Ejecutar")
+        btn_ejecutar.setStyleSheet(
+            """
+            QPushButton {
+                background-color: #007BFF;
+                color: white;
+                padding: 10px;
+                border-radius: 5px;
+                font-size: 14px;
+            }
+            QPushButton:hover {
+                background-color: #0056b3;
+            }
+        """
+        )
+        btn_ejecutar.clicked.connect(lambda: popup.accept())
+
+        main_layout.addWidget(btn_ejecutar)
+        popup.setLayout(main_layout)
+
+        resultado = popup.exec()
+
+        if resultado == QDialog.DialogCode.Accepted:
+            return True if checkbox_latest.isChecked() else selector_fecha.date()
+        return False
+
     ############ CONTROL DE PROGRESO Y ANIMACIONES ############
 
     def desactivar_botones(self):
@@ -269,8 +353,10 @@ class Window(QWidget):
     def ejecutar_actualizacion_ofac(self):
         self.desactivar_botones()
         self.limpiar_estado()
-        self.consola.append("Ejecutando actualización...")
-        hilo = Thread(target=self.proceso_actualizacion_ofac, daemon=True)
+
+        estado = self.popup_fecha()
+
+        hilo = Thread(target=self.proceso_actualizacion_ofac(estado), daemon=True)
         hilo.start()
 
     def ejecutar_entidades_ofac(self):
@@ -280,14 +366,25 @@ class Window(QWidget):
         hilo = Thread(target=self.proceso_entidades_ofac, daemon=True)
         hilo.start()
 
-    def proceso_actualizacion_ofac(self):
+    def proceso_actualizacion_ofac(self, estado):
         try:
+            fecha_especifica = False
+            if estado == False:
+                raise CustomError("Seleccion de fecha de la actualización")
+            elif estado == True:
+                self.consola.append("Ejecutando última actualización...")
+            else:
+                fecha_especifica = estado.toString("yyyy-MM-dd")
+                self.consola.append(
+                    f"Ejecutando actualización del {estado.toString('yyyy-MM-dd')}"
+                )
+
             self.actualizar_estado("", 10)
 
             self.actualizar_estado(
                 "Empezando proceso de verificar actualizaciones...", 10
             )
-            data_update = generate_update_file_ofac()
+            data_update = generate_update_file_ofac(fecha_especifica)
             self.actualizar_estado(f"Empezando descarga del archivo", 5)
             if next(data_update):
                 self.actualizar_estado("Archivo descargado correctamente", 20)

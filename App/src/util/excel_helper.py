@@ -29,4 +29,4 @@ def save_to_excel(df, filename):
         wb.close()
         return True
     except Exception:
-        raise CustomError(f"❌ No se pudo guardar el archivo: {filename}")
+        raise CustomError(f"Proceso de guardado del archivo: {filename}")

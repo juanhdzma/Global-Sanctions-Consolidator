@@ -41,7 +41,7 @@ def generate_comparison_file_ue(file_name, pub_date):
     try:
         df = read_excel(f"./output_files/{file_name}", dtype=str)
     except Exception:
-        raise CustomError(f"❌ No se pudo leer el archivo: {file_name}")
+        raise CustomError(f"Lectura del archivo: {file_name}")
 
     yield True  # Leer archivo
 
@@ -57,7 +57,7 @@ def generate_comparison_file_ue(file_name, pub_date):
     try:
         final = compare_lists(df, transfer)
     except Exception:
-        raise CustomError("❌ Error al comparar los nombres.")
+        raise CustomError("Comparación de los nombres.")
 
     yield True  # Comparar nombres
 
@@ -65,6 +65,6 @@ def generate_comparison_file_ue(file_name, pub_date):
         filename = f"UE_Transfer_{pub_date}.xlsx"
         save_to_excel(final, filename)
     except Exception:
-        raise CustomError(f"❌ No se pudo guardar el archivo final: {filename}")
+        raise CustomError(f"Proceso de guardado el archivo final: {filename}")
 
     yield True  # Guardar Archivo Final
