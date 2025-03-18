@@ -19,7 +19,8 @@ from src.controllers.check_entity_ofac import generate_entity_file_ofac
 from src.controllers.check_updates_ofac import generate_update_file_ofac
 from src.controllers.check_transfer_ofac import generate_comparison_file_ofac
 from src.controllers.check_updates_ue import generate_update_file_ue
-from src.controllers.check_transfer_ue import generate_comparison_file_ue
+from src.controllers.check_transfer_generic import generate_comparison_file_generic
+from src.controllers.check_updates_osfi import generate_update_file_osfi
 from src.util.error import CustomError
 
 
@@ -53,10 +54,13 @@ class Window(QWidget):
             },
             "Union Europea": {
                 "Ejecutar Actualización UE": "ejecutar_actualizacion_ue",
-                "Fecha": "NA",
+                "Fecha": "selector_ue",
             },
             "Naciones Unidas": {"Ejecutar ONU": "ejecutar_actualizacion_onu"},
-            "OSFI": {"Ejecutar OSFI": "ejecutar_actualizacion_osfi"},
+            "OSFI": {
+                "Ejecutar OSFI": "ejecutar_actualizacion_osfi",
+                "Fecha": "selector_osfi",
+            },
         }
 
         self.botones = {}
@@ -80,7 +84,7 @@ class Window(QWidget):
             for i, (boton_texto, funcion_nombre) in enumerate(botones.items()):
                 funcion = getattr(self, funcion_nombre, None)
                 if boton_texto == "Fecha":
-                    boton = self.crear_selector_fecha(seccion)
+                    boton = self.crear_selector_fecha(funcion_nombre)
                 else:
                     boton = self.crear_boton(boton_texto, funcion)
                 grid_layout.addWidget(
@@ -90,7 +94,7 @@ class Window(QWidget):
                     1,
                     2 if len(botones) == 1 else 1,
                 )
-                self.botones[boton_texto] = boton
+                self.botones[funcion_nombre] = boton
 
             col += 2
             if col >= 4:
@@ -104,9 +108,9 @@ class Window(QWidget):
         layout.addWidget(self.consola)
         self.setLayout(layout)
 
-    def crear_selector_fecha(self, area):
+    def crear_selector_fecha(self, funcion_nombre):
         selector = QDateEdit()
-        selector.setObjectName(f"selector_{area}")
+        selector.setObjectName(funcion_nombre)
         selector.setCalendarPopup(True)
 
         estilo = """
@@ -448,7 +452,7 @@ class Window(QWidget):
 
     def proceso_actualizacion_ue(self):
         try:
-            selector = self.findChild(QDateEdit, "selector_Union Europea")
+            selector = self.findChild(QDateEdit, "selector_ue")
             fecha = selector.date().toString("dd/MM/yyyy")
             self.actualizar_estado("", 10)
 
@@ -471,7 +475,58 @@ class Window(QWidget):
                 "Empezando proceso de procesar documento y generar coincidencias...", 50
             )
 
-            data_update = generate_comparison_file_ue(file_name, pub_date)
+            data_update = generate_comparison_file_generic(file_name, pub_date, "UE")
+            if next(data_update):
+                self.actualizar_estado("Archivo leído correctamente", 60)
+            if next(data_update):
+                self.actualizar_estado("Transfer cargado correctamente", 70)
+            if next(data_update):
+                self.actualizar_estado("Comparación con transfer completada", 90)
+            if next(data_update):
+                self.actualizar_estado(
+                    "Archivo de comparación guardado correctamente", 100
+                )
+
+            self.finalizar_signal.emit("✅ Proceso finalizado correctamente.", True)
+
+        except Exception as e:
+            self.finalizar_signal.emit(str(e), False)
+
+    ############ PROCESOS DE OSFI ############
+
+    def ejecutar_actualizacion_osfi(self):
+        self.desactivar_botones()
+        self.limpiar_estado()
+        self.consola.append("Ejecutando actualización...")
+        hilo = Thread(target=self.proceso_actualizacion_osfi, daemon=True)
+        hilo.start()
+
+    def proceso_actualizacion_osfi(self):
+        try:
+            selector = self.findChild(QDateEdit, "selector_osfi")
+            fecha = selector.date().toString("yyyy-MM-dd")
+            self.actualizar_estado("", 10)
+
+            self.actualizar_estado(
+                "Empezando proceso de verificar actualizaciones...", 10
+            )
+            data_update = generate_update_file_osfi(fecha)
+            self.actualizar_estado(
+                f"Empezando descarga del archivo, alto volumen de datos esperados, por favor espere",
+                20,
+            )
+            if next(data_update):
+                self.actualizar_estado("Archivo descargado correctamente", 25)
+
+            file_name, pub_date = next(data_update)
+            self.actualizar_estado("Archivo guardado correctamente", 40)
+
+            self.actualizar_estado("", 45)
+            self.actualizar_estado(
+                "Empezando proceso de procesar documento y generar coincidencias...", 50
+            )
+
+            data_update = generate_comparison_file_generic(file_name, pub_date, "OSFI")
             if next(data_update):
                 self.actualizar_estado("Archivo leído correctamente", 60)
             if next(data_update):

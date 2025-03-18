@@ -35,7 +35,7 @@ def compare_lists(df, transfer):
     return df
 
 
-def generate_comparison_file_ue(file_name, pub_date):
+def generate_comparison_file_generic(file_name, pub_date, type):
     """Genera la comparación de nombres y documentos con el archivo Transfer"""
 
     try:
@@ -48,9 +48,7 @@ def generate_comparison_file_ue(file_name, pub_date):
     try:
         transfer = load_and_transform_transfer_excel(TRANSFER_PATH)
     except Exception:
-        raise CustomError(
-            f"❌ No se pudo cargar el archivo de transferencias: {TRANSFER_PATH}"
-        )
+        raise CustomError(f"Cargue del archivo de transferencias: {TRANSFER_PATH}")
 
     yield True  # Leer el transfer
 
@@ -62,7 +60,7 @@ def generate_comparison_file_ue(file_name, pub_date):
     yield True  # Comparar nombres
 
     try:
-        filename = f"UE_Transfer_{pub_date}.xlsx"
+        filename = f"{type}_Transfer_{pub_date}.xlsx"
         save_to_excel(final, filename)
     except Exception:
         raise CustomError(f"Proceso de guardado el archivo final: {filename}")
