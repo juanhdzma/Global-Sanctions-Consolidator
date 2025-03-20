@@ -29,15 +29,29 @@ def transform_data(data, fecha):
     df = df[df["Entity_Regulation_PublicationDate"] >= fecha]
 
     df["NameAlias_NameLanguage"] = df["NameAlias_NameLanguage"].fillna("")
+    df["Identification_Number"] = df["Identification_Number"].fillna("")
+
     df = df[df["NameAlias_NameLanguage"].isin(["EN", "ES", ""])]
 
     df = df[df["NameAlias_WholeName"].notna()]
 
-    df = df[["Identification_Number", "NameAlias_WholeName"]].rename(
-        columns={"Identification_Number": "ID", "NameAlias_WholeName": "NOMBRE"}
+    df = df[
+        [
+            "Entity_Regulation_PublicationDate",
+            "Identification_Number",
+            "NameAlias_WholeName",
+        ]
+    ].rename(
+        columns={
+            "Entity_Regulation_PublicationDate": "DATE",
+            "Identification_Number": "ID",
+            "NameAlias_WholeName": "NOMBRE",
+        }
     )
 
-    return df
+    df = df.astype(str)
+
+    return df.sort_values("DATE")
 
 
 def generate_update_file_ue(fecha):

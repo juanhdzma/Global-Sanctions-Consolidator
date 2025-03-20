@@ -21,6 +21,7 @@ from src.controllers.check_transfer_ofac import generate_comparison_file_ofac
 from src.controllers.check_updates_ue import generate_update_file_ue
 from src.controllers.check_transfer_generic import generate_comparison_file_generic
 from src.controllers.check_updates_osfi import generate_update_file_osfi
+from src.controllers.check_updates_onu import generate_update_file_onu
 from src.util.error import CustomError
 
 
@@ -56,7 +57,10 @@ class Window(QWidget):
                 "Ejecutar Actualización UE": "ejecutar_actualizacion_ue",
                 "Fecha": "selector_ue",
             },
-            "Naciones Unidas": {"Ejecutar ONU": "ejecutar_actualizacion_onu"},
+            "Naciones Unidas": {
+                "Ejecutar ONU": "ejecutar_actualizacion_onu",
+                "Fecha": "selector_onu",
+            },
             "OSFI": {
                 "Ejecutar OSFI": "ejecutar_actualizacion_osfi",
                 "Fecha": "selector_osfi",
@@ -512,7 +516,7 @@ class Window(QWidget):
             )
             data_update = generate_update_file_osfi(fecha)
             self.actualizar_estado(
-                f"Empezando descarga del archivo, alto volumen de datos esperados, por favor espere",
+                f"Empezando descarga del archivo",
                 20,
             )
             if next(data_update):
@@ -527,6 +531,57 @@ class Window(QWidget):
             )
 
             data_update = generate_comparison_file_generic(file_name, pub_date, "OSFI")
+            if next(data_update):
+                self.actualizar_estado("Archivo leído correctamente", 60)
+            if next(data_update):
+                self.actualizar_estado("Transfer cargado correctamente", 70)
+            if next(data_update):
+                self.actualizar_estado("Comparación con transfer completada", 90)
+            if next(data_update):
+                self.actualizar_estado(
+                    "Archivo de comparación guardado correctamente", 100
+                )
+
+            self.finalizar_signal.emit("✅ Proceso finalizado correctamente.", True)
+
+        except Exception as e:
+            self.finalizar_signal.emit(str(e), False)
+
+    ############ PROCESOS DE ONU ############
+
+    def ejecutar_actualizacion_onu(self):
+        self.desactivar_botones()
+        self.limpiar_estado()
+        self.consola.append("Ejecutando actualización...")
+        hilo = Thread(target=self.proceso_actualizacion_onu, daemon=True)
+        hilo.start()
+
+    def proceso_actualizacion_onu(self):
+        try:
+            selector = self.findChild(QDateEdit, "selector_onu")
+            fecha = selector.date().toString("yyyy-MM-dd")
+            self.actualizar_estado("", 10)
+
+            self.actualizar_estado(
+                "Empezando proceso de verificar actualizaciones...", 10
+            )
+            data_update = generate_update_file_onu(fecha)
+            self.actualizar_estado(
+                f"Empezando descarga del archivo",
+                20,
+            )
+            if next(data_update):
+                self.actualizar_estado("Archivo descargado correctamente", 25)
+
+            file_name, pub_date = next(data_update)
+            self.actualizar_estado("Archivo guardado correctamente", 40)
+
+            self.actualizar_estado("", 45)
+            self.actualizar_estado(
+                "Empezando proceso de procesar documento y generar coincidencias...", 50
+            )
+
+            data_update = generate_comparison_file_generic(file_name, pub_date, "ONU")
             if next(data_update):
                 self.actualizar_estado("Archivo leído correctamente", 60)
             if next(data_update):

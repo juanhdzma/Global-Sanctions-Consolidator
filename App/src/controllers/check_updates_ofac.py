@@ -126,7 +126,6 @@ def generate_update_file_ofac(fecha_especifica):
             else:
                 data = fetch_data(URL_DATA + "latest")
         except Exception as e:
-            print(e)
             raise CustomError("Descarga de los datos.")
 
         yield True  # Confirmar descarga

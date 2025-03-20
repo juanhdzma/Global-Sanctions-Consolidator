@@ -40,11 +40,14 @@ def transform_data(data, fecha):
     )
     df = df[["DateOfListing", "NOMBRE"]]
 
-    df["DateOfListing"] = to_datetime(df["DateOfListing"], format="%Y-%m-%d")
+    df.rename(columns={"DateOfListing": "DATE"}, inplace=True)
+    df["DATE"] = to_datetime(df["DATE"], format="%Y-%m-%d")
     fecha = Timestamp(fecha)
-    df_filtered = df[df["DateOfListing"] >= fecha]
+    df = df[df["DATE"] >= fecha]
 
-    return df_filtered[["NOMBRE"]].sort_values("NOMBRE")
+    df = df.astype(str)
+
+    return df[["DATE", "NOMBRE"]].sort_values("DATE")
 
 
 def generate_update_file_osfi(fecha):
@@ -60,7 +63,6 @@ def generate_update_file_osfi(fecha):
         try:
             df = transform_data(data, fecha)
         except Exception as e:
-            print(e)
             raise CustomError("Transformación los datos.")
 
         try:
