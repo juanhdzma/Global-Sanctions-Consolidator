@@ -364,7 +364,9 @@ class Window(QWidget):
 
         estado = self.popup_fecha()
 
-        hilo = Thread(target=self.proceso_actualizacion_ofac(estado), daemon=True)
+        hilo = Thread(
+            target=self.proceso_actualizacion_ofac, args=(estado,), daemon=True
+        )
         hilo.start()
 
     def ejecutar_entidades_ofac(self):
@@ -395,7 +397,9 @@ class Window(QWidget):
             data_update = generate_update_file_ofac(fecha_especifica)
             self.actualizar_estado(f"Empezando descarga del archivo", 5)
             if next(data_update):
-                self.actualizar_estado("Archivo descargado correctamente", 20)
+                self.actualizar_estado(
+                    "Archivo descargado correctamente, formateando los datos", 20
+                )
             file_name, pub_date = next(data_update)
             if file_name:
                 self.actualizar_estado("Archivo guardado correctamente", 45)

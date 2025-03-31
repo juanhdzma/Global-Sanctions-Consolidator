@@ -61,7 +61,12 @@ def expand_dataframe(df):
         for name in names:
             for document in documents:
                 new_rows.append(
-                    {"ID OFAC": entity_id, "NOMBRE": name, "DOCUMENTO": document}
+                    {
+                        "ID OFAC": entity_id,
+                        "NOMBRE": name,
+                        "DOCUMENTO": document,
+                        "Accion": row["Accion"],
+                    }
                 )
 
     expanded_df = DataFrame(new_rows)
@@ -77,18 +82,28 @@ def load_and_transform_transfer_excel(file_path):
 
 def compare_lists(df, transfer):
     """Compara listas y encuentra los mejores matches, agregando columnas de comparacion"""
-    df_names_array = df["NOMBRE"].fillna("N/A").values
-    transfer_names_array = transfer["NOMBRE"].values
-    transfer_id_array = transfer["ID OFAC"].values
+    mask_modify = df["Accion"] == "modify"
+    df.loc[mask_modify, "ID OFAC Comparado"] = df.loc[mask_modify, "ID OFAC"]
+    df.loc[mask_modify, "Comparado"] = df.loc[mask_modify, "NOMBRE"]
+    df.loc[mask_modify, "Score"] = 100
 
-    score_matrix = compare_names_matrix(df_names_array, transfer_names_array)
+    df_to_compare = df[~mask_modify]
 
-    best_match_indices = argmax(score_matrix, axis=1)
-    best_scores = max(score_matrix, axis=1)
+    if not df_to_compare.empty:
+        df_names_array = df_to_compare["NOMBRE"].fillna("N/A").values
+        transfer_names_array = transfer["NOMBRE"].values
+        transfer_id_array = transfer["ID OFAC"].values
 
-    df["ID OFAC Comparado"] = transfer_id_array[best_match_indices]
-    df["Comparado"] = transfer_names_array[best_match_indices]
-    df["Score"] = best_scores * 100
+        score_matrix = compare_names_matrix(df_names_array, transfer_names_array)
+
+        best_match_indices = argmax(score_matrix, axis=1)
+        best_scores = max(score_matrix, axis=1)
+
+        df.loc[~mask_modify, "ID OFAC Comparado"] = transfer_id_array[
+            best_match_indices
+        ]
+        df.loc[~mask_modify, "Comparado"] = transfer_names_array[best_match_indices]
+        df.loc[~mask_modify, "Score"] = best_scores * 100
 
     return df
 
@@ -106,9 +121,9 @@ def generate_comparison_file_ofac(file_name, pub_date):
     try:
         process_aliases(df)
         process_documents(df)
-        df.drop(columns=["Accion"], inplace=True)
         filter_names(df)
         filter_documents(df)
+
     except Exception:
         raise CustomError("Procesamiento de nombres, alias y documentos.")
 
@@ -128,6 +143,7 @@ def generate_comparison_file_ofac(file_name, pub_date):
 
     try:
         final = compare_lists(df, transfer)
+        final.drop(columns=["Accion"], inplace=True)
     except Exception:
         raise CustomError("Comparación de los nombres.")
 

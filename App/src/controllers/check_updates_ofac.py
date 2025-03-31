@@ -10,19 +10,19 @@ URL_HISTORY = "https://sanctionslistservice.ofac.treas.gov/changes/history/"
 NAMESPACE = {"ns": "https://www.treasury.gov/ofac/DeltaFile/1.0"}
 
 
-def transform_data(content):
+def transform_data(content, transfer_df):
     """Transforma el XML en un DataFrame, retorna el DataFrame y la fecha de publicación"""
     root = parse_xml(content)
     entities = root.findall("ns:entities/ns:entity", NAMESPACE)
-    data = [extract_entity_data(entity) for entity in entities]
+    data = [extract_entity_data(entity, transfer_df) for entity in entities]
     return DataFrame(data), extract_publication_date(root)
 
 
-def transform_just_data(content):
+def transform_just_data(content, transfer_df):
     """Transforma el XML en un DataFrame, retorna el DataFrame"""
     root = parse_xml(content)
     entities = root.findall("ns:entities/ns:entity", NAMESPACE)
-    data = [extract_entity_data(entity) for entity in entities]
+    data = [extract_entity_data(entity, transfer_df) for entity in entities]
     return DataFrame(data)
 
 
@@ -36,16 +36,15 @@ def extract_publication_date(root):
     )
 
 
-def get_ofac_name(entity_id):
+def get_ofac_name(transfer_df, entity_id):
     """Obtiene el nombre de la entidad en la lista OFAC"""
-    df = read_excel("./Transfer.xlsx", dtype=str)
-    df = df[df["ID OFAC"] == str(entity_id)]
-    if not df.empty:
-        return df.iloc[0]["NOMBRE"]
+    transfer_df = transfer_df[transfer_df["ID OFAC"] == str(entity_id)]
+    if not transfer_df.empty:
+        return transfer_df.iloc[0]["NOMBRE"]
     return ""
 
 
-def extract_entity_data(entity):
+def extract_entity_data(entity, transfer_df):
     """Extrae la informacion de una entiendad XML"""
     action = entity.get("action", "modify")
     entity_id = entity.get("id", "N/A")
@@ -67,7 +66,7 @@ def extract_entity_data(entity):
                 full_name_text = full_name
 
     if full_name_text == "" and entity_id != "N/A":
-        full_name_text = get_ofac_name(entity_id)
+        full_name_text = get_ofac_name(transfer_df, entity_id)
 
     doc_text = []
     for doc in entity.findall("ns:identityDocuments/ns:identityDocument", NAMESPACE):
@@ -120,7 +119,6 @@ def generate_update_file_ofac(fecha_especifica):
 
         data = None
         try:
-            print(pub_list)
             if fecha_especifica:
                 data = [fetch_data(URL_DATA + str(pub)) for pub in pub_list]
             else:
@@ -131,12 +129,13 @@ def generate_update_file_ofac(fecha_especifica):
         yield True  # Confirmar descarga
 
         try:
+            transfer_df = read_excel("./Transfer.xlsx", dtype=str)
             if fecha_especifica:
                 pub_date = fecha_especifica
-                df = [transform_just_data(i) for i in data]
+                df = [transform_just_data(i, transfer_df) for i in data]
                 df = concat(df, ignore_index=True)
             else:
-                df, pub_date = transform_data(data)
+                df, pub_date = transform_data(data, transfer_df)
         except Exception:
             raise CustomError("Transformación de los datos.")
 
