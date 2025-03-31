@@ -4,13 +4,13 @@ from datetime import datetime
 from src.util.excel_helper import save_to_excel
 from pandas import read_csv, to_datetime
 from io import StringIO
+from src.util.data_helpers import is_latin_or_punctuation
 
 
 URL_DATA = "https://webgate.ec.europa.eu/fsd/fsf/public/files/csvFullSanctionsList_1_1/content?token=dG9rZW4tMjAxNw"
 
 
 def transform_data(data, fecha):
-
     columnas_necesarias = [
         "Identification_Number",
         "NameAlias_WholeName",
@@ -34,6 +34,11 @@ def transform_data(data, fecha):
     df = df[df["NameAlias_NameLanguage"].isin(["EN", "ES", ""])]
 
     df = df[df["NameAlias_WholeName"].notna()]
+    df = df[
+        df["NameAlias_WholeName"].apply(
+            lambda x: all(is_latin_or_punctuation(ch) for ch in x)
+        )
+    ]
 
     df = df[
         [

@@ -1,5 +1,5 @@
 from lxml import etree
-from re import fullmatch, search, sub
+from re import fullmatch, search, sub, match
 from pandas import read_json, to_datetime
 from io import StringIO
 
@@ -32,3 +32,10 @@ def extract_pub_ids(s, date):
         "publicationID"
     ].tolist()
     return lista_pub
+
+
+def is_latin_or_punctuation(text):
+    return all(
+        match(r"[a-zA-ZÀ-ÿ0-9\s.,;:'\"!?()\[\]{}\-_/\\@#\$%\^&\*\+=<>|~`]", ch)
+        for ch in text
+    )

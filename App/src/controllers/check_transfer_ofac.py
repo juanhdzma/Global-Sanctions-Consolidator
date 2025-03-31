@@ -8,8 +8,8 @@ from src.util.error import CustomError
 
 TRANSFER_PATH = "./Transfer.xlsx"
 
-MIN_ALIAS_LENGTH = 10
-MIN_SCORE_ALIAS = 0.6
+MIN_ALIAS_LENGTH = 6
+MIN_SCORE_ALIAS = 0.5
 
 
 def process_aliases(df):
@@ -34,7 +34,9 @@ def filter_names(df):
                 continue
             if len(alias) < MIN_ALIAS_LENGTH:
                 continue
-            if compare_names(full_name, alias) > MIN_SCORE_ALIAS:
+            if "," in alias or "." in alias:
+                names.append(alias)
+            elif compare_names(full_name, alias) > MIN_SCORE_ALIAS:
                 names.append(alias)
         df.at[idx, "Alias"] = names
 
@@ -143,7 +145,6 @@ def generate_comparison_file_ofac(file_name, pub_date):
 
     try:
         final = compare_lists(df, transfer)
-        final.drop(columns=["Accion"], inplace=True)
     except Exception:
         raise CustomError("Comparación de los nombres.")
 
