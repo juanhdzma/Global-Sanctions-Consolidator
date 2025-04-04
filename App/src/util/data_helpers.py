@@ -21,11 +21,6 @@ def clean_strings(s):
     return sub(r"[^a-zA-Z]", "", s)
 
 
-def verify_if_contain_number(s):
-    """Verifica si el texto tiene algun numero"""
-    return search(r"\d", s)
-
-
 def extract_pub_ids(s, date):
     df = read_json(StringIO(s))
     lista_pub = df[to_datetime(df["datePublished"]).dt.strftime("%Y-%m-%d") == date][

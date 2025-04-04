@@ -30,8 +30,6 @@ def filter_names(df):
         full_name = row["Nombre Completo"]
         names = []
         for alias in row["Alias"]:
-            if verify_if_contain_number(alias):
-                continue
             if len(alias) < MIN_ALIAS_LENGTH:
                 continue
             if "," in alias or "." in alias:
