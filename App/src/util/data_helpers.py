@@ -2,6 +2,10 @@ from lxml import etree
 from re import fullmatch, search, sub, match
 from pandas import read_json, to_datetime
 from io import StringIO
+import os
+
+
+ARCHIVO_CONTADOR = "./Contador.txt"
 
 
 def parse_xml(content):
@@ -34,3 +38,22 @@ def is_latin_or_punctuation(text):
         match(r"[a-zA-ZÀ-ÿ0-9\s.,;:'\"!?()\[\]{}\-_/\\@#\$%\^&\*\+=<>|~`]", ch)
         for ch in text
     )
+
+
+def leer_contador():
+    if os.path.exists(ARCHIVO_CONTADOR):
+        with open(ARCHIVO_CONTADOR, "r") as f:
+            return int(f.read())
+    else:
+        return 0
+
+
+def guardar_contador(valor):
+    with open(ARCHIVO_CONTADOR, "w") as f:
+        f.write(str(valor))
+
+
+def format_name(nombre):
+    # Permite letras y espacios, convierte todo a mayúsculas
+    limpio = "".join(c for c in nombre if c.isalpha() or c.isspace())
+    return limpio.upper()

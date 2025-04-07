@@ -3,6 +3,9 @@ from src.util.comparer import compare_names_matrix
 from numpy import max, argmax
 from src.util.excel_helper import save_to_excel
 from src.util.error import CustomError
+from src.util.data_helpers import leer_contador, guardar_contador, format_name
+from datetime import datetime
+from pandas import DataFrame
 
 TRANSFER_PATH = "./Transfer.xlsx"
 
@@ -17,11 +20,11 @@ def load_and_transform_transfer_excel(file_path):
 def compare_lists(df, transfer):
     """Compara listas y encuentra los mejores matches, agregando columnas de comparacion"""
     if df.empty:
-        df["Comparado"] = Series(dtype=str)
-        df["Score"] = Series(dtype=float)
+        df["COMPARADO"] = Series(dtype=str)
+        df["SCORE"] = Series(dtype=float)
         return df
 
-    df_names_array = df["NOMBRE"].fillna("N/A").values
+    df_names_array = df["NOMBRE COMPLETO"].fillna("N/A").values
     transfer_names_array = transfer["NOMBRE"].values
 
     score_matrix = compare_names_matrix(df_names_array, transfer_names_array)
@@ -29,10 +32,35 @@ def compare_lists(df, transfer):
     best_match_indices = argmax(score_matrix, axis=1)
     best_scores = max(score_matrix, axis=1)
 
-    df["Comparado"] = transfer_names_array[best_match_indices]
-    df["Score"] = best_scores * 100
+    df["COMPARADO"] = transfer_names_array[best_match_indices]
+    df["SCORE"] = best_scores * 100
 
     return df
+
+
+def transform_df(df, kind):
+    new_rows = []
+
+    contador = leer_contador()
+    fecha_hoy = datetime.today().strftime("%d-%m-%Y")
+
+    for _, row in df.iterrows():
+        name = row["NOMBRE COMPLETO"]
+        contador += 1
+        new_rows.append(
+            {
+                "MOVIMI": "A",
+                "TIPOID": "S",
+                "NIT": contador,
+                "NOMBRE": format_name(name),
+                "TIPOCL": "C",
+                "OBSERV": f"{kind} {fecha_hoy}",
+                "NOMBRE COMPLETO": name,
+            }
+        )
+    guardar_contador(contador)
+    expanded_df = DataFrame(new_rows)
+    return expanded_df
 
 
 def generate_comparison_file_generic(file_name, pub_date, type):
@@ -47,8 +75,10 @@ def generate_comparison_file_generic(file_name, pub_date, type):
 
     try:
         transfer = load_and_transform_transfer_excel(TRANSFER_PATH)
-    except Exception:
-        raise CustomError(f"Cargue del archivo de transferencias: {TRANSFER_PATH}")
+        df = transform_df(df, type)
+    except Exception as e:
+        print(e)
+        raise CustomError(f"Cargue del archivo de transferencias y transformación: {TRANSFER_PATH}")
 
     yield True  # Leer el transfer
 

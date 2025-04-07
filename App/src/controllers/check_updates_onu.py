@@ -34,7 +34,7 @@ def extract_records(root):
                 latest_date = max(last_dates) if last_dates else listed_on.text.strip()
             else:
                 latest_date = "NA"
-            row = {"DATE": latest_date, "NOMBRE": full_name}
+            row = {"DATE": latest_date, "NOMBRE COMPLETO": full_name}
             final_list.append(row)
     return DataFrame(final_list)
 
@@ -50,7 +50,7 @@ def transform_data(data, fecha):
 
     df = df.astype(str)
 
-    return df[["DATE", "NOMBRE"]].sort_values("DATE")
+    return df[["DATE", "NOMBRE COMPLETO"]].sort_values("DATE")
 
 
 def generate_update_file_onu(fecha):

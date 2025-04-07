@@ -35,7 +35,7 @@ def transform_data(data, fecha):
         ]
     )
 
-    df["NOMBRE"] = df[["GivenName", "LastName", "EntityOrShip"]].apply(
+    df["NOMBRE COMPLETO"] = df[["GivenName", "LastName", "EntityOrShip"]].apply(
         lambda row: " ".join(row.dropna()), axis=1
     )
     df = df[["DateOfListing", "NOMBRE"]]
@@ -47,7 +47,7 @@ def transform_data(data, fecha):
 
     df = df.astype(str)
 
-    return df[["DATE", "NOMBRE"]].sort_values("DATE")
+    return df[["DATE", "NOMBRE COMPLETO"]].sort_values("DATE")
 
 
 def generate_update_file_osfi(fecha):
@@ -63,6 +63,7 @@ def generate_update_file_osfi(fecha):
         try:
             df = transform_data(data, fecha)
         except Exception as e:
+            print(e)
             raise CustomError("Transformación los datos.")
 
         try:

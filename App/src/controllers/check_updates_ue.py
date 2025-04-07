@@ -50,7 +50,7 @@ def transform_data(data, fecha):
         columns={
             "Entity_Regulation_PublicationDate": "DATE",
             "Identification_Number": "ID",
-            "NameAlias_WholeName": "NOMBRE",
+            "NameAlias_WholeName": "NOMBRE COMPLETO",
         }
     )
 

@@ -84,12 +84,12 @@ def extract_entity_data(entity, transfer_df):
 
             if issuing_country_text == "Colombia":
                 if doc_type_text == "Cedula No.":
-                    doc_text.append(f"CC {doc_number_text}")
+                    doc_text.append(f"C {doc_number_text}")
                 elif doc_type_text == "NIT #":
-                    doc_text.append(f"NIT {doc_number_text}")
+                    doc_text.append(f"N {doc_number_text}")
             elif doc_type_text == "Passport":
                 if is_only_number(doc_number_text):
-                    doc_text.append(f"PAS {doc_number_text}")
+                    doc_text.append(f"P {doc_number_text}")
                 else:
                     doc_text.append(f"{doc_type_text} {doc_number_text}")
             else:
@@ -98,10 +98,10 @@ def extract_entity_data(entity, transfer_df):
             doc_text.append("N/A")
     return {
         "ID OFAC": entity_id,
-        "Nombre Completo": full_name_text,
-        "Documentos": doc_text,
-        "Alias": alias_text,
-        "Accion": action,
+        "NOMBRE COMPLETO": full_name_text,
+        "DOCUMENTOS": doc_text,
+        "ALIAS": alias_text,
+        "ACCION": action,
     }
 
 

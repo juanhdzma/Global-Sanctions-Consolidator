@@ -1,10 +1,11 @@
 from ast import literal_eval
 from pandas import notna, DataFrame, read_excel
-from src.util.data_helpers import verify_if_contain_number
 from src.util.comparer import compare_names, compare_names_matrix
 from numpy import max, argmax
 from src.util.excel_helper import save_to_excel
 from src.util.error import CustomError
+from src.util.data_helpers import leer_contador, guardar_contador, format_name
+from datetime import datetime
 
 TRANSFER_PATH = "./Transfer.xlsx"
 
@@ -14,12 +15,12 @@ MIN_SCORE_ALIAS = 0.5
 
 def process_aliases(df):
     """Procesa la columna Alias para convertir las cadenas en listas"""
-    df["Alias"] = df["Alias"].apply(lambda x: literal_eval(x) if notna(x) else [])
+    df["ALIAS"] = df["ALIAS"].apply(lambda x: literal_eval(x) if notna(x) else [])
 
 
 def process_documents(df):
     """Procesa la columna Documentos para convertir las cadenas en listas"""
-    df["Documentos"] = df["Documentos"].apply(
+    df["DOCUMENTOS"] = df["DOCUMENTOS"].apply(
         lambda x: literal_eval(x) if notna(x) else []
     )
 
@@ -27,48 +28,63 @@ def process_documents(df):
 def filter_names(df):
     """Filtra los alias y los deja en la columna Alias con los nombres similares"""
     for idx, row in df.iterrows():
-        full_name = row["Nombre Completo"]
+        full_name = row["NOMBRE COMPLETO"]
         names = []
-        for alias in row["Alias"]:
+        for alias in row["ALIAS"]:
             if len(alias) < MIN_ALIAS_LENGTH:
                 continue
             if "," in alias or "." in alias:
                 names.append(alias)
             elif compare_names(full_name, alias) > MIN_SCORE_ALIAS:
                 names.append(alias)
-        df.at[idx, "Alias"] = names
+        df.at[idx, "ALIAS"] = names
 
 
 def filter_documents(df):
     """Filtra los documentos y los deja en la columna Documentos con los documentos válidos"""
     for idx, row in df.iterrows():
         new_documents = [
-            doc for doc in row["Documentos"] if doc.split()[0] in ["CC", "PAS", "NIT"]
+            doc for doc in row["DOCUMENTOS"] if doc.split()[0] in ["C", "P", "N"]
         ]
         if not new_documents:
-            new_documents.append(f"OFAC {row['ID OFAC']}")
-        df.at[idx, "Documentos"] = new_documents
+            new_documents.append(f"S {row['ID OFAC']}")
+        df.at[idx, "DOCUMENTOS"] = new_documents
 
 
 def expand_dataframe(df):
     """Expande el DataFrame original a uno nuevo con las combinaciones de nombres y documentos"""
     new_rows = []
+
+    contador = leer_contador()
+    fecha_hoy = datetime.today().strftime("%d-%m-%Y")
+
     for _, row in df.iterrows():
-        names = [row["Nombre Completo"]] + row["Alias"]
-        documents = row["Documentos"]
+        names = [row["NOMBRE COMPLETO"]] + row["ALIAS"]
+        documents = row["DOCUMENTOS"]
         entity_id = row["ID OFAC"]
 
         for name in names:
             for document in documents:
+                if document.split()[0] == "S":
+                    contador += 1
+                    nit = contador
+                else:
+                    nit = document.split()[1]
                 new_rows.append(
                     {
+                        "MOVIMI": "A",
+                        "TIPOID": document.split()[0],
+                        "NIT": nit,
+                        "NOMBRE": format_name(name),
+                        "TIPOCL": "C",
+                        "OBSERV": f"OFAC {fecha_hoy}",
                         "ID OFAC": entity_id,
-                        "NOMBRE": name,
+                        "NOMBRE COMPLETO": name,
                         "DOCUMENTO": document,
-                        "Accion": row["Accion"],
+                        "ACCION": row["ACCION"],
                     }
                 )
-
+    guardar_contador(contador)
     expanded_df = DataFrame(new_rows)
     return expanded_df
 
@@ -82,15 +98,15 @@ def load_and_transform_transfer_excel(file_path):
 
 def compare_lists(df, transfer):
     """Compara listas y encuentra los mejores matches, agregando columnas de comparacion"""
-    mask_modify = df["Accion"] == "modify"
-    df.loc[mask_modify, "ID OFAC Comparado"] = df.loc[mask_modify, "ID OFAC"]
-    df.loc[mask_modify, "Comparado"] = df.loc[mask_modify, "NOMBRE"]
-    df.loc[mask_modify, "Score"] = 100
+    mask_modify = df["ACCION"] == "modify"
+    df.loc[mask_modify, "ID OFAC COMPARADO"] = df.loc[mask_modify, "ID OFAC"]
+    df.loc[mask_modify, "COMPARADO"] = df.loc[mask_modify, "NOMBRE COMPLETO"]
+    df.loc[mask_modify, "SCORE"] = 100
 
     df_to_compare = df[~mask_modify]
 
     if not df_to_compare.empty:
-        df_names_array = df_to_compare["NOMBRE"].fillna("N/A").values
+        df_names_array = df_to_compare["NOMBRE COMPLETO"].fillna("N/A").values
         transfer_names_array = transfer["NOMBRE"].values
         transfer_id_array = transfer["ID OFAC"].values
 
@@ -99,11 +115,11 @@ def compare_lists(df, transfer):
         best_match_indices = argmax(score_matrix, axis=1)
         best_scores = max(score_matrix, axis=1)
 
-        df.loc[~mask_modify, "ID OFAC Comparado"] = transfer_id_array[
+        df.loc[~mask_modify, "ID OFAC COMPARADO"] = transfer_id_array[
             best_match_indices
         ]
-        df.loc[~mask_modify, "Comparado"] = transfer_names_array[best_match_indices]
-        df.loc[~mask_modify, "Score"] = best_scores * 100
+        df.loc[~mask_modify, "COMPARADO"] = transfer_names_array[best_match_indices]
+        df.loc[~mask_modify, "SCORE"] = best_scores * 100
 
     return df
 
