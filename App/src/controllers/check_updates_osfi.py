@@ -11,37 +11,71 @@ URL_DATA = "https://www.international.gc.ca/world-monde/assets/office_docs/inter
 
 def extract_records(data):
     root = parse_xml(data)
-    data = []
-    for record in root.findall("record"):
-        row = {
-            child.tag: child.text.replace("\n", "").replace("\t", "").strip()
-            for child in record
-        }
-        data.append(row)
-    return DataFrame(data)
+    ns = {"ss": "urn:schemas-microsoft-com:office:spreadsheet"}
+
+    rows = []
+    for row in root.findall(".//ss:Worksheet/ss:Table/ss:Row", ns):
+        row_data = []
+        for cell in row.findall("ss:Cell", ns):
+            data_node = cell.find("ss:Data", ns)
+            value = (
+                data_node.text.strip()
+                if data_node is not None and data_node.text
+                else ""
+            )
+            row_data.append(value)
+        rows.append(row_data)
+
+    df = DataFrame(rows)
+    df.columns = df.iloc[0]
+    df = df[1:].reset_index(drop=True)
+    return df
 
 
 def transform_data(data, fecha):
     df = extract_records(data)
-    df = df.drop(
-        columns=[
-            "Item",
-            "Schedule",
-            "Country",
-            "DateOfBirthOrShipBuildDate",
-            "Aliases",
-            "TitleOrShip",
-            "ShipIMONumber",
+    keywords = [
+        "Item",
+        "Schedule",
+        "Country",
+        "DateOfBirth",
+        "Ship build",
+        "Aliases",
+        "Title or Ship",
+        "Ship IMO",
+    ]
+
+    cols_to_drop = [
+        col for col in df.columns if col and any(kw in col for kw in keywords)
+    ]
+
+    df = df.drop(columns=cols_to_drop)
+
+    name_keywords = ["Given", "Last", "Entity"]
+
+    name_cols = [
+        col for col in df.columns if col and any(kw in col for kw in name_keywords)
+    ]
+
+    df["NOMBRE COMPLETO"] = df[name_cols].apply(
+        lambda row: " ".join(row.dropna().astype(str)), axis=1
+    )
+
+    df.rename(
+        columns={
+            "Date of Listing (YYYY/MM/DD) / Date d'inscription (AAAA/MM/JJ)": "DATE"
+        },
+        inplace=True,
+    )
+
+    df = df[
+        [
+            "DATE",
+            "NOMBRE COMPLETO",
         ]
-    )
+    ]
 
-    df["NOMBRE COMPLETO"] = df[["GivenName", "LastName", "EntityOrShip"]].apply(
-        lambda row: " ".join(row.dropna()), axis=1
-    )
-    df = df[["DateOfListing", "NOMBRE"]]
-
-    df.rename(columns={"DateOfListing": "DATE"}, inplace=True)
-    df["DATE"] = to_datetime(df["DATE"], format="%Y-%m-%d")
+    df["DATE"] = to_datetime(df["DATE"], format="ISO8601", errors="coerce")
     fecha = Timestamp(fecha)
     df = df[df["DATE"] >= fecha]
 

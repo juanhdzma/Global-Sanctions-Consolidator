@@ -23,6 +23,7 @@ from src.controllers.check_transfer_generic import generate_comparison_file_gene
 from src.controllers.check_updates_osfi import generate_update_file_osfi
 from src.controllers.check_updates_onu import generate_update_file_onu
 from src.util.error import CustomError
+import os
 
 
 class Window(QWidget):
@@ -40,6 +41,7 @@ class Window(QWidget):
     ############ INICIALIZACIÓN DE LA INTERFAZ ############
 
     def initUI(self):
+
         self.setWindowTitle("Global Sanctions Consolidator")
         self.setFixedSize(800, 500)
         self.setStyleSheet("background-color: #222; color: white; font-size: 14px;")
