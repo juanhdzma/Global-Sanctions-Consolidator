@@ -34,7 +34,8 @@ def extract_records(root):
                 latest_date = max(last_dates) if last_dates else listed_on.text.strip()
             else:
                 latest_date = "NA"
-            row = {"DATE": latest_date, "NOMBRE COMPLETO": full_name}
+            id_onu = item.findtext("REFERENCE_NUMBER", "").strip()
+            row = {"DATE": latest_date, "NOMBRE COMPLETO": full_name, "ID ONU": id_onu}
             final_list.append(row)
     return DataFrame(final_list)
 
@@ -44,13 +45,13 @@ def transform_data(data, fecha):
     df = extract_records(root)
 
     df["DATE"] = to_datetime(df["DATE"], format="%Y-%m-%d", errors="coerce")
-    date = Timestamp("2024-09-16")
+    date = Timestamp(fecha)
 
     df = df[df["DATE"] >= date]
 
     df = df.astype(str)
 
-    return df[["DATE", "NOMBRE COMPLETO"]].sort_values("DATE")
+    return df.sort_values("DATE")
 
 
 def generate_update_file_onu(fecha):
