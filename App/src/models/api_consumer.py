@@ -2,7 +2,7 @@ from src.util.error import CustomError
 import subprocess
 
 
-USE_PROXY = False
+USE_PROXY = True
 PROXY = "http://172.19.152.108:8000"
 
 

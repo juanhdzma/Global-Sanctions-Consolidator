@@ -1,6 +1,6 @@
 from src.view.front_app import Window
 from PyQt6.QtWidgets import QApplication
-from PyQt6.QtGui import QIcon, QPixmap
+from PyQt6.QtGui import QIcon
 import sys
 import os
 
