@@ -6,9 +6,7 @@ from pandas import DataFrame
 
 
 URL_DATA = "https://sanctionslistservice.ofac.treas.gov/entities"
-NAMESPACE = {
-    "ns": "https://sanctionslistservice.ofac.treas.gov/api/PublicationPreview/exports/ENHANCED_XML"
-}
+NAMESPACE = {"ns": "https://sanctionslistservice.ofac.treas.gov/api/PublicationPreview/exports/ENHANCED_XML"}
 
 
 def transform_data(content):
@@ -22,11 +20,7 @@ def transform_data(content):
 def extract_publication_date(root):
     """Extrae la fecha de publicación del XML"""
     date_element = root.find("ns:publicationInfo/ns:dataAsOf", NAMESPACE)
-    return (
-        date_element.text.split("T")[0]
-        if date_element is not None
-        else "Fecha_no_disponible"
-    )
+    return date_element.text.split("T")[0] if date_element is not None else "Fecha_no_disponible"
 
 
 def extract_entity_data(entity):
@@ -38,9 +32,7 @@ def extract_entity_data(entity):
 
     for name in entity.findall(".//ns:name", NAMESPACE):
         alias_type = name.find("ns:aliasType", NAMESPACE)
-        full_name = name.find(
-            ".//ns:translation[ns:script='Latin']/ns:formattedFullName", NAMESPACE
-        )
+        full_name = name.find(".//ns:translation[ns:script='Latin']/ns:formattedFullName", NAMESPACE)
         full_name = full_name.text if full_name is not None else "N/A"
 
         if alias_type != None:
@@ -59,9 +51,7 @@ def extract_entity_data(entity):
             doc_number_text = doc_number.text if doc_number is not None else "N/A"
 
             issuing_country = doc.find("ns:issuingCountry", NAMESPACE)
-            issuing_country_text = (
-                issuing_country.text if issuing_country is not None else "N/A"
-            )
+            issuing_country_text = issuing_country.text if issuing_country is not None else "N/A"
 
             if issuing_country_text == "Colombia":
                 if doc_type_text == "Cedula No.":
@@ -90,20 +80,23 @@ def generate_entity_file_ofac():
         data = None
         try:
             data = fetch_data(URL_DATA)
-        except Exception:
+        except Exception as e:
+            print(e)
             raise CustomError("Descarga de los datos.")
 
         yield True  # Confirmar descarga
 
         try:
             df, pub_date = transform_data(data)
-        except Exception:
+        except Exception as e:
+            print(e)
             raise CustomError("Transformación de los datos.")
 
         try:
             filename = f"OFAC_Entity_{pub_date}.xlsx"
             save_to_excel(df, filename)
-        except Exception:
+        except Exception as e:
+            print(e)
             raise CustomError(f"Proceso de guardado del archivo: {filename}")
 
         yield True  # Confirmar guardado

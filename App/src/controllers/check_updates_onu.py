@@ -20,17 +20,11 @@ def extract_records(root):
             second_name = item.findtext("SECOND_NAME", "").strip()
             third_name = item.findtext("THIRD_NAME", "").strip()
             fourth_name = item.findtext("FOURTH_NAME", "").strip()
-            full_name = " ".join(
-                filter(None, [first_name, second_name, third_name, fourth_name])
-            )
+            full_name = " ".join(filter(None, [first_name, second_name, third_name, fourth_name]))
             listed_on = item.find("LISTED_ON")
             last_day_updated_section = item.find("LAST_DAY_UPDATED")
             if last_day_updated_section is not None and listed_on is not None:
-                last_dates = [
-                    value.text
-                    for value in last_day_updated_section.findall("VALUE")
-                    if value.text
-                ]
+                last_dates = [value.text for value in last_day_updated_section.findall("VALUE") if value.text]
                 latest_date = max(last_dates) if last_dates else listed_on.text.strip()
             else:
                 latest_date = "NA"
@@ -67,6 +61,7 @@ def generate_update_file_onu(fecha):
         try:
             df = transform_data(data, fecha)
         except Exception as e:
+            print(e)
             raise CustomError("Transformación los datos.")
 
         try:

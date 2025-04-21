@@ -13,10 +13,7 @@ def extract_records(data):
     root = parse_xml(data)
     data = []
     for record in root.findall("record"):
-        row = {
-            child.tag: child.text.replace("\n", "").replace("\t", "").strip()
-            for child in record
-        }
+        row = {child.tag: child.text.replace("\n", "").replace("\t", "").strip() for child in record}
         data.append(row)
     return DataFrame(data)
 
@@ -35,9 +32,7 @@ def transform_data(data, fecha):
         ]
     )
 
-    df["NOMBRE COMPLETO"] = df[["GivenName", "LastName", "EntityOrShip"]].apply(
-        lambda row: " ".join(row.dropna()), axis=1
-    )
+    df["NOMBRE COMPLETO"] = df[["GivenName", "LastName", "EntityOrShip"]].apply(lambda row: " ".join(row.dropna()), axis=1)
     df = df[["DateOfListing", "NOMBRE"]]
 
     df.rename(columns={"DateOfListing": "DATE"}, inplace=True)
@@ -64,9 +59,7 @@ def transform_data(data, fecha):
         ]
     )
 
-    df["NOMBRE COMPLETO"] = df[["GivenName", "LastName", "EntityOrShip"]].apply(
-        lambda row: " ".join(row.dropna()), axis=1
-    )
+    df["NOMBRE COMPLETO"] = df[["GivenName", "LastName", "EntityOrShip"]].apply(lambda row: " ".join(row.dropna()), axis=1)
     df = df[["DateOfListing", "NOMBRE COMPLETO"]]
 
     df.rename(columns={"DateOfListing": "DATE"}, inplace=True)
@@ -92,6 +85,7 @@ def generate_update_file_osfi(fecha):
         try:
             df = transform_data(data, fecha)
         except Exception as e:
+            print(e)
             raise CustomError("Transformación los datos.")
 
         try:

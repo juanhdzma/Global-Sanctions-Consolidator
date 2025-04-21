@@ -68,7 +68,8 @@ def generate_comparison_file_generic(file_name, pub_date, type):
 
     try:
         df = read_excel(f"./output_files/{file_name}", dtype=str)
-    except Exception:
+    except Exception as e:
+        print(e)
         raise CustomError(f"Lectura del archivo: {file_name}")
 
     yield True  # Leer archivo
@@ -84,7 +85,8 @@ def generate_comparison_file_generic(file_name, pub_date, type):
 
     try:
         final = compare_lists(df, transfer)
-    except Exception:
+    except Exception as e:
+        print(e)
         raise CustomError("Comparación de los nombres.")
 
     yield True  # Comparar nombres
@@ -92,7 +94,8 @@ def generate_comparison_file_generic(file_name, pub_date, type):
     try:
         filename = f"{type}_Transfer_{pub_date}.xlsx"
         save_to_excel(final, filename)
-    except Exception:
+    except Exception as e:
+        print(e)
         raise CustomError(f"Proceso de guardado el archivo final: {filename}")
 
     yield True  # Guardar Archivo Final

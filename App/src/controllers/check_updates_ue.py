@@ -20,9 +20,7 @@ def transform_data(data, fecha):
 
     df = read_csv(StringIO(data), sep=";", usecols=columnas_necesarias, dtype=str)
 
-    df["Entity_Regulation_PublicationDate"] = to_datetime(
-        df["Entity_Regulation_PublicationDate"], errors="coerce"
-    )
+    df["Entity_Regulation_PublicationDate"] = to_datetime(df["Entity_Regulation_PublicationDate"], errors="coerce")
 
     fecha = to_datetime(fecha, format="%d/%m/%Y")
 
@@ -34,11 +32,7 @@ def transform_data(data, fecha):
     df = df[df["NameAlias_NameLanguage"].isin(["EN", "ES", ""])]
 
     df = df[df["NameAlias_WholeName"].notna()]
-    df = df[
-        df["NameAlias_WholeName"].apply(
-            lambda x: all(is_latin_or_punctuation(ch) for ch in x)
-        )
-    ]
+    df = df[df["NameAlias_WholeName"].apply(lambda x: all(is_latin_or_punctuation(ch) for ch in x))]
 
     df = df[
         [
@@ -71,7 +65,8 @@ def generate_update_file_ue(fecha):
 
         try:
             df = transform_data(data, fecha)
-        except Exception:
+        except Exception as e:
+            print(e)
             raise CustomError("Transformación los datos.")
 
         try:

@@ -1,4 +1,4 @@
-APP_NAME = app/main
+APP_NAME = App/main.py
 
 run:
-	python $(APP_NAME).py
+	python $(APP_NAME)

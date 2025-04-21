@@ -20,9 +20,7 @@ def process_aliases(df):
 
 def process_documents(df):
     """Procesa la columna Documentos para convertir las cadenas en listas"""
-    df["DOCUMENTOS"] = df["DOCUMENTOS"].apply(
-        lambda x: literal_eval(x) if notna(x) else []
-    )
+    df["DOCUMENTOS"] = df["DOCUMENTOS"].apply(lambda x: literal_eval(x) if notna(x) else [])
 
 
 def filter_names(df):
@@ -43,9 +41,7 @@ def filter_names(df):
 def filter_documents(df):
     """Filtra los documentos y los deja en la columna Documentos con los documentos válidos"""
     for idx, row in df.iterrows():
-        new_documents = [
-            doc for doc in row["DOCUMENTOS"] if doc.split()[0] in ["C", "P", "N"]
-        ]
+        new_documents = [doc for doc in row["DOCUMENTOS"] if doc.split()[0] in ["C", "P", "N"]]
         if not new_documents:
             new_documents.append(f"S {row['ID OFAC']}")
         df.at[idx, "DOCUMENTOS"] = new_documents
@@ -115,9 +111,7 @@ def compare_lists(df, transfer):
         best_match_indices = argmax(score_matrix, axis=1)
         best_scores = max(score_matrix, axis=1)
 
-        df.loc[~mask_modify, "ID OFAC COMPARADO"] = transfer_id_array[
-            best_match_indices
-        ]
+        df.loc[~mask_modify, "ID OFAC COMPARADO"] = transfer_id_array[best_match_indices]
         df.loc[~mask_modify, "COMPARADO"] = transfer_names_array[best_match_indices]
         df.loc[~mask_modify, "SCORE"] = best_scores * 100
 
@@ -129,7 +123,8 @@ def generate_comparison_file_ofac(file_name, pub_date):
 
     try:
         df = read_excel(f"./output_files/{file_name}", dtype=str)
-    except Exception:
+    except Exception as e:
+        print(e)
         raise CustomError(f"Lectura del archivo: {file_name}")
 
     yield True  # Leer archivo
@@ -140,26 +135,28 @@ def generate_comparison_file_ofac(file_name, pub_date):
         filter_names(df)
         filter_documents(df)
 
-    except Exception:
+    except Exception as e:
+        print(e)
         raise CustomError("Procesamiento de nombres, alias y documentos.")
 
     yield True  # Procesar Nombres, Alias y Documentos
 
     try:
         df = expand_dataframe(df)
-    except Exception:
+    except Exception as e:
+        print(e)
         raise CustomError("Intentando expandir el DataFrame.")
 
     try:
         transfer = load_and_transform_transfer_excel(TRANSFER_PATH)
-    except Exception:
-        raise CustomError(
-            f"❌ No se pudo cargar el archivo de transferencias: {TRANSFER_PATH}"
-        )
+    except Exception as e:
+        print(e)
+        raise CustomError(f"❌ No se pudo cargar el archivo de transferencias: {TRANSFER_PATH}")
 
     try:
         final = compare_lists(df, transfer)
-    except Exception:
+    except Exception as e:
+        print(e)
         raise CustomError("Comparación de los nombres.")
 
     yield True  # Comparar nombres

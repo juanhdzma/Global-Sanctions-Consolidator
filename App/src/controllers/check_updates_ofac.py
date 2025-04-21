@@ -29,11 +29,7 @@ def transform_just_data(content, transfer_df):
 def extract_publication_date(root):
     """Extrae la fecha de publicación del XML"""
     date_element = root.find("ns:publicationInfo/ns:datePublished", NAMESPACE)
-    return (
-        date_element.text.split("T")[0]
-        if date_element is not None
-        else "Fecha_no_disponible"
-    )
+    return date_element.text.split("T")[0] if date_element is not None else "Fecha_no_disponible"
 
 
 def get_ofac_name(transfer_df, entity_id):
@@ -54,9 +50,7 @@ def extract_entity_data(entity, transfer_df):
 
     for name in entity.findall(".//ns:name", NAMESPACE):
         alias_type = name.find("ns:aliasType", NAMESPACE)
-        full_name = name.find(
-            ".//ns:translation[ns:script='Latin']/ns:formattedFullName", NAMESPACE
-        )
+        full_name = name.find(".//ns:translation[ns:script='Latin']/ns:formattedFullName", NAMESPACE)
         full_name = full_name.text if full_name is not None else "N/A"
 
         if alias_type != None:
@@ -78,9 +72,7 @@ def extract_entity_data(entity, transfer_df):
             doc_number_text = doc_number.text if doc_number is not None else "N/A"
 
             issuing_country = doc.find("ns:issuingCountry", NAMESPACE)
-            issuing_country_text = (
-                issuing_country.text if issuing_country is not None else "N/A"
-            )
+            issuing_country_text = issuing_country.text if issuing_country is not None else "N/A"
 
             if issuing_country_text == "Colombia":
                 if doc_type_text == "Cedula No.":
@@ -111,10 +103,9 @@ def generate_update_file_ofac(fecha_especifica):
         try:
             if fecha_especifica:
                 year = fecha_especifica.split("-")[0]
-                pub_list = extract_pub_ids(
-                    fetch_data(URL_HISTORY + year), fecha_especifica
-                )
+                pub_list = extract_pub_ids(fetch_data(URL_HISTORY + year), fecha_especifica)
         except Exception as e:
+            print(e)
             raise CustomError("Descarga de historial de publicaciones")
 
         data = None
@@ -124,6 +115,7 @@ def generate_update_file_ofac(fecha_especifica):
             else:
                 data = fetch_data(URL_DATA + "latest")
         except Exception as e:
+            print(e)
             raise CustomError("Descarga de los datos.")
 
         yield True  # Confirmar descarga
@@ -136,7 +128,8 @@ def generate_update_file_ofac(fecha_especifica):
                 df = concat(df, ignore_index=True)
             else:
                 df, pub_date = transform_data(data, transfer_df)
-        except Exception:
+        except Exception as e:
+            print(e)
             raise CustomError("Transformación de los datos.")
 
         try:
