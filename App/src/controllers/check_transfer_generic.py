@@ -1,4 +1,5 @@
 from pandas import read_excel, Series
+from pathlib import Path
 from src.util.comparer import compare_names_matrix
 from numpy import max, argmax
 from src.util.excel_helper import save_to_excel
@@ -7,7 +8,7 @@ from src.util.data_helpers import leer_contador, guardar_contador, format_name
 from datetime import datetime
 from pandas import DataFrame
 
-TRANSFER_PATH = "./Transfer.xlsx"
+TRANSFER_PATH = Path(__file__).resolve().parents[3] / "Transfer.xlsx"
 
 
 def load_and_transform_transfer_excel(file_path):
@@ -67,7 +68,8 @@ def generate_comparison_file_generic(file_name, pub_date, type):
     """Genera la comparación de nombres y documentos con el archivo Transfer"""
 
     try:
-        df = read_excel(f"./output_files/{file_name}", dtype=str)
+        output_path = Path(__file__).resolve().parents[3] / "output_files" / file_name
+        df = read_excel(output_path, dtype=str)
     except Exception as e:
         print(e)
         raise CustomError(f"Lectura del archivo: {file_name}")

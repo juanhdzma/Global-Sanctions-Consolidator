@@ -1,13 +1,13 @@
 from openpyxl.utils import get_column_letter
 from openpyxl import load_workbook
-from os.path import join
 from src.util.error import CustomError
+from pathlib import Path
 
 
 def save_to_excel(df, filename):
     """Guarda el DataFrame en un archivo Excel y ajusta el ancho de las columnas"""
     try:
-        full_path = join("./output_files/", filename)
+        full_path = Path(__file__).resolve().parents[3] / "output_files" / filename
 
         df.to_excel(full_path, index=False)
 

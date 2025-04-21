@@ -1,11 +1,10 @@
 from lxml import etree
-from re import fullmatch, search, sub, match
+from re import fullmatch, sub, match
 from pandas import read_json, to_datetime
 from io import StringIO
-import os
+from pathlib import Path
 
-
-ARCHIVO_CONTADOR = "./Contador.txt"
+ARCHIVO_CONTADOR = Path(__file__).resolve().parent / "Contador.txt"
 
 
 def parse_xml(content):
@@ -27,29 +26,24 @@ def clean_strings(s):
 
 def extract_pub_ids(s, date):
     df = read_json(StringIO(s))
-    lista_pub = df[to_datetime(df["datePublished"]).dt.strftime("%Y-%m-%d") == date][
-        "publicationID"
-    ].tolist()
+    lista_pub = df[to_datetime(df["datePublished"]).dt.strftime("%Y-%m-%d") == date]["publicationID"].tolist()
     return lista_pub
 
 
 def is_latin_or_punctuation(text):
-    return all(
-        match(r"[a-zA-ZÀ-ÿ0-9\s.,;:'\"!?()\[\]{}\-_/\\@#\$%\^&\*\+=<>|~`]", ch)
-        for ch in text
-    )
+    return all(match(r"[a-zA-ZÀ-ÿ0-9\s.,;:'\"!?()\[\]{}\-_/\\@#\$%\^&\*\+=<>|~`]", ch) for ch in text)
 
 
 def leer_contador():
-    if os.path.exists(ARCHIVO_CONTADOR):
-        with open(ARCHIVO_CONTADOR, "r") as f:
+    if ARCHIVO_CONTADOR.exists():
+        with ARCHIVO_CONTADOR.open("r") as f:
             return int(f.read())
     else:
         return 0
 
 
 def guardar_contador(valor):
-    with open(ARCHIVO_CONTADOR, "w") as f:
+    with ARCHIVO_CONTADOR.open("w") as f:
         f.write(str(valor))
 
 

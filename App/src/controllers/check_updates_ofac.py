@@ -3,6 +3,7 @@ from src.util.error import CustomError
 from src.util.excel_helper import save_to_excel
 from src.util.data_helpers import parse_xml, is_only_number, extract_pub_ids
 from pandas import DataFrame, read_excel, concat
+from pathlib import Path
 
 
 URL_DATA = "https://sanctionslistservice.ofac.treas.gov/changes/"
@@ -121,7 +122,8 @@ def generate_update_file_ofac(fecha_especifica):
         yield True  # Confirmar descarga
 
         try:
-            transfer_df = read_excel("./Transfer.xlsx", dtype=str)
+            transfer_path = Path(__file__).resolve().parents[3] / "Transfer.xlsx"
+            transfer_df = read_excel(transfer_path, dtype=str)
             if fecha_especifica:
                 pub_date = fecha_especifica
                 df = [transform_just_data(i, transfer_df) for i in data]
